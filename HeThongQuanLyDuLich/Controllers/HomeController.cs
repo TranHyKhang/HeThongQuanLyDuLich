@@ -50,5 +50,9 @@ namespace HeThongQuanLyDuLich.Controllers
         {
             return View();
         }
+        public ActionResult NamLuu()
+        {
+            return View();
+        }
     }
 }
