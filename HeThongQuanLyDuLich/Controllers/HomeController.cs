@@ -27,32 +27,6 @@ namespace HeThongQuanLyDuLich.Controllers
             return View();
         }
 
-        public ActionResult Haha()
-        {
-            return View();
-        }
-
-        public ActionResult hii()
-        {
-            return View();
-        }
-
-        public ActionResult hykhang()
-        {
-            return View();
-        }
-
-        public ActionResult HyKhangDepTrai()
-        {
-            return View();
-        }
-        public ActionResult QL()
-        {
-            return View();
-        }
-        public ActionResult NamLuu()
-        {
-            return View();
-        }
+       
     }
 }
