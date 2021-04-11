@@ -26,5 +26,10 @@ namespace HeThongQuanLyDuLich.Controllers
 
             return View();
         }
+
+        public ActionResult Haha()
+        {
+            return View();
+        }
     }
 }
