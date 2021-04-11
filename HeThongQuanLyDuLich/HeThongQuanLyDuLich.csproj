@@ -167,6 +167,7 @@
     <Content Include="Views\Home\hykhang.cshtml" />
     <Content Include="Views\Home\HyKhangDepTrai.cshtml" />
     <Content Include="Views\Home\QL.cshtml" />
+    <Content Include="Views\Home\NamLuu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
