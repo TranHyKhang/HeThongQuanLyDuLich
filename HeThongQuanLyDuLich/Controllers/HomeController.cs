@@ -46,5 +46,9 @@ namespace HeThongQuanLyDuLich.Controllers
         {
             return View();
         }
+        public ActionResult QL()
+        {
+            return View();
+        }
     }
 }
