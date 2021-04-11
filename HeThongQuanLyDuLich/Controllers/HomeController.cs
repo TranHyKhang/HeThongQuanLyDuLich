@@ -41,5 +41,10 @@ namespace HeThongQuanLyDuLich.Controllers
         {
             return View();
         }
+
+        public ActionResult HyKhangDepTrai()
+        {
+            return View();
+        }
     }
 }
