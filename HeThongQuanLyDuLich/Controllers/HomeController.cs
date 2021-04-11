@@ -31,5 +31,10 @@ namespace HeThongQuanLyDuLich.Controllers
         {
             return View();
         }
+
+        public ActionResult hii()
+        {
+            return View();
+        }
     }
 }
