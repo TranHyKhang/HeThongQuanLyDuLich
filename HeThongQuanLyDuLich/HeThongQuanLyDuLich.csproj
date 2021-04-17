@@ -134,6 +134,10 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\image\GthieuClip.mp4" />
+    <Content Include="Content\image\search %281%29.png" />
+    <Content Include="Content\image\search.png" />
+    <Content Include="Content\trangchu.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
