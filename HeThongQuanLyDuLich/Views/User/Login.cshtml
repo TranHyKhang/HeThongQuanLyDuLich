@@ -2,6 +2,37 @@
 @{
     ViewBag.Title = "Login";
 }
+@section css{
+    <link rel="stylesheet" type="text/css" href="~/Content/Login.css" />
+    <!--Bootsrap 4 CDN-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-<h2>Login</h2>
+    <!--Fontawesome CDN-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+}
+
+<body class="main-bg">
+    <div class="login-container text-c animated flipInX">
+        <div class="container-content">
+            <h1 class="logo-badge text-whitesmoke"><span class="fa fa-user-circle"></span></h1>
+            <form class="margin-t">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Tài khoản" required="" style="max-width:370px; height:35px;font-size:15px; border-radius:15px;">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="*****" required="" style="max-width:370px;height:35px; font-size:15px;border-radius:15px;">
+                </div>
+                <button type="submit" class="form-button button-l margin-b" style="height:35px;font-size:15px;border-radius:35px; ">Đăng Nhập</button>
+
+                <a class="text-darkyellow" href="#" style="font-size:15px;color:rgba(58, 255, 255, 0.8);   "><small>Quên mật khẩu ?</small></a>
+                <p class="text-whitesmoke text-center" style="font-size:15px;"><small>Bạn có tài khoản chưa ?</small></p>
+                <a class="text-darkyellow" href="http://localhost:60521/User/SignUp" style="font-size:15px;color:rgba(58, 255, 255, 0.8); "><small>Đăng ký</small></a>
+            </form>
+            <p class="margin-t text-whitesmoke"><small> dulichvietnam@gmail.com </small> </p>
+        </div>
+    </div>
+</body>
