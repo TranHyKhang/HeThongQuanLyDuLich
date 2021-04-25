@@ -136,15 +136,59 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ChucVu.cs">
+      <DependentUpon>HTQLDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DichVu.cs">
+      <DependentUpon>HTQLDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Feedback.cs">
+      <DependentUpon>HTQLDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HanhTrinh.cs">
+      <DependentUpon>HTQLDL.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\HTQLDL.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>HTQLDL.Context.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\HTQLDL.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HTQLDL.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\HTQLDL.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>HTQLDL.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KhachHang.cs">
+      <DependentUpon>HTQLDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KhachSan.cs">
+      <DependentUpon>HTQLDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KhuyenMai.cs">
+      <DependentUpon>HTQLDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LoaiTaiKhoan.cs">
+      <DependentUpon>HTQLDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NhanVien.cs">
+      <DependentUpon>HTQLDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>HTQLDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TaiKhoan.cs">
+      <DependentUpon>HTQLDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tour.cs">
+      <DependentUpon>HTQLDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VeDatTour.cs">
+      <DependentUpon>HTQLDL.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -166,6 +210,12 @@
     <Content Include="Models\HTQLDL.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>HTQLDL.Context.cs</LastGenOutput>
+      <DependentUpon>HTQLDL.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\HTQLDL.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HTQLDL.edmx</DependentUpon>
+      <LastGenOutput>HTQLDL.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -173,9 +223,9 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>HTQLDL.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Models\HTQLDL.edmx.diagram">
+    <Content Include="Models\HTQLDL.edmx.diagram">
       <DependentUpon>HTQLDL.edmx</DependentUpon>
-    </None>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
