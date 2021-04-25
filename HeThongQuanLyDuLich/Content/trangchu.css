@@ -1,74 +1,206 @@
-﻿.header_home {
-    position: relative;
-}
+﻿/*introduce background video*/
+.container-a {
+     position: absolute;
+     width: 100%;
+     z-index: 2
+ }
 
-.clipIntroduce {
-    width: 100%;
-    height: 10%;
-}
-
-.title_Home {
-    z-index: 999999;
+.overlay {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: 0.5;
+    z-index: 1
 }
 
-header {
-    position: relative;
-    background-color: black;
-    height: 75vh;
-    min-height: 25rem;
+.background-video {
+    background-position: 50% 100%;
+    background-size: cover;
+    background-attachment: fixed;
+    position: fixed;
+    top: 0;
     width: 100%;
+    height: 100%;
     overflow: hidden;
 }
 
-    header video {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        min-width: 100%;
-        min-height: 100%;
-        width: auto;
-        height: auto;
-        z-index: 0;
-        -ms-transform: translateX(-50%) translateY(-50%);
-        -moz-transform: translateX(-50%) translateY(-50%);
-        -webkit-transform: translateX(-50%) translateY(-50%);
-        transform: translateX(-50%) translateY(-50%);
+/*Body*/
+
+.body{
+    height: 100%;
+    background-color: white;
+    text-align: center
+}
+
+/*Introduce*/   
+.body__introduce {
+    width: 60%;
+    margin: auto
+}
+
+.body__introduce-title {
+    text-align: center
+}
+
+.body__introduce-title span {
+    font-size: 3rem;
+    font-weight: 600;
+}
+
+.body__introduce-description {
+    text-align: center
+}
+
+/*Category*/
+.body__category {
+    text-align: center
+}
+
+/*Category item*/
+.body__category-item {
+    width: 300px;
+    height: 200px;
+    display: inline-block;
+    margin: 5px 10px;
+    position: relative;
+    box-sizing: border-box;
+
+}
+
+.body__category-item.body__category-item-special {
+    width: 500px
+}
+
+.body__category-item--overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    background-color: rgba(0,0,0,0.4)
+}
+
+.body__category-item-title {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    bottom: 0;
+    opacity: 0
+}
+
+.body__category-item-title span {
+    color: white;
+    font-size: 2rem
+}
+
+
+.body__category-item:hover .body__category-item--overlay {
+    opacity: 1;
+    transition: opacity 0.2s ease-in
+}
+
+.body__category-item:hover .body__category-item-title {
+    transform: translateY(-80px);
+    opacity: 1;
+    transition: transform 0.2s linear, opacity 0.2s linear
+}
+
+/*Footer*/
+.footer {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    flex: 1;
+    justify-content: center
+}
+
+.footer__pageName {
+    color: white;
+    font-size: 5rem;
+    font-weight: 700
+}
+
+.footer__list-container {
+
+}
+
+.footer__list {
+    margin-left: 10rem;
+    text-align: start
+}
+
+.footer__list-item {
+    list-style-type: none;
+    margin: 10px
+}
+
+.footer__list-item span {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.footer__list-item a {
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.footer__list-item:hover a {
+    text-decoration: none
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
     }
 
-    header .container {
-        position: relative;
-        z-index: 2;
+    to {
+        opacity: 1;
+    }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+    from {
+        opacity: 0;
     }
 
-    header .overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        background-color: black;
-        opacity: 0.5;
-        z-index: 1;
+    to {
+        opacity: 1;
+    }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from {
+        opacity: 0;
     }
 
-    .search{
-        width:300px;
-        height:30px;
-        color:gray;
-        font-size:15px;
-        padding:10px;
+    to {
+        opacity: 1;
+    }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from {
+        opacity: 0;
     }
 
-
-
-@media (pointer: coarse) and (hover: none) {
-    header {
-        background: url('https://source.unsplash.com/XT5OInaElMw/1600x900') black no-repeat center center scroll;
+    to {
+        opacity: 1;
     }
-        header video {
-            display: none;
-        }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
