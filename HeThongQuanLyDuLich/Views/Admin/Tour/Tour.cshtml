@@ -1,0 +1,93 @@
+﻿@model IEnumerable<HeThongQuanLyDuLich.Models.Tour>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateTour")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.tourName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tourDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.soLuongKhachToiDa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.soLuongKhachHienTai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hinhAnh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tinhTrangTour)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DichVu.tenDichVu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HanhTrinh.tenHanhTrinh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KhachSan.tenKhachSan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KhuyenMai.tenKhuyenMai)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.tourName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tourDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.soLuongKhachToiDa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.soLuongKhachHienTai)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hinhAnh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tinhTrangTour)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.gia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DichVu.tenDichVu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HanhTrinh.tenHanhTrinh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KhachSan.tenKhachSan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KhuyenMai.tenKhuyenMai)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditTour", new { id=item.IDTour }) |
+            @Html.ActionLink("Details", "DetailsTour", new { id=item.IDTour }) |
+            @Html.ActionLink("Delete", "DeleteTour", new { id=item.IDTour })
+        </td>
+    </tr>
+}
+
+</table>

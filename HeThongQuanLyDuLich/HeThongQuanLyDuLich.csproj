@@ -58,6 +58,7 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -132,6 +133,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TourController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -178,9 +180,6 @@
     <Compile Include="Models\NhanVien.cs">
       <DependentUpon>HTQLDL.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>HTQLDL.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\TaiKhoan.cs">
       <DependentUpon>HTQLDL.tt</DependentUpon>
     </Compile>
@@ -202,6 +201,8 @@
     <Content Include="Content\image\Login.png" />
     <Content Include="Content\image\search %281%29.png" />
     <Content Include="Content\image\search.png" />
+    <Content Include="Content\image\Travel_Logo.png" />
+    <Content Include="Content\image\Travel_Logo1.png" />
     <Content Include="Content\Login.css" />
     <Content Include="Content\LayoutStyle.css" />
     <Content Include="Content\trangchu.css" />
@@ -211,8 +212,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Models\HTQLDL.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>HTQLDL.Context.cs</LastGenOutput>
       <DependentUpon>HTQLDL.edmx</DependentUpon>
+      <LastGenOutput>HTQLDL.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\HTQLDL.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -257,6 +258,11 @@
     <Content Include="Views\Admin\SignUp.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\User\SignUp.cshtml" />
+    <Content Include="Views\Admin\Tour\CreateTour.cshtml" />
+    <Content Include="Views\Admin\Tour\DeleteTour.cshtml" />
+    <Content Include="Views\Admin\Tour\DetailsTour.cshtml" />
+    <Content Include="Views\Admin\Tour\EditTour.cshtml" />
+    <Content Include="Views\Admin\Tour\Tour.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

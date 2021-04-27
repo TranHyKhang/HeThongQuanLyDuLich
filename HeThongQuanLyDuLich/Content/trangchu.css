@@ -38,7 +38,8 @@
 /*Introduce*/   
 .body__introduce {
     width: 60%;
-    margin: auto
+    margin: auto;
+    margin-top: 80px
 }
 
 .body__introduce-title {
@@ -54,6 +55,15 @@
     text-align: center
 }
 
+.body__travel-logo {
+    text-align: center
+}   
+
+.body__travel-logo img {
+    width: 5rem;
+    height: 5rem
+}
+
 /*Category*/
 .body__category {
     text-align: center
@@ -67,7 +77,7 @@
     margin: 5px 10px;
     position: relative;
     box-sizing: border-box;
-
+    border-radius: 10px
 }
 
 .body__category-item.body__category-item-special {
@@ -122,9 +132,6 @@
     font-weight: 700
 }
 
-.footer__list-container {
-
-}
 
 .footer__list {
     margin-left: 10rem;
@@ -149,58 +156,4 @@
 
 .footer__list-item:hover a {
     text-decoration: none
-}
-
-@keyframes fadein {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-/* Firefox < 16 */
-@-moz-keyframes fadein {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-/* Safari, Chrome and Opera > 12.1 */
-@-webkit-keyframes fadein {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-/* Internet Explorer */
-@-ms-keyframes fadein {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-/* Opera < 12.1 */
-@-o-keyframes fadein {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
 }

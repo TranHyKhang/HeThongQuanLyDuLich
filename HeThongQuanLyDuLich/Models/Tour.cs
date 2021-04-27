@@ -32,6 +32,7 @@ namespace HeThongQuanLyDuLich.Models
         public Nullable<int> IDDichVu { get; set; }
         public Nullable<int> IDKhachSan { get; set; }
         public Nullable<int> IDKhuyenMai { get; set; }
+        public Nullable<int> gia { get; set; }
     
         public virtual DichVu DichVu { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
