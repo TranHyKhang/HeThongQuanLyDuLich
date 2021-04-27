@@ -1,0 +1,106 @@
+﻿@model HeThongQuanLyDuLich.Models.Tour
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Tour</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tourName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tourName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tourDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tourDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.soLuongKhachToiDa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.soLuongKhachToiDa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.soLuongKhachHienTai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.soLuongKhachHienTai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hinhAnh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hinhAnh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tinhTrangTour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tinhTrangTour)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DichVu.tenDichVu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DichVu.tenDichVu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HanhTrinh.tenHanhTrinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HanhTrinh.tenHanhTrinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KhachSan.tenKhachSan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KhachSan.tenKhachSan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KhuyenMai.tenKhuyenMai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KhuyenMai.tenKhuyenMai)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDTour }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

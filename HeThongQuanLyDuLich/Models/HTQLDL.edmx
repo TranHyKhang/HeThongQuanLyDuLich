@@ -91,16 +91,6 @@
           <Property Name="IDChucVu" Type="int" />
           <Property Name="IDTaiKhoan" Type="int" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <EntityType Name="TaiKhoan">
           <Key>
             <PropertyRef Name="IDTaiKhoan" />
@@ -125,6 +115,7 @@
           <Property Name="IDDichVu" Type="int" />
           <Property Name="IDKhachSan" Type="int" />
           <Property Name="IDKhuyenMai" Type="int" />
+          <Property Name="gia" Type="int" />
         </EntityType>
         <EntityType Name="VeDatTour">
           <Key>
@@ -290,7 +281,6 @@
           <EntitySet Name="KhuyenMai" EntityType="Self.KhuyenMai" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LoaiTaiKhoan" EntityType="Self.LoaiTaiKhoan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NhanVien" EntityType="Self.NhanVien" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TaiKhoan" EntityType="Self.TaiKhoan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tour" EntityType="Self.Tour" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VeDatTour" EntityType="Self.VeDatTour" Schema="dbo" store:Type="Tables" />
@@ -447,16 +437,6 @@
           <NavigationProperty Name="ChucVu" Relationship="Self.FK__NhanVien__IDChuc__3F466844" FromRole="NhanVien" ToRole="ChucVu" />
           <NavigationProperty Name="TaiKhoan" Relationship="Self.FK__NhanVien__IDTaiK__403A8C7D" FromRole="NhanVien" ToRole="TaiKhoan" />
         </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <EntityType Name="TaiKhoan">
           <Key>
             <PropertyRef Name="IDTaiKhoan" />
@@ -484,6 +464,7 @@
           <Property Name="IDDichVu" Type="Int32" />
           <Property Name="IDKhachSan" Type="Int32" />
           <Property Name="IDKhuyenMai" Type="Int32" />
+          <Property Name="gia" Type="Int32" />
           <NavigationProperty Name="DichVu" Relationship="Self.FK__Tour__IDDichVu__48CFD27E" FromRole="Tour" ToRole="DichVu" />
           <NavigationProperty Name="Feedbacks" Relationship="Self.FK__Feedback__IDTour__4E88ABD4" FromRole="Tour" ToRole="Feedback" />
           <NavigationProperty Name="HanhTrinh" Relationship="Self.FK__Tour__IDHanhTrin__47DBAE45" FromRole="Tour" ToRole="HanhTrinh" />
@@ -657,7 +638,6 @@
           <EntitySet Name="KhuyenMais" EntityType="Self.KhuyenMai" />
           <EntitySet Name="LoaiTaiKhoans" EntityType="Self.LoaiTaiKhoan" />
           <EntitySet Name="NhanViens" EntityType="Self.NhanVien" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="TaiKhoans" EntityType="Self.TaiKhoan" />
           <EntitySet Name="Tours" EntityType="Self.Tour" />
           <EntitySet Name="VeDatTours" EntityType="Self.VeDatTour" />
@@ -811,17 +791,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="HeThongQuanLyDuLichModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="TaiKhoans">
             <EntityTypeMapping TypeName="HeThongQuanLyDuLichModel.TaiKhoan">
               <MappingFragment StoreEntitySet="TaiKhoan">
@@ -846,6 +815,7 @@
                 <ScalarProperty Name="IDDichVu" ColumnName="IDDichVu" />
                 <ScalarProperty Name="IDKhachSan" ColumnName="IDKhachSan" />
                 <ScalarProperty Name="IDKhuyenMai" ColumnName="IDKhuyenMai" />
+                <ScalarProperty Name="gia" ColumnName="gia" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

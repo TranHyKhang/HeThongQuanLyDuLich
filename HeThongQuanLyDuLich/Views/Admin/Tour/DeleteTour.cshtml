@@ -1,0 +1,112 @@
+﻿@model HeThongQuanLyDuLich.Models.Tour
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Tour</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tourName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tourName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tourDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tourDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.soLuongKhachToiDa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.soLuongKhachToiDa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.soLuongKhachHienTai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.soLuongKhachHienTai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hinhAnh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hinhAnh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tinhTrangTour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tinhTrangTour)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DichVu.tenDichVu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DichVu.tenDichVu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HanhTrinh.tenHanhTrinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HanhTrinh.tenHanhTrinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KhachSan.tenKhachSan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KhachSan.tenKhachSan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KhuyenMai.tenKhuyenMai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KhuyenMai.tenKhuyenMai)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Tour")
+        </div>
+    }
+</div>
