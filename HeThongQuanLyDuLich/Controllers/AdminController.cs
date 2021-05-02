@@ -12,6 +12,9 @@ namespace HeThongQuanLyDuLich.Controllers
 {
     public class AdminController : Controller
     {
+
+        private HeThongQuanLyDuLichEntities db = new HeThongQuanLyDuLichEntities();
+
         // GET: Admin
         public ActionResult Index()
         {
@@ -28,7 +31,6 @@ namespace HeThongQuanLyDuLich.Controllers
             return View();
         }
         
-        private HeThongQuanLyDuLichEntities db = new HeThongQuanLyDuLichEntities();
 
         // GET: Tour
         public ActionResult Tour()
@@ -73,7 +75,7 @@ namespace HeThongQuanLyDuLich.Controllers
             {
                 db.Tours.Add(tour);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Tour/Tour");
             }
 
             ViewBag.IDDichVu = new SelectList(db.DichVus, "IDDichVu", "tenDichVu", tour.IDDichVu);
@@ -113,7 +115,7 @@ namespace HeThongQuanLyDuLich.Controllers
             {
                 db.Entry(tour).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Tour/Tour");
             }
             ViewBag.IDDichVu = new SelectList(db.DichVus, "IDDichVu", "tenDichVu", tour.IDDichVu);
             ViewBag.IDHanhTrinh = new SelectList(db.HanhTrinhs, "IDHanhTrinh", "tenHanhTrinh", tour.IDHanhTrinh);
@@ -145,7 +147,7 @@ namespace HeThongQuanLyDuLich.Controllers
             Tour tour = db.Tours.Find(id);
             db.Tours.Remove(tour);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Tour/Tour");
         }
 
         protected override void Dispose(bool disposing)
