@@ -1,0 +1,43 @@
+﻿@model HeThongQuanLyDuLich.Models.DichVu
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DichVu</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tenDichVu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tenDichVu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.moTaDichVu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.moTaDichVu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.giaDichVu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.giaDichVu)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDDichVu }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,43 @@
+﻿@model HeThongQuanLyDuLich.Models.KhachSan
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>KhachSan</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tenKhachSan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tenKhachSan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.moTaKhachSan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.moTaKhachSan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.giaKhachSan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.giaKhachSan)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDKhachSan }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

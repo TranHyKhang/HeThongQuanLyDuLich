@@ -22,7 +22,12 @@ namespace HeThongQuanLyDuLich.Models
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            throw new UnintentionalCodeFirstException();
+            modelBuilder.Entity<TaiKhoan>()
+                .Property(e => e.email)
+                .IsUnicode(false);
+            modelBuilder.Entity<TaiKhoan>()
+                .Property(e => e.matKhau)
+                .IsUnicode(false);
         }
     
         public virtual DbSet<ChucVu> ChucVus { get; set; }

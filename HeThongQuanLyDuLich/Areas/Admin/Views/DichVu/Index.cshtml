@@ -1,0 +1,45 @@
+﻿@model IEnumerable<HeThongQuanLyDuLich.Models.DichVu>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.tenDichVu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.moTaDichVu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.giaDichVu)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.tenDichVu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.moTaDichVu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.giaDichVu)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IDDichVu }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IDDichVu }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IDDichVu })
+        </td>
+    </tr>
+}
+
+</table>
