@@ -1,0 +1,51 @@
+﻿@model HeThongQuanLyDuLich.Models.KhuyenMai
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>KhuyenMai</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tenKhuyenMai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tenKhuyenMai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dieuKienKhuyenMai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dieuKienKhuyenMai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.thoiGian)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.thoiGian)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.giaTriKhuyenMai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.giaTriKhuyenMai)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDKhuyenMai }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

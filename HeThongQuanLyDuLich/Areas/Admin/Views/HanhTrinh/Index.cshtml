@@ -1,0 +1,63 @@
+﻿@model IEnumerable<HeThongQuanLyDuLich.Models.HanhTrinh>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.tenHanhTrinh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.diemKhoiHanh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.diemKetThuc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.thoiGianKhoiHanh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.thoiGianKetThuc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.moTa)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.tenHanhTrinh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.diemKhoiHanh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.diemKetThuc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.thoiGianKhoiHanh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.thoiGianKetThuc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.moTa)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IDHanhTrinh }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IDHanhTrinh }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IDHanhTrinh })
+        </td>
+    </tr>
+}
+
+</table>
