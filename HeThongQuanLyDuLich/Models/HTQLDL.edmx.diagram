@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c2d9d3581bb2473ba44eed57dbcd89a7" Name="Diagram1">
+      <Diagram DiagramId="c54a12e3314d4c52a06f7658ed01ddf5" Name="Diagram1">
         <EntityTypeShape EntityType="HeThongQuanLyDuLichModel.ChucVu" Width="1.5" PointX="3.75" PointY="15" IsExpanded="true" />
         <EntityTypeShape EntityType="HeThongQuanLyDuLichModel.DichVu" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="HeThongQuanLyDuLichModel.Feedback" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
@@ -14,7 +14,6 @@
         <EntityTypeShape EntityType="HeThongQuanLyDuLichModel.KhuyenMai" Width="1.5" PointX="0.75" PointY="14.25" IsExpanded="true" />
         <EntityTypeShape EntityType="HeThongQuanLyDuLichModel.LoaiTaiKhoan" Width="1.5" PointX="1.5" PointY="21" IsExpanded="true" />
         <EntityTypeShape EntityType="HeThongQuanLyDuLichModel.NhanVien" Width="1.5" PointX="6" PointY="17.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="HeThongQuanLyDuLichModel.sysdiagram" Width="1.5" PointX="5.75" PointY="7" IsExpanded="true" />
         <EntityTypeShape EntityType="HeThongQuanLyDuLichModel.TaiKhoan" Width="1.5" PointX="0.75" PointY="17.625" IsExpanded="true" />
         <EntityTypeShape EntityType="HeThongQuanLyDuLichModel.Tour" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
         <EntityTypeShape EntityType="HeThongQuanLyDuLichModel.VeDatTour" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />

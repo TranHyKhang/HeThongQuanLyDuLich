@@ -22,7 +22,12 @@ namespace HeThongQuanLyDuLich.Models
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            throw new UnintentionalCodeFirstException();
+            modelBuilder.Entity<TaiKhoan>()
+                .Property(e => e.email)
+                .IsUnicode(false);
+            modelBuilder.Entity<TaiKhoan>()
+                .Property(e => e.matKhau)
+                .IsUnicode(false);
         }
     
         public virtual DbSet<ChucVu> ChucVus { get; set; }
@@ -34,7 +39,6 @@ namespace HeThongQuanLyDuLich.Models
         public virtual DbSet<KhuyenMai> KhuyenMais { get; set; }
         public virtual DbSet<LoaiTaiKhoan> LoaiTaiKhoans { get; set; }
         public virtual DbSet<NhanVien> NhanViens { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TaiKhoan> TaiKhoans { get; set; }
         public virtual DbSet<Tour> Tours { get; set; }
         public virtual DbSet<VeDatTour> VeDatTours { get; set; }
