@@ -12,16 +12,14 @@ namespace HeThongQuanLyDuLich.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class VeDatTour
+    public partial class HinhAnh
     {
-        public int IDVeDatTour { get; set; }
-        public string hinhThucThanhToan { get; set; }
-        public Nullable<bool> trangThaiVeDatTour { get; set; }
+        public int IDHinhAnh { get; set; }
+        public byte[] imageUrl { get; set; }
         public Nullable<int> IDTour { get; set; }
-        public Nullable<int> IDKhachHang { get; set; }
-        public Nullable<int> soLuongVeDatTour { get; set; }
+        public Nullable<int> IDLoaiHinhAnh { get; set; }
     
-        public virtual KhachHang KhachHang { get; set; }
         public virtual Tour Tour { get; set; }
+        public virtual LoaiHinhAnh LoaiHinhAnh { get; set; }
     }
 }

@@ -10,18 +10,19 @@ using HeThongQuanLyDuLich.Models;
 
 namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
 {
-    public class DichVuController : Controller
+    public class ChiTietHanhTrinhController : Controller
     {
         private HeThongQuanLyDuLichEntities db = new HeThongQuanLyDuLichEntities();
 
-        // GET: Admin/DichVu
+        // GET: Admin/ChiTietHanhTrinh
         [Authorize]
         public ActionResult Index()
         {
-            return View(db.DichVus.ToList());
+            var chiTietHanhTrinhs = db.ChiTietHanhTrinhs.Include(c => c.HanhTrinh);
+            return View(chiTietHanhTrinhs.ToList());
         }
 
-        // GET: Admin/DichVu/Details/5
+        // GET: Admin/ChiTietHanhTrinh/Details/5
         [Authorize]
         public ActionResult Details(int? id)
         {
@@ -29,39 +30,41 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DichVu dichVu = db.DichVus.Find(id);
-            if (dichVu == null)
+            ChiTietHanhTrinh chiTietHanhTrinh = db.ChiTietHanhTrinhs.Find(id);
+            if (chiTietHanhTrinh == null)
             {
                 return HttpNotFound();
             }
-            return View(dichVu);
+            return View(chiTietHanhTrinh);
         }
 
-        // GET: Admin/DichVu/Create
+        // GET: Admin/ChiTietHanhTrinh/Create
         [Authorize]
         public ActionResult Create()
         {
+            ViewBag.IDHanhTrinh = new SelectList(db.HanhTrinhs, "IDHanhTrinh", "tenHanhTrinh");
             return View();
         }
 
-        // POST: Admin/DichVu/Create
+        // POST: Admin/ChiTietHanhTrinh/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IDDichVu,tenDichVu,moTaDichVu,giaDichVu")] DichVu dichVu)
+        public ActionResult Create([Bind(Include = "IDChiTietHanhTrinh,moTa,IDHanhTrinh")] ChiTietHanhTrinh chiTietHanhTrinh)
         {
             if (ModelState.IsValid)
             {
-                db.DichVus.Add(dichVu);
+                db.ChiTietHanhTrinhs.Add(chiTietHanhTrinh);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(dichVu);
+            ViewBag.IDHanhTrinh = new SelectList(db.HanhTrinhs, "IDHanhTrinh", "tenHanhTrinh", chiTietHanhTrinh.IDHanhTrinh);
+            return View(chiTietHanhTrinh);
         }
 
-        // GET: Admin/DichVu/Edit/5
+        // GET: Admin/ChiTietHanhTrinh/Edit/5
         [Authorize]
         public ActionResult Edit(int? id)
         {
@@ -69,31 +72,33 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DichVu dichVu = db.DichVus.Find(id);
-            if (dichVu == null)
+            ChiTietHanhTrinh chiTietHanhTrinh = db.ChiTietHanhTrinhs.Find(id);
+            if (chiTietHanhTrinh == null)
             {
                 return HttpNotFound();
             }
-            return View(dichVu);
+            ViewBag.IDHanhTrinh = new SelectList(db.HanhTrinhs, "IDHanhTrinh", "tenHanhTrinh", chiTietHanhTrinh.IDHanhTrinh);
+            return View(chiTietHanhTrinh);
         }
 
-        // POST: Admin/DichVu/Edit/5
+        // POST: Admin/ChiTietHanhTrinh/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IDDichVu,tenDichVu,moTaDichVu,giaDichVu")] DichVu dichVu)
+        public ActionResult Edit([Bind(Include = "IDChiTietHanhTrinh,moTa,IDHanhTrinh")] ChiTietHanhTrinh chiTietHanhTrinh)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(dichVu).State = System.Data.Entity.EntityState.Modified;
+                db.Entry(chiTietHanhTrinh).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(dichVu);
+            ViewBag.IDHanhTrinh = new SelectList(db.HanhTrinhs, "IDHanhTrinh", "tenHanhTrinh", chiTietHanhTrinh.IDHanhTrinh);
+            return View(chiTietHanhTrinh);
         }
 
-        // GET: Admin/DichVu/Delete/5
+        // GET: Admin/ChiTietHanhTrinh/Delete/5
         [Authorize]
         public ActionResult Delete(int? id)
         {
@@ -101,21 +106,21 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DichVu dichVu = db.DichVus.Find(id);
-            if (dichVu == null)
+            ChiTietHanhTrinh chiTietHanhTrinh = db.ChiTietHanhTrinhs.Find(id);
+            if (chiTietHanhTrinh == null)
             {
                 return HttpNotFound();
             }
-            return View(dichVu);
+            return View(chiTietHanhTrinh);
         }
 
-        // POST: Admin/DichVu/Delete/5
+        // POST: Admin/ChiTietHanhTrinh/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            DichVu dichVu = db.DichVus.Find(id);
-            db.DichVus.Remove(dichVu);
+            ChiTietHanhTrinh chiTietHanhTrinh = db.ChiTietHanhTrinhs.Find(id);
+            db.ChiTietHanhTrinhs.Remove(chiTietHanhTrinh);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

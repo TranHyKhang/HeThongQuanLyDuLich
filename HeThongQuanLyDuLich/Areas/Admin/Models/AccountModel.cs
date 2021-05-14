@@ -26,7 +26,7 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Models
                 new SqlParameter("@UserName", userName),
                 new SqlParameter("@UserPassword", userPassword)
             };
-            var res = context.Database.SqlQuery<bool>("Sp_Account_Login @UserName, @UserPassword", sqlParams).SingleOrDefault();
+            var res = context.Database.SqlQuery<bool>("Sp_Account_Login_Admin @UserName, @UserPassword", sqlParams).SingleOrDefault();
             return res;
         }
 

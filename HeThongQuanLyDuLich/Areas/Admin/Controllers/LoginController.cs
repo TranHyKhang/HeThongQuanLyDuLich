@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using HeThongQuanLyDuLich.Areas.Admin.Code;
+using System.Web.Security;
 
 namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
 {
@@ -12,6 +13,7 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
     {
         // GET: Admin/Login
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View();
@@ -19,12 +21,15 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Index(LoginModel model)
+        [AllowAnonymous]
+        public ActionResult Index(LoginModel model, string returnUrl)
         {
             var result = new AccountModel().Login(model.UserName, model.Password);
             if(result && ModelState.IsValid)
             {
-                SessionHelper.SetSession(new UserSession() { UserName = model.UserName });
+                //SessionHelper.SetSession(new UserSession() { UserName = model.UserName });
+                
+                FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
                 return RedirectToAction("Index", "Tour");
             }
             else
@@ -33,6 +38,13 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
             }
 
             return View(model);
+        }
+
+        public ActionResult SignOut()
+        {
+            //SessionHelper.ClearSession();
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Login");
         }
     }
 }
