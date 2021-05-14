@@ -7,7 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using HeThongQuanLyDuLich.Models;
-using HeThongQuanLyDuLich.Areas.Admin.Code;
+
 namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
 {
     public class TourController : Controller
@@ -15,16 +15,15 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
         private HeThongQuanLyDuLichEntities db = new HeThongQuanLyDuLichEntities();
 
         // GET: Admin/Tour
-        [HttpGet]
+        [Authorize]
         public ActionResult Index()
         {
-            var a = SessionHelper.GetSession();
-            Console.WriteLine(a);
             var tours = db.Tours.Include(t => t.DichVu).Include(t => t.HanhTrinh).Include(t => t.KhachSan).Include(t => t.KhuyenMai);
             return View(tours.ToList());
         }
 
         // GET: Admin/Tour/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -40,6 +39,7 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
         }
 
         // GET: Admin/Tour/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.IDDichVu = new SelectList(db.DichVus, "IDDichVu", "tenDichVu");
@@ -54,7 +54,7 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IDTour,tourName,tourDescription,soLuongKhachToiDa,soLuongKhachHienTai,hinhAnh,tinhTrangTour,IDHanhTrinh,IDDichVu,IDKhachSan,IDKhuyenMai,gia")] Tour tour)
+        public ActionResult Create([Bind(Include = "IDTour,tourName,tourDescription,soLuongKhachToiDa,soLuongKhachHienTai,tinhTrangTour,IDHanhTrinh,IDDichVu,IDKhachSan,IDKhuyenMai,gia")] Tour tour)
         {
             if (ModelState.IsValid)
             {
@@ -71,6 +71,7 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
         }
 
         // GET: Admin/Tour/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -94,7 +95,7 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IDTour,tourName,tourDescription,soLuongKhachToiDa,soLuongKhachHienTai,hinhAnh,tinhTrangTour,IDHanhTrinh,IDDichVu,IDKhachSan,IDKhuyenMai,gia")] Tour tour)
+        public ActionResult Edit([Bind(Include = "IDTour,tourName,tourDescription,soLuongKhachToiDa,soLuongKhachHienTai,tinhTrangTour,IDHanhTrinh,IDDichVu,IDKhachSan,IDKhuyenMai,gia")] Tour tour)
         {
             if (ModelState.IsValid)
             {
@@ -110,6 +111,7 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
         }
 
         // GET: Admin/Tour/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)

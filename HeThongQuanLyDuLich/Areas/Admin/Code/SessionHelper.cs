@@ -24,5 +24,10 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Code
                 return session as UserSession;
             }
         }
+
+        public static void ClearSession()
+        {
+            HttpContext.Current.Session.Remove("LoginSession");
+        }
     }
 }

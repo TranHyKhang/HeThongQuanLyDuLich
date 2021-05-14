@@ -11,18 +11,26 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
     public class SignUpController : Controller
     {
         // GET: Admin/SignUp
+        [AllowAnonymous]
         [HttpGet]
         public ActionResult Index()
         {
             return View();
         }
 
+        public int RandomID()
+        {
+            Random rnd = new Random();
+            int num = rnd.Next(1, 1000000);
+            return num;
+        }
+
         [HttpPost] 
-        public ActionResult Index([Bind(Include ="IDTaiKhoan, UserName, Password, IDLoaiTaiKhoan")]SignUpModel model)
+        public ActionResult Index([Bind(Include ="IDTaiKhoan, UserName, Password, ConfirmPassword, IDLoaiTaiKhoan")]SignUpModel model)
         {
             TaiKhoan tk = new TaiKhoan()
             {
-                IDTaiKhoan = model.IDTaiKhoan,
+                IDTaiKhoan = RandomID(),
                 email = model.UserName,
                 matKhau = model.Password,
                 IDLoaiTaiKhoan = 1
