@@ -10,18 +10,18 @@ using HeThongQuanLyDuLich.Models;
 
 namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
 {
-    public class DichVuController : Controller
+    public class LoaiHinhAnhController : Controller
     {
         private HeThongQuanLyDuLichEntities db = new HeThongQuanLyDuLichEntities();
 
-        // GET: Admin/DichVu
+        // GET: Admin/LoaiHinhAnh
         [Authorize]
         public ActionResult Index()
         {
-            return View(db.DichVus.ToList());
+            return View(db.LoaiHinhAnhs.ToList());
         }
 
-        // GET: Admin/DichVu/Details/5
+        // GET: Admin/LoaiHinhAnh/Details/5
         [Authorize]
         public ActionResult Details(int? id)
         {
@@ -29,39 +29,39 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DichVu dichVu = db.DichVus.Find(id);
-            if (dichVu == null)
+            LoaiHinhAnh loaiHinhAnh = db.LoaiHinhAnhs.Find(id);
+            if (loaiHinhAnh == null)
             {
                 return HttpNotFound();
             }
-            return View(dichVu);
+            return View(loaiHinhAnh);
         }
 
-        // GET: Admin/DichVu/Create
+        // GET: Admin/LoaiHinhAnh/Create
         [Authorize]
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Admin/DichVu/Create
+        // POST: Admin/LoaiHinhAnh/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IDDichVu,tenDichVu,moTaDichVu,giaDichVu")] DichVu dichVu)
+        public ActionResult Create([Bind(Include = "IDLoaiHinhAnh,loaiHinhAnh1")] LoaiHinhAnh loaiHinhAnh)
         {
             if (ModelState.IsValid)
             {
-                db.DichVus.Add(dichVu);
+                db.LoaiHinhAnhs.Add(loaiHinhAnh);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(dichVu);
+            return View(loaiHinhAnh);
         }
 
-        // GET: Admin/DichVu/Edit/5
+        // GET: Admin/LoaiHinhAnh/Edit/5
         [Authorize]
         public ActionResult Edit(int? id)
         {
@@ -69,31 +69,31 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DichVu dichVu = db.DichVus.Find(id);
-            if (dichVu == null)
+            LoaiHinhAnh loaiHinhAnh = db.LoaiHinhAnhs.Find(id);
+            if (loaiHinhAnh == null)
             {
                 return HttpNotFound();
             }
-            return View(dichVu);
+            return View(loaiHinhAnh);
         }
 
-        // POST: Admin/DichVu/Edit/5
+        // POST: Admin/LoaiHinhAnh/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IDDichVu,tenDichVu,moTaDichVu,giaDichVu")] DichVu dichVu)
+        public ActionResult Edit([Bind(Include = "IDLoaiHinhAnh,loaiHinhAnh1")] LoaiHinhAnh loaiHinhAnh)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(dichVu).State = System.Data.Entity.EntityState.Modified;
+                db.Entry(loaiHinhAnh).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(dichVu);
+            return View(loaiHinhAnh);
         }
 
-        // GET: Admin/DichVu/Delete/5
+        // GET: Admin/LoaiHinhAnh/Delete/5
         [Authorize]
         public ActionResult Delete(int? id)
         {
@@ -101,21 +101,21 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DichVu dichVu = db.DichVus.Find(id);
-            if (dichVu == null)
+            LoaiHinhAnh loaiHinhAnh = db.LoaiHinhAnhs.Find(id);
+            if (loaiHinhAnh == null)
             {
                 return HttpNotFound();
             }
-            return View(dichVu);
+            return View(loaiHinhAnh);
         }
 
-        // POST: Admin/DichVu/Delete/5
+        // POST: Admin/LoaiHinhAnh/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            DichVu dichVu = db.DichVus.Find(id);
-            db.DichVus.Remove(dichVu);
+            LoaiHinhAnh loaiHinhAnh = db.LoaiHinhAnhs.Find(id);
+            db.LoaiHinhAnhs.Remove(loaiHinhAnh);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

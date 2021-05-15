@@ -1,93 +1,108 @@
 ﻿@model IEnumerable<HeThongQuanLyDuLich.Models.Tour>
 
 @{
-    ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
+<!DOCTYPE html>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.tourName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tourDescription)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.soLuongKhachToiDa)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.soLuongKhachHienTai)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.hinhAnh)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tinhTrangTour)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.gia)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DichVu.tenDichVu)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HanhTrinh.tenHanhTrinh)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.KhachSan.tenKhachSan)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.KhuyenMai.tenKhuyenMai)
-        </th>
-        <th></th>
-    </tr>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Areas/Admin/Assets/AdminStyle.css" rel="stylesheet" />
+</head>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.tourName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tourDescription)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.soLuongKhachToiDa)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.soLuongKhachHienTai)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.hinhAnh)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tinhTrangTour)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.gia)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DichVu.tenDichVu)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HanhTrinh.tenHanhTrinh)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.KhachSan.tenKhachSan)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.KhuyenMai.tenKhuyenMai)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IDTour }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IDTour }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IDTour })
-        </td>
-    </tr>
-}
+<body>
+    <button class="btn btn-danger my-button">
+        @Html.ActionLink("Create New", "Create", null, new { @class = "my-class"})
+    </button>
+    <p>
+       
+    </p>
+    <table class="table">
+        <tr>
+            <th>
 
-</table>
+                @Html.DisplayNameFor(model => model.tourName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tourDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.soLuongKhachToiDa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.soLuongKhachHienTai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tinhTrangTour)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.gia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DichVu.tenDichVu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HanhTrinh.tenHanhTrinh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KhachSan.tenKhachSan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KhuyenMai.tenKhuyenMai)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tourName)
+                </td>
+                <td>
+                    @{
+                        string newStr = item.tourDescription.ToString().Substring(0, 20) + "...";
+                    }
+                    @Html.DisplayFor(modelItem => newStr)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.soLuongKhachToiDa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.soLuongKhachHienTai)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tinhTrangTour)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.gia)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DichVu.tenDichVu)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HanhTrinh.tenHanhTrinh)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KhachSan.tenKhachSan)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KhuyenMai.tenKhuyenMai)
+                </td>
+                <td>
+                    <button class="btn btn-primary my-button">
+                        @Html.ActionLink("Details", "Details", new { id = item.IDTour }, new { @class = "my-class" }) 
+                    </button> 
+                </td>
+            </tr>
+        }
+
+    </table>
+
+
+</body>
+</html>

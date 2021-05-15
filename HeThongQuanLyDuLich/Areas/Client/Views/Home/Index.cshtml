@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<HeThongQuanLyDuLich.Models.Tour>
 @{
     ViewBag.Title = "Home Page";
     Layout = "~/Areas/Client/Views/Shared/_Layout.cshtml";
@@ -24,78 +24,41 @@
             <div class="fh5co-listing">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-4 col-sm-4 fh5co-item-wrap">
-                            <a class="fh5co-listing-item">
-                                <img src="~/Content/image/mb.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co" class="img-responsive">
-                                <div class="fh5co-listing-copy">
-                                    <h2>Miền Bắc</h2>
-                                    <span class="icon">
-                                        <i class="fa fa-chevron-right"></i>
-                                    </span>
-                                </div>
-                            </a>
-                        </div>
+                        @foreach (var item in Model)
+                        {
 
-                        <div class="col-md-4 col-sm-4 fh5co-item-wrap">
-                            <a class="fh5co-listing-item">
-                                <img src="~/Content/image/mt.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co" class="img-responsive">
-                                <div class="fh5co-listing-copy">
-                                    <h2>Miền Trung</h2>
-                                    <span class="icon">
-                                        <i class="fa fa-chevron-right"></i>
-                                    </span>
-                                </div>
-                            </a>
-                        </div>
+                            
+                            <div class="col-md-4 col-sm-4 fh5co-item-wrap">
+                                <a href="#" class="fh5co-listing-item">
+                                    <img src="~/Content/image/mb.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co" class="img-responsive">
+                                    <div class="fh5co-listing-copy">
+                                        <h2>@item.tourName</h2>
+                                        <span class="icon">
+                                            <i class="fa fa-chevron-right"></i>
+                                        </span>
+                                    </div>
+                                </a>
+                            </div>
+                            
+                        }
 
-                        <div class="col-md-4 col-sm-4 fh5co-item-wrap">
-                            <a class="fh5co-listing-item">
-                                <img src="~/Content/image/mn.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co" class="img-responsive">
-                                <div class="fh5co-listing-copy">
-                                    <h2>Miền Nam</h2>
-                                    <span class="icon">
-                                        <i class="fa fa-chevron-right"></i>
-                                    </span>
-                                </div>
-                            </a>
-                        </div>
                         <!-- END 3 row -->
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-md-4 col-sm-4 fh5co-item-wrap">
+                                <div class="fh5co-listing-copy">
+                                    <p>
+                                       @item.tourDescription
+                                    </p>
+                                </div>
 
-                        <div class="col-md-4 col-sm-4 fh5co-item-wrap">
-                            <div class="fh5co-listing-copy">
-                                <p>
-                                    Nếu bạn đang muốn trải nghiệm khám phá phía Bắc Việt Nam để có những điều mới lạ hơn.
-                                    Xa xôi đầu nguồn tổ quốc, cũng là những vẻ đẹp núi rừng hùng vĩ bạt ngạt của dân tộc.
-                                    Hãy cùng mình điểm qua những địa danh hấp dẫn không thể nào chối từ khi kể đến du lịch miền Bắc nhé!
-                                </p>
                             </div>
 
-                        </div>
+                        }
+                            <!-- END 3 row -->
 
-                        <div class="col-md-4 col-sm-4 fh5co-item-wrap">
-                            <div class="fh5co-listing-copy">
-                                <p>
-                                    Miền Trung là nơi hội tụ cái đẹp của nắng, cát và gió, những bãi biển xanh trong trải dài tít tắp cùng những con người mộc mạc, chân chất, thân thương.
-                                    Từ miền Bắc dọc vào miền Nam Việt Nam, chỉ riêng miền Trung là nơi giao thoa rừng và biển nhiều nhất.
-                                    Điều này tạo nên vẻ đẹp đặc trưng khiến du lịch miền Trung thu hút du khách mọi miền và cả trên thế giới.
-                                </p>
-                            </div>
 
                         </div>
-                        <div class="col-md-4 col-sm-4 fh5co-item-wrap">
-                            <div class="fh5co-listing-copy">
-                                <p>
-                                    Các điểm du lịch miền Nam Việt Nam không những được tạo hóa ưu ái ban tặng vẻ đẹp hữu tình mà còn dành cho nơi
-                                    đây những dải đất phù sa màu mỡ với nhiều hoa tươi quả ngọt.
-                                    Cũng chính vì vậy mà con người miền Nam hiền hòa, ẩm thực phong phú đưa nhiều du khách lui tới vùng đất này.
-                                </p>
-                            </div>
-
-                        </div>
-                        <!-- END 3 row -->
-
-
-                    </div>
                 </div>
             </div>
             <div class="fh5co-section">

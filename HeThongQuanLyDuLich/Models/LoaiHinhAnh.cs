@@ -12,25 +12,18 @@ namespace HeThongQuanLyDuLich.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class HanhTrinh
+    public partial class LoaiHinhAnh
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public HanhTrinh()
+        public LoaiHinhAnh()
         {
-            this.ChiTietHanhTrinhs = new HashSet<ChiTietHanhTrinh>();
-            this.Tours = new HashSet<Tour>();
+            this.HinhAnhs = new HashSet<HinhAnh>();
         }
     
-        public int IDHanhTrinh { get; set; }
-        public string tenHanhTrinh { get; set; }
-        public string diemKhoiHanh { get; set; }
-        public string diemKetThuc { get; set; }
-        public Nullable<System.DateTime> thoiGianKhoiHanh { get; set; }
-        public Nullable<System.DateTime> thoiGianKetThuc { get; set; }
+        public int IDLoaiHinhAnh { get; set; }
+        public string loaiHinhAnh1 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietHanhTrinh> ChiTietHanhTrinhs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tour> Tours { get; set; }
+        public virtual ICollection<HinhAnh> HinhAnhs { get; set; }
     }
 }
