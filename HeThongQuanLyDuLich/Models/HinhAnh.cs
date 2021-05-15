@@ -19,7 +19,7 @@ namespace HeThongQuanLyDuLich.Models
         public Nullable<int> IDTour { get; set; }
         public Nullable<int> IDLoaiHinhAnh { get; set; }
     
-        public virtual Tour Tour { get; set; }
         public virtual LoaiHinhAnh LoaiHinhAnh { get; set; }
+        public virtual Tour Tour { get; set; }
     }
 }

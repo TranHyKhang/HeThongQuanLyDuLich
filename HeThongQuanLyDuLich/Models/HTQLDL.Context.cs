@@ -25,6 +25,7 @@ namespace HeThongQuanLyDuLich.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<ChiTietHanhTrinh> ChiTietHanhTrinhs { get; set; }
         public virtual DbSet<ChucVu> ChucVus { get; set; }
         public virtual DbSet<DichVu> DichVus { get; set; }
         public virtual DbSet<Feedback> Feedbacks { get; set; }
@@ -33,12 +34,11 @@ namespace HeThongQuanLyDuLich.Models
         public virtual DbSet<KhachHang> KhachHangs { get; set; }
         public virtual DbSet<KhachSan> KhachSans { get; set; }
         public virtual DbSet<KhuyenMai> KhuyenMais { get; set; }
+        public virtual DbSet<LoaiHinhAnh> LoaiHinhAnhs { get; set; }
         public virtual DbSet<LoaiTaiKhoan> LoaiTaiKhoans { get; set; }
         public virtual DbSet<NhanVien> NhanViens { get; set; }
         public virtual DbSet<TaiKhoan> TaiKhoans { get; set; }
         public virtual DbSet<Tour> Tours { get; set; }
         public virtual DbSet<VeDatTour> VeDatTours { get; set; }
-        public virtual DbSet<LoaiHinhAnh> LoaiHinhAnhs { get; set; }
-        public virtual DbSet<ChiTietHanhTrinh> ChiTietHanhTrinhs { get; set; }
     }
 }
