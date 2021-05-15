@@ -15,12 +15,14 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
         private HeThongQuanLyDuLichEntities db = new HeThongQuanLyDuLichEntities();
 
         // GET: Admin/DichVu
+        [Authorize]
         public ActionResult Index()
         {
             return View(db.DichVus.ToList());
         }
 
         // GET: Admin/DichVu/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,6 +38,7 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
         }
 
         // GET: Admin/DichVu/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -59,6 +62,7 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
         }
 
         // GET: Admin/DichVu/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -90,6 +94,7 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
         }
 
         // GET: Admin/DichVu/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)

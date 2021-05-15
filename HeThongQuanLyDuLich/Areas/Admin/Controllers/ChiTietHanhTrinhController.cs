@@ -8,114 +8,119 @@ using System.Web;
 using System.Web.Mvc;
 using HeThongQuanLyDuLich.Models;
 
-namespace HeThongQuanLyDuLich.Areas.Client.Controllers
+namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
 {
-    public class TaiKhoanController : Controller
+    public class ChiTietHanhTrinhController : Controller
     {
         private HeThongQuanLyDuLichEntities db = new HeThongQuanLyDuLichEntities();
 
-        // GET: Client/TaiKhoan
+        // GET: Admin/ChiTietHanhTrinh
+        [Authorize]
         public ActionResult Index()
         {
-            var taiKhoans = db.TaiKhoans.Include(t => t.LoaiTaiKhoan);
-            return View(taiKhoans.ToList());
+            var chiTietHanhTrinhs = db.ChiTietHanhTrinhs.Include(c => c.HanhTrinh);
+            return View(chiTietHanhTrinhs.ToList());
         }
 
-        // GET: Client/TaiKhoan/Details/5
+        // GET: Admin/ChiTietHanhTrinh/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TaiKhoan taiKhoan = db.TaiKhoans.Find(id);
-            if (taiKhoan == null)
+            ChiTietHanhTrinh chiTietHanhTrinh = db.ChiTietHanhTrinhs.Find(id);
+            if (chiTietHanhTrinh == null)
             {
                 return HttpNotFound();
             }
-            return View(taiKhoan);
+            return View(chiTietHanhTrinh);
         }
 
-        // GET: Client/TaiKhoan/Create
+        // GET: Admin/ChiTietHanhTrinh/Create
+        [Authorize]
         public ActionResult Create()
         {
-            ViewBag.IDLoaiTaiKhoan = new SelectList(db.LoaiTaiKhoans, "IDLoaiTaiKhoan", "loaiTaiKhoan1");
+            ViewBag.IDHanhTrinh = new SelectList(db.HanhTrinhs, "IDHanhTrinh", "tenHanhTrinh");
             return View();
         }
 
-        // POST: Client/TaiKhoan/Create
+        // POST: Admin/ChiTietHanhTrinh/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IDTaiKhoan,email,matKhau,IDLoaiTaiKhoan")] TaiKhoan taiKhoan)
+        public ActionResult Create([Bind(Include = "IDChiTietHanhTrinh,moTa,IDHanhTrinh")] ChiTietHanhTrinh chiTietHanhTrinh)
         {
             if (ModelState.IsValid)
             {
-                db.TaiKhoans.Add(taiKhoan);
+                db.ChiTietHanhTrinhs.Add(chiTietHanhTrinh);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IDLoaiTaiKhoan = new SelectList(db.LoaiTaiKhoans, "IDLoaiTaiKhoan", "loaiTaiKhoan1", taiKhoan.IDLoaiTaiKhoan);
-            return View(taiKhoan);
+            ViewBag.IDHanhTrinh = new SelectList(db.HanhTrinhs, "IDHanhTrinh", "tenHanhTrinh", chiTietHanhTrinh.IDHanhTrinh);
+            return View(chiTietHanhTrinh);
         }
 
-        // GET: Client/TaiKhoan/Edit/5
+        // GET: Admin/ChiTietHanhTrinh/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TaiKhoan taiKhoan = db.TaiKhoans.Find(id);
-            if (taiKhoan == null)
+            ChiTietHanhTrinh chiTietHanhTrinh = db.ChiTietHanhTrinhs.Find(id);
+            if (chiTietHanhTrinh == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.IDLoaiTaiKhoan = new SelectList(db.LoaiTaiKhoans, "IDLoaiTaiKhoan", "loaiTaiKhoan1", taiKhoan.IDLoaiTaiKhoan);
-            return View(taiKhoan);
+            ViewBag.IDHanhTrinh = new SelectList(db.HanhTrinhs, "IDHanhTrinh", "tenHanhTrinh", chiTietHanhTrinh.IDHanhTrinh);
+            return View(chiTietHanhTrinh);
         }
 
-        // POST: Client/TaiKhoan/Edit/5
+        // POST: Admin/ChiTietHanhTrinh/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IDTaiKhoan,email,matKhau,IDLoaiTaiKhoan")] TaiKhoan taiKhoan)
+        public ActionResult Edit([Bind(Include = "IDChiTietHanhTrinh,moTa,IDHanhTrinh")] ChiTietHanhTrinh chiTietHanhTrinh)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(taiKhoan).State = System.Data.Entity.EntityState.Modified;
+                db.Entry(chiTietHanhTrinh).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IDLoaiTaiKhoan = new SelectList(db.LoaiTaiKhoans, "IDLoaiTaiKhoan", "loaiTaiKhoan1", taiKhoan.IDLoaiTaiKhoan);
-            return View(taiKhoan);
+            ViewBag.IDHanhTrinh = new SelectList(db.HanhTrinhs, "IDHanhTrinh", "tenHanhTrinh", chiTietHanhTrinh.IDHanhTrinh);
+            return View(chiTietHanhTrinh);
         }
 
-        // GET: Client/TaiKhoan/Delete/5
+        // GET: Admin/ChiTietHanhTrinh/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TaiKhoan taiKhoan = db.TaiKhoans.Find(id);
-            if (taiKhoan == null)
+            ChiTietHanhTrinh chiTietHanhTrinh = db.ChiTietHanhTrinhs.Find(id);
+            if (chiTietHanhTrinh == null)
             {
                 return HttpNotFound();
             }
-            return View(taiKhoan);
+            return View(chiTietHanhTrinh);
         }
 
-        // POST: Client/TaiKhoan/Delete/5
+        // POST: Admin/ChiTietHanhTrinh/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            TaiKhoan taiKhoan = db.TaiKhoans.Find(id);
-            db.TaiKhoans.Remove(taiKhoan);
+            ChiTietHanhTrinh chiTietHanhTrinh = db.ChiTietHanhTrinhs.Find(id);
+            db.ChiTietHanhTrinhs.Remove(chiTietHanhTrinh);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -18,6 +18,7 @@ namespace HeThongQuanLyDuLich.Models
         public Tour()
         {
             this.Feedbacks = new HashSet<Feedback>();
+            this.HinhAnhs = new HashSet<HinhAnh>();
             this.VeDatTours = new HashSet<VeDatTour>();
         }
     
@@ -26,7 +27,6 @@ namespace HeThongQuanLyDuLich.Models
         public string tourDescription { get; set; }
         public Nullable<int> soLuongKhachToiDa { get; set; }
         public Nullable<int> soLuongKhachHienTai { get; set; }
-        public string hinhAnh { get; set; }
         public Nullable<bool> tinhTrangTour { get; set; }
         public Nullable<int> IDHanhTrinh { get; set; }
         public Nullable<int> IDDichVu { get; set; }
@@ -38,6 +38,8 @@ namespace HeThongQuanLyDuLich.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Feedback> Feedbacks { get; set; }
         public virtual HanhTrinh HanhTrinh { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HinhAnh> HinhAnhs { get; set; }
         public virtual KhachSan KhachSan { get; set; }
         public virtual KhuyenMai KhuyenMai { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

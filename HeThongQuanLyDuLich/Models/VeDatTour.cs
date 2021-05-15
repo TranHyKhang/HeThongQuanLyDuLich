@@ -19,6 +19,7 @@ namespace HeThongQuanLyDuLich.Models
         public Nullable<bool> trangThaiVeDatTour { get; set; }
         public Nullable<int> IDTour { get; set; }
         public Nullable<int> IDKhachHang { get; set; }
+        public Nullable<int> soLuongVeDatTour { get; set; }
     
         public virtual KhachHang KhachHang { get; set; }
         public virtual Tour Tour { get; set; }

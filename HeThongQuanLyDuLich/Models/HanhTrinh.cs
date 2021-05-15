@@ -17,6 +17,7 @@ namespace HeThongQuanLyDuLich.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public HanhTrinh()
         {
+            this.ChiTietHanhTrinhs = new HashSet<ChiTietHanhTrinh>();
             this.Tours = new HashSet<Tour>();
         }
     
@@ -26,8 +27,9 @@ namespace HeThongQuanLyDuLich.Models
         public string diemKetThuc { get; set; }
         public Nullable<System.DateTime> thoiGianKhoiHanh { get; set; }
         public Nullable<System.DateTime> thoiGianKetThuc { get; set; }
-        public string moTa { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ChiTietHanhTrinh> ChiTietHanhTrinhs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tour> Tours { get; set; }
     }
