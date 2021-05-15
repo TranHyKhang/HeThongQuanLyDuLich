@@ -10,6 +10,7 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
 {
     public class SignUpController : Controller
     {
+        HeThongQuanLyDuLichEntities database = new HeThongQuanLyDuLichEntities();
         // GET: Admin/SignUp
         [AllowAnonymous]
         [HttpGet]
@@ -19,15 +20,37 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
         }
 
         public int RandomID()
-        {
+        {   
             Random rnd = new Random();
             int num = rnd.Next(1, 1000000);
+            foreach(var acc in database.TaiKhoans)
+            {
+                if (acc.IDTaiKhoan == num)
+                {
+                    RandomID();
+                }
+            }
             return num;
+        }
+
+        public bool CheckUserName(TaiKhoan tk)
+        {
+            bool rs = true;
+            foreach(var acc in database.TaiKhoans)
+            {
+                if(acc.email == tk.email)
+                {
+                    rs = false;
+                    break;
+                }
+            }
+            return rs;
         }
 
         [HttpPost] 
         public ActionResult Index([Bind(Include ="IDTaiKhoan, UserName, Password, ConfirmPassword, IDLoaiTaiKhoan")]SignUpModel model)
         {
+            
             TaiKhoan tk = new TaiKhoan()
             {
                 IDTaiKhoan = RandomID(),
@@ -35,8 +58,24 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
                 matKhau = model.Password,
                 IDLoaiTaiKhoan = 1
             };
-            new AccountModel().SignUp(tk);
-            return RedirectToAction("Index", "Login");
+            if (CheckUserName(tk) == true)
+            {
+                if(model.ConfirmPassword == tk.matKhau)
+                {
+                    new AccountModel().SignUp(tk);
+                    return RedirectToAction("Index", "Login");
+                }
+                else
+                {
+                    ModelState.AddModelError("","Mật khẩu không khớp");
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("", "Tên tài khoản đã tồn tại");
+            }
+            return View(model);
+
         }
     }
 }
