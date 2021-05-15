@@ -5,18 +5,18 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="c54a12e3314d4c52a06f7658ed01ddf5" Name="Diagram1">
-        <EntityTypeShape EntityType="HeThongQuanLyDuLichModel.ChucVu" Width="1.5" PointX="3.75" PointY="15" IsExpanded="true" />
-        <EntityTypeShape EntityType="HeThongQuanLyDuLichModel.DichVu" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="HeThongQuanLyDuLichModel.Feedback" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="HeThongQuanLyDuLichModel.HanhTrinh" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="HeThongQuanLyDuLichModel.KhachHang" Width="1.5" PointX="3" PointY="17.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="HeThongQuanLyDuLichModel.KhachSan" Width="1.5" PointX="0.75" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HeThongQuanLyDuLichModel.ChucVu" Width="1.5" PointX="8.125" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="HeThongQuanLyDuLichModel.DichVu" Width="1.5" PointX="5.5" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HeThongQuanLyDuLichModel.Feedback" Width="1.5" PointX="1" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HeThongQuanLyDuLichModel.HanhTrinh" Width="1.5" PointX="9.375" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HeThongQuanLyDuLichModel.KhachHang" Width="1.5" PointX="6.5" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="HeThongQuanLyDuLichModel.KhachSan" Width="1.5" PointX="3.625" PointY="11.125" IsExpanded="true" />
         <EntityTypeShape EntityType="HeThongQuanLyDuLichModel.KhuyenMai" Width="1.5" PointX="0.75" PointY="14.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="HeThongQuanLyDuLichModel.LoaiTaiKhoan" Width="1.5" PointX="1.5" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="HeThongQuanLyDuLichModel.LoaiTaiKhoan" Width="1.5" PointX="0.5" PointY="21.375" IsExpanded="true" />
         <EntityTypeShape EntityType="HeThongQuanLyDuLichModel.NhanVien" Width="1.5" PointX="6" PointY="17.375" IsExpanded="true" />
         <EntityTypeShape EntityType="HeThongQuanLyDuLichModel.TaiKhoan" Width="1.5" PointX="0.75" PointY="17.625" IsExpanded="true" />
         <EntityTypeShape EntityType="HeThongQuanLyDuLichModel.Tour" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="HeThongQuanLyDuLichModel.VeDatTour" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HeThongQuanLyDuLichModel.VeDatTour" Width="1.5" PointX="7.375" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="HeThongQuanLyDuLichModel.FK__NhanVien__IDChuc__3F466844" ManuallyRouted="false" />
         <AssociationConnector Association="HeThongQuanLyDuLichModel.FK__Tour__IDDichVu__48CFD27E" ManuallyRouted="false" />
         <AssociationConnector Association="HeThongQuanLyDuLichModel.FK__Feedback__IDKhac__4D94879B" ManuallyRouted="false" />
