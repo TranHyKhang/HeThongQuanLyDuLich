@@ -8,9 +8,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <link href="~/Areas/Admin/Assets/AdminStyle.css" rel="stylesheet" />
+    <style type="text/css">
+        .title{
+            text-align:center;
+            font-size:25px;
+            border:1px solid black;
+            margin-left:30%;
+            margin-right:30%;
+        }
+    </style>
 </head>
 <body>
-    <h2>Index</h2>
+    <h2 class="title">HÀNH TRÌNH</h2>
 
     <p>
         <button class="btn btn-danger my-button">
@@ -20,19 +29,19 @@
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.tenHanhTrinh)
+              @Html.Label("Hành Trình")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.diemKhoiHanh)
+               @Html.Label("Điểm Khởi Hành")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.diemKetThuc)
+                @Html.Label("Điểm Đến")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.thoiGianKhoiHanh)
+              @Html.Label("Ngày Bắt Đầu")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.thoiGianKetThuc)
+               @Html.Label("Ngày Kết Thúc")
             </th>
             <th></th>
         </tr>
