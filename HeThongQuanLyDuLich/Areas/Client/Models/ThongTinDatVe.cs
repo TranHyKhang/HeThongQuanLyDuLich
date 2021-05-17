@@ -12,7 +12,7 @@ namespace HeThongQuanLyDuLich.Areas.Client.Models
         public string diaChi { get; set; }
         public string cmnd { get; set; }
         public int soLuongKhach { get; set; }
-        public virtual Tour tour { get; set; }     
+        public  Tour tour { get; set; }     
 
         
 

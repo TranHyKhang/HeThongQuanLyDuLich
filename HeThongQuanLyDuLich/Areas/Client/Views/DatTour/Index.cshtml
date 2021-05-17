@@ -1,54 +1,93 @@
 ﻿@model HeThongQuanLyDuLich.Areas.Client.Models.ThongTinDatVe
-@{
-    ViewBag.Title = "Index";
-}
 
-!<html xmlns="http://www.w3.org/1999/xhtml">
+@{
+    ViewBag.Title = "Dat Tour";
+    Layout = null; }
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
     <style type="text/css">
-        .form-group{
-          align-self:center;
+        .title{
+            text-align:center;
+            font-size:24px;
         }
-
+        .subtitle{
+            background-color:royalblue
+        }
+        .subtable{
+          
+        }
     </style>
 </head>
-<body>
+<body style="background-image:url(../../../../Content/image/wp2004047-travelling-wallpapers.jpg);">
     @using (Html.BeginForm())
     {
-        <div class="form-group">
-            @Html.Label("Tên Khách Hàng:")
-            @Html.TextBoxFor(model => model.tenKH, new { @class = "form-control", @placeholder = "Họ Tên", @autofocus = "autofocus" })
-        </div>
-        <div class="form-group">
-            @Html.Label("Điện Thoại:")
-            @Html.TextBoxFor(model => model.soDT, new { @class = "form-control", @placeholder = "Điện Thoại", @autofocus = "autofocus" })
-        </div>
-        <div class="form-group">
-            @Html.Label("Địa Chỉ:")
-            @Html.TextBoxFor(model => model.diaChi, new { @class = "form-control", @placeholder = "Địa Chỉ", @autofocus = "autofocus" })
-        </div>
-        <div class="form-group">
-            @Html.Label("CMND:")
-            @Html.TextBoxFor(model => model.cmnd, new { @class = "form-control", @placeholder = "Cmnd", @autofocus = "autofocus" })
-        </div>
-        <div class="form-group">
-            @Html.Label("Số Lượng")
-            @Html.TextBoxFor(model => model.soLuongKhach, new { @class = "form-control", @placeholder = "Số Lượng Khách", @autofocus = "autofocus" })
-        </div>
-        <!--Tour infor-->
-        <div class="form-group">
-           
+    <table>
+        <tr>
+            <td colspan="2" class="title">THÔNG TIN ĐẶT VÉ</td>
+        </tr>
+        <tr>
+            <td colspan="2" class="subtitle">Thông Tin Khách Hàng</td>
+        </tr>
+        <tr>
+            <td>@Html.Label("Tên Khách Hàng:")</td>
+            <td>@Html.EditorFor(model => model.tenKH)</td>
+        </tr>
+        <tr>
+            <td>@Html.Label("Điện Thoại:")</td>
+            <td>@Html.EditorFor(model => model.soDT)</td>
+        </tr>
+        <tr>
+            <td>@Html.Label("Địa Chỉ:")</td>
+            <td>@Html.EditorFor(model => model.diaChi)</td>
+        </tr>
+        <tr>
+            <td>@Html.Label("CMND:")</td>
+            <td>@Html.EditorFor(model => model.cmnd)</td>
+        </tr>
+        <tr>
+            <td>@Html.Label("Số Lượng Khách:")</td>
+            <td>@Html.EditorFor(model => model.soLuongKhach)</td>
+        </tr>
+        <tr>
+            <td colspan="2" class="subtitle">Thông Tin Tour</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+
+                <table class="subtable">
+                    <tr>
+                        <td style="width:200px">Tên Tour:</td>
+                        <td>@Html.DisplayFor(model => model.tour.tourName)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.Label("Giá Tour:")</td>
+                        <td>@Html.DisplayFor(model => model.tour.gia)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.Label("Hành Trình:")</td>
+                        <td>
+                            <div>@Html.DisplayFor(model => model.tour.HanhTrinh.tenHanhTrinh)</div>
+                            <div>Thời Gian Khởi Hành: @Html.DisplayFor(model => model.tour.HanhTrinh.thoiGianKhoiHanh)</div>
+                            <div>Thời Gian Kết Thúc: @Html.DisplayFor(model => model.tour.HanhTrinh.thoiGianKetThuc)</div>
+
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>@Html.Label("Mô Tả Chi Tiết: ")</td>
+                        <td>@Html.DisplayFor(model => model.tour.tourDescription)</td>
+                    </tr>
+                </table>
+
+
+            </td>
+        </tr>
         
-            <p>@Html.LabelFor(model => model.tour.IDTour)</p> 
-            <p> @Html.LabelFor(model => model.tour.tourName)</p>
-            <p>@Html.LabelFor(model => model.tour.tourDescription)</p>
-            <p>@Html.LabelFor(model => model.tour.DichVu)</p>
-            <p>@Html.LabelFor(model => model.tour.HanhTrinh)</p>
-            <p> @Html.LabelFor(model => model.tour.gia)</p>
-           
-          
-        </div>
+    </table>
+    <div>
+        <input type="submit" value="Đặt Vé"/>
+    </div>
     }
 </body>
 </html>

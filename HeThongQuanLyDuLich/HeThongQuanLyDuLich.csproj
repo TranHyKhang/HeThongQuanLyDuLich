@@ -153,6 +153,7 @@
     <Compile Include="Areas\Client\ClientAreaRegistration.cs" />
     <Compile Include="Areas\Client\Controllers\DatTourController.cs" />
     <Compile Include="Areas\Client\Models\ThongTinDatVe.cs" />
+    <Compile Include="Areas\Client\Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -802,20 +803,30 @@
     <Content Include="Assets\AdminPage\plugins\timepicker\bootstrap-timepicker.js" />
     <Content Include="Assets\AdminPage\plugins\timepicker\bootstrap-timepicker.min.css" />
     <Content Include="Assets\AdminPage\plugins\timepicker\bootstrap-timepicker.min.js" />
+    <Content Include="Content\animate.css" />
     <Content Include="Content\Base.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\icomoon.css" />
     <Content Include="Content\image\bg.jpg" />
     <Content Include="Content\image\GthieuClip.mp4" />
     <Content Include="Content\image\Login.png" />
+    <Content Include="Content\image\mb.jpg" />
+    <Content Include="Content\image\mn.jpg" />
+    <Content Include="Content\image\mt.jpg" />
+    <Content Include="Content\image\seaa.jpeg" />
     <Content Include="Content\image\search %281%29.png" />
     <Content Include="Content\image\search.png" />
     <Content Include="Content\image\Travel_Logo.png" />
     <Content Include="Content\image\Travel_Logo1.png" />
+    <Content Include="Content\image\vedep.jpg" />
+    <Content Include="Content\image\wp2004047-travelling-wallpapers.jpg" />
     <Content Include="Content\Login.css" />
     <Content Include="Content\LayoutStyle.css" />
+    <Content Include="Content\style.css" />
+    <Content Include="Content\superfish.css" />
     <Content Include="Content\trangchu.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -943,6 +954,9 @@
     <Content Include="Areas\Admin\Views\KhuyenMai\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\KhuyenMai\Index.cshtml" />
     <Content Include="Areas\Admin\Views\SignUp\Index.cshtml" />
+    <Content Include="Areas\Client\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Client\Views\Shared\View.cshtml" />
+    <Content Include="Areas\Client\Views\Home\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Tour\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Tour\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Tour\Details.cshtml" />
@@ -979,16 +993,25 @@
     <Content Include="Areas\Client\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Client\Views\DatTour\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\hoverIntent.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.easing.1.3.js" />
+    <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\jquery.stellar.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jquery.waypoints.min.js" />
+    <Content Include="Scripts\main.js" />
+    <Content Include="Scripts\modernizr-2.6.2.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\superfish.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
