@@ -22,7 +22,7 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [AllowAnonymous]
-        public ActionResult Index(LoginModel model, string returnUrl)
+        public ActionResult Index(LoginModel model)
         {
             var result = new AccountModel().Login(model.UserName, model.Password);
             if(result && ModelState.IsValid)

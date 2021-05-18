@@ -152,6 +152,10 @@
     <Compile Include="Areas\Admin\Models\SignUpModel.cs" />
     <Compile Include="Areas\Client\ClientAreaRegistration.cs" />
     <Compile Include="Areas\Client\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Client\Controllers\LoginController.cs" />
+    <Compile Include="Areas\Client\Controllers\SignUpController.cs" />
+    <Compile Include="Areas\Client\Models\AccountModel.cs" />
+    <Compile Include="Areas\Client\Models\LoginModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -988,6 +992,7 @@
     <Content Include="Models\HTQLDL.edmx.diagram">
       <DependentUpon>HTQLDL.edmx</DependentUpon>
     </Content>
+    <Content Include="Areas\Client\Views\Login\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\hoverIntent.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -1023,7 +1028,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Client\Models\" />
+    <Folder Include="Areas\Client\Views\SignUp\" />
     <Folder Include="Controllers\" />
   </ItemGroup>
   <ItemGroup>
