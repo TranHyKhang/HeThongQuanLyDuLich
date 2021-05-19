@@ -27,9 +27,9 @@
                         @foreach (var item in Model)
                         {
 
-                            
+
                             <div class="col-md-4 col-sm-4 fh5co-item-wrap">
-                                <a href="#" class="fh5co-listing-item">
+                                <a href="@Url.Action("Index","DatTour", new { id = item.IDTour})" class="fh5co-listing-item">
                                     <img src="~/Content/image/mb.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co" class="img-responsive">
                                     <div class="fh5co-listing-copy">
                                         <h2>@item.tourName</h2>
@@ -39,7 +39,7 @@
                                     </div>
                                 </a>
                             </div>
-                            
+
                         }
 
                         <!-- END 3 row -->
@@ -48,17 +48,17 @@
                             <div class="col-md-4 col-sm-4 fh5co-item-wrap">
                                 <div class="fh5co-listing-copy">
                                     <p>
-                                       @item.tourDescription
+                                        @item.tourDescription
                                     </p>
                                 </div>
 
                             </div>
 
                         }
-                            <!-- END 3 row -->
+                        <!-- END 3 row -->
 
 
-                        </div>
+                    </div>
                 </div>
             </div>
             <div class="fh5co-section">

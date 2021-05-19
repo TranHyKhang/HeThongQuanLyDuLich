@@ -15,11 +15,6 @@ namespace HeThongQuanLyDuLich.Areas.Client.Controllers
         {
             return View();
         }
-
-        [HttpPost]
-        public ActionResult Index(LoginModel model, )
-        {
-            return RedirectToAction("Index", "Home");
-        }
+        
     }
 }

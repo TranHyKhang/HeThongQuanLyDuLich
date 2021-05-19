@@ -15,7 +15,7 @@
 
 <body>
     <button class="btn btn-danger my-button">
-        @Html.ActionLink("Create New", "Create", null, new { @class = "my-class"})
+        @Html.ActionLink("Create New Tour", "Create", null, new { @class = "my-class"})
     </button>
     <p>
        
@@ -24,85 +24,86 @@
         <tr>
             <th>
 
-                @Html.DisplayNameFor(model => model.tourName)
+               @Html.Label("Tên Tour")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.tourDescription)
+                @Html.Label("Mô Tả")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.soLuongKhachToiDa)
+                @Html.Label("Số Lượng Tối Đa")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.soLuongKhachHienTai)
+                @Html.Label("Số Lượng Khách Hiện Tại")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.tinhTrangTour)
+               @Html.Label("Trạng Thái Tour")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.gia)
+               @Html.Label("Giá Tour")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DichVu.tenDichVu)
+              @Html.Label("Dịch Vụ")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.HanhTrinh.tenHanhTrinh)
+               @Html.Label("Lịch Trình")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.KhachSan.tenKhachSan)
+               @Html.Label("Khách Sạn")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.KhuyenMai.tenKhuyenMai)
+                @Html.Label("Khuyến Mãi")
             </th>
             <th></th>
         </tr>
 
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.tourName)
-                </td>
-                <td>
-                    @{
-                        string newStr = item.tourDescription.ToString().Substring(0, 20) + "...";
-                    }
-                    @Html.DisplayFor(modelItem => newStr)
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.tourName)
+        </td>
+        <td>
+            @{
+                string newStr = item.tourDescription.ToString().Substring(0, 20) + "...";
+            }
+            @Html.DisplayFor(modelItem => newStr)
 
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.soLuongKhachToiDa)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.soLuongKhachHienTai)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.tinhTrangTour)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.gia)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DichVu.tenDichVu)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.HanhTrinh.tenHanhTrinh)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.KhachSan.tenKhachSan)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.KhuyenMai.tenKhuyenMai)
-                </td>
-                <td>
-                    <button class="btn btn-primary my-button">
-                        @Html.ActionLink("Details", "Details", new { id = item.IDTour }, new { @class = "my-class" }) 
-                    </button> 
-                </td>
-            </tr>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.soLuongKhachToiDa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.soLuongKhachHienTai)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tinhTrangTour)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.gia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DichVu.tenDichVu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HanhTrinh.tenHanhTrinh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KhachSan.tenKhachSan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KhuyenMai.tenKhuyenMai)
+        </td>
+        <td>
+            <button class="btn btn-primary my-button">
+                @Html.ActionLink("Details", "Details", new { id = item.IDTour }, new { @class = "my-class" })
+            </button>
+        </td>
+        
+    </tr>
         }
 
     </table>
-
+  
 
 </body>
 </html>
