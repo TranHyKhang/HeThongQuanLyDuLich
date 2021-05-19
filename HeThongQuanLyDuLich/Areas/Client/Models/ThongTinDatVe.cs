@@ -7,12 +7,12 @@ namespace HeThongQuanLyDuLich.Areas.Client.Models
 {
     public class ThongTinDatVe
     {
-        public string tenKH { get; set; }
-        public string soDT { get; set; }
-        public string diaChi { get; set; }
-        public string cmnd { get; set; }
-        public int soLuongKhach { get; set; }
-        public  Tour tour { get; set; }     
+        public string TenKH { get; set; }
+        public string SoDT { get; set; }
+        public string DiaChi { get; set; }
+        public string Cmnd { get; set; }
+        public int SoLuongKhach { get; set; }
+        public  Tour Tour { get; set; }     
 
         
 
