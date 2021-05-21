@@ -1,0 +1,43 @@
+﻿@model IEnumerable<HeThongQuanLyDuLich.Models.Tour>
+
+@{
+    ViewBag.Title = "ListTour";
+}
+
+<body @*id="bodi"*@ >
+    <div id="fh5co-wrapper" style="padding-top:200px">
+        <div id="fh5co-page">
+            <div class="fh5co-listing">
+                <div class="container">
+                    <div class="form-row text-center">
+                        <h2 style="color:white">Danh Sách Tour</h2>
+                    </div>
+                    <div class="text-center">
+                        
+                    </div>
+                    <div class="row">
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-md-4 col-sm-4 fh5co-item-wrap">
+                                <a href="#" class="fh5co-listing-item">
+                                    <img src="~/Content/image/mb.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co" class="img-responsive">
+                                    <div class="fh5co-listing-copy">
+                                        <h2>@item.tourName</h2>
+                                        <h2>@item.gia</h2>
+                                    </div>
+                                    <div class="form-row text-center" style="background-color:#B9D3EE; padding:5px; border-bottom-left-radius:10px;border-bottom-right-radius:10px">
+                                        <button type="submit" class="btn btn-primary" style="font-size:8px">@Html.ActionLink("Xem Chi Tiết", "DetailsTour", new { id = item.IDTour })
+                                        <span class="icon">
+                                            <i class="fa fa-chevron-right"></i>
+                                        </span></button>
+                                    </div>
+                                </a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+

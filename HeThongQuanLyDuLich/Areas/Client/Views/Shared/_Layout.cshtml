@@ -34,42 +34,90 @@
     <script src="js/respond.min.js"></script>
 </head>
 <body>
-
-
-    <div id="fh5co-header">
-        <header id="fh5co-header-section">
-            <div class="container">
-                <div class="nav-header">
-                    <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
-                    <h1 id="fh5co-logo"><a href="index.html">VIETNAM</a></h1>
-                    <!-- START #fh5co-menu-wrap -->
-                    <nav id="fh5co-menu-wrap" role="navigation">
-                        <ul class="sf-menu" id="fh5co-primary-menu">
-                            <li class="active">
-                                <a href="#">Trang Chủ</a>
-                            </li>
-                            <li>
-                                <a href="#">Tour</a>
-                            </li>
-                            <li>
-                                <a href="#">Đánh Giá</a>
-                            </li>
-                            <li>
-                                <a href="#" class="fh5co-sub-ddown sf-with-ul">Đăng Nhập</a>
-                                <ul class="fh5co-sub-menu " style="display:none;">
-                                    <li><a href="#" target="_blank">Thông tin cá nhân</a></li>
-                                    <li><a href="#" target="_blank">Đăng Xuất</a></li>
-                                </ul>
-                            </li>
-
+    <div id="fh5co-wrapper">
+        <div id="fh5co-page">
+            <nav id="offcanvas-menu" role="navigation" style="height: 667px; ">
+                <ul class="" id="" style="touch-action: pan-y;">
+                    <li>
+                        <a href="#">Trang Chủ</a>
+                    </li>
+                    <li>
+                        <a href="#">Tour</a>
+                    </li>
+                    <li>
+                        <a href="#">Đánh Giá</a>
+                    </li>
+                    <li>
+                        <a href="#" class="fh5co-sub-ddown sf-with-ul">Đăng Nhập</a>
+                        <ul class="fh5co-sub-menu" style="display: none;">
+                            <li><a href="#">Thông Tin Cá Nhân</a></li>
+                            <li><a href="#">Đăng Xuất</a></li>
                         </ul>
-                    </nav>
-                </div>
+                    </li>
+                    <li><a href="contact.html">Liên Hệ</a></li>
+                </ul>
+            </nav>
+            <div id="fh5co-header">
+                <header id="fh5co-header-section">
+                    <div class="container">
+                        <div class="nav-header">
+                            <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
+                            <h1 id="fh5co-logo"><a href="index.html">VIETNAM</a></h1>
+                            <!-- START #fh5co-menu-wrap -->
+                            <nav id="fh5co-menu-wrap" role="navigation">
+                                <ul class="sf-menu" id="fh5co-primary-menu">
+                                    <li>
+                                        <a href="~/Client/Home/Index">Trang Chủ</a>
+                                    </li>
+                                    <li>
+                                        <a href="~/Client/Home/ListTour">Tour</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Đánh Giá</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="fh5co-sub-ddown sf-with-ul">Đăng Nhập</a>
+                                        <ul class="fh5co-sub-menu " style="display:none;">
+                                            <li><a href="#" target="_blank">Thông tin cá nhân</a></li>
+                                            <li><a href="#" target="_blank">Đăng Xuất</a></li>
+                                        </ul>
+                                    </li>
+
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </header>
             </div>
-        </header>
+            @RenderBody()
+            <footer>
+                <div id="footer">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6 col-md-offset-3 text-center">
+                                <p class="fh5co-social-icons">
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="#"><i class="fa fa-instagram"></i></a>
+                                    <a href="#"><i class="fa fa-dribbble"></i></a>
+                                    <a href="#"><i class="fa fa-youtube"></i></a>
+                                </p>
+                                <p>
+                                    Công Ty TNHH 3ThànhViên <br>
+                                    Email :<a href="#">DulichViet@gmail.com</a>.<br />
+                                    Địa chỉ: 155 Sư Vạn Hạnh, phường 13, quận 10, TPHCM.<br />
+                                    Đường dây nóng : 0389443948
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        
     </div>
 
-    @RenderBody()
+   
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

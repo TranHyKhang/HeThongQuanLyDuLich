@@ -15,6 +15,13 @@ namespace HeThongQuanLyDuLich.Areas.Client.Controllers
         {
             return View(db.Tours.ToList());
         }
-        
+        public ActionResult ListTour(Tour T)
+        {
+            return View(db.Tours.ToList());
+        }
+        public ActionResult DetailsTour(int id)
+        {
+            return View(db.Tours.Where(s => s.IDTour == id).FirstOrDefault());
+        }
     }
 }

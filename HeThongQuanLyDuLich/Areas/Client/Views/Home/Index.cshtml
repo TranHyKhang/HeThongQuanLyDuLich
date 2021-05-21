@@ -1,21 +1,18 @@
 ﻿@model IEnumerable<HeThongQuanLyDuLich.Models.Tour>
 @{
-    ViewBag.Title = "Home Page";
-    Layout = "~/Areas/Client/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index";
 }
 
-<html class="no-js">
+<!--<html class="no-js">-->
 <!--<![endif]-->
-<head>
-</head>
-<body id="bodi" style="padding:0">
-    <div id="fh5co-wrapper">
+
+<body style="padding:0">
+    <div id="fh5co-wrapper" >
         <div id="fh5co-page">
             <div class="fh5co-hero">
                 <div class="fh5co-overlay"></div>
-                @*<div class="fh5co-overlay"></div>*@
-                <div class="fh5co-cover text-center" data-stellar-background-ratio="0.5" style="background-image:url(../../../../Content/image/wp2004047-travelling-wallpapers.jpg);">
-                    <div class="desc animate-box">
+                <div class="fh5co-cover text-center" data-stellar-background-ratio="0.5" style="background-image:url(../../../../Content/image/wp2004047-travelling-wallpapers.jpg);  background-position: 0px 0px;">
+                    <div class="desc animate-box fadeInUp animated">
                         <h2>Du lịch Việt Nam</h2>
                         <span><a class="btn btn-primary btn-lg" href="#">Đặt Tour</a></span>
                     </div>
@@ -27,7 +24,7 @@
                         @foreach (var item in Model)
                         {
 
-                            
+
                             <div class="col-md-4 col-sm-4 fh5co-item-wrap">
                                 <a href="#" class="fh5co-listing-item">
                                     <img src="~/Content/image/mb.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co" class="img-responsive">
@@ -39,26 +36,24 @@
                                     </div>
                                 </a>
                             </div>
-                            
+
                         }
 
-                        <!-- END 3 row -->
+                       
                         @foreach (var item in Model)
                         {
                             <div class="col-md-4 col-sm-4 fh5co-item-wrap">
                                 <div class="fh5co-listing-copy">
                                     <p>
-                                       @item.tourDescription
+                                        @item.tourDescription
                                     </p>
                                 </div>
 
                             </div>
 
                         }
-                            <!-- END 3 row -->
-
-
-                        </div>
+                       
+                    </div>
                 </div>
             </div>
             <div class="fh5co-section">
@@ -98,33 +93,11 @@
                 </div>
             </div>
 
-            <footer>
-                <div id="footer">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-6 col-md-offset-3 text-center">
-                                <p class="fh5co-social-icons">
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-instagram"></i></a>
-                                    <a href="#"><i class="fa fa-dribbble"></i></a>
-                                    <a href="#"><i class="fa fa-youtube"></i></a>
-                                </p>
-                                <p>
-                                    Công Ty TNHH 3ThànhViên <br>
-                                    Email :<a href="#">DulichViet@gmail.com</a>.<br />
-                                    Địa chỉ: 155 Sư Vạn Hạnh, phường 13, quận 10, TPHCM.<br />
-                                    Đường dây nóng : 0389443948
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-
-        </div>
+            
+            
+            </div>
     </div>
 
 </body>
-</html>
+@*</html>*@
 

@@ -1,0 +1,17 @@
+﻿.contact-form {
+    background-color: rgb(0,0,0, .6);
+    /*margin-top: 100px;*/
+    padding: 20px;
+    box-shadow: 0px 0px 10px 3px grey;
+    color: white;
+    height:950px;
+}
+
+/*body {
+    background-image: url(images/hero-home.jpg);
+    background-size: cover;
+}*/
+
+hr {
+    background: white;
+}
