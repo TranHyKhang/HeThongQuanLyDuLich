@@ -1,111 +1,106 @@
 ﻿@model HeThongQuanLyDuLich.Models.Tour
 
-
 @{
+    ViewBag.Title = "Details";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-    <link href="~/Areas/Admin/Assets/AdminStyle.css" rel="stylesheet" />
-</head>
-<body>
-    <div>
-        <h4>Chi tiết tour</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.tourName)
-            </dt>
+<h2>Details Tour</h2>
 
-            <dd>
-                @Html.DisplayFor(model => model.tourName)
-            </dd>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tourName)
+        </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.tourDescription)
-            </dt>
+        <dd>
+            @Html.DisplayFor(model => model.tourName)
+        </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.tourDescription)
-            </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.tourDescription)
+        </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.soLuongKhachToiDa)
-            </dt>
+        <dd>
+            @Html.DisplayFor(model => model.tourDescription)
+        </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.soLuongKhachToiDa)
-            </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.soLuongKhachToiDa)
+        </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.soLuongKhachHienTai)
-            </dt>
+        <dd>
+            @Html.DisplayFor(model => model.soLuongKhachToiDa)
+        </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.soLuongKhachHienTai)
-            </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.soLuongKhachHienTai)
+        </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.tinhTrangTour)
-            </dt>
+        <dd>
+            @Html.DisplayFor(model => model.soLuongKhachHienTai)
+        </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.tinhTrangTour)
-            </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.tinhTrangTour)
+        </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.gia)
-            </dt>
+        <dd>
+            @Html.DisplayFor(model => model.tinhTrangTour)
+        </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.gia)
-            </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.gia)
+        </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.DichVu.tenDichVu)
-            </dt>
+        <dd>
+            @Html.DisplayFor(model => model.gia)
+        </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.DichVu.tenDichVu)
-            </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.HanhTrinh.tenHanhTrinh)
+        </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.HanhTrinh.tenHanhTrinh)
-            </dt>
+        <dd>
+            @Html.DisplayFor(model => model.HanhTrinh.tenHanhTrinh)
+        </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.HanhTrinh.tenHanhTrinh)
-            </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.KhachSan.tenKhachSan)
+        </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.KhachSan.tenKhachSan)
-            </dt>
+        <dd>
+            @Html.DisplayFor(model => model.KhachSan.tenKhachSan)
+        </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.KhachSan.tenKhachSan)
-            </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.KhuyenMai.tenKhuyenMai)
+        </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.KhuyenMai.tenKhuyenMai)
-            </dt>
+        <dd>
+            @Html.DisplayFor(model => model.KhuyenMai.tenKhuyenMai)
+        </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.KhuyenMai.tenKhuyenMai)
-            </dd>
-        </dl>
-    </div>
-    <p>
-        <button class="btn btn-primary my-button">
-            @Html.ActionLink("Edit", "Edit", new { id = Model.IDTour }, new { @class="my-class"})
-        </button> |
-        <button class="btn btn-danger my-button">
-            @Html.ActionLink("Delete", "Delete", new { id = Model.IDTour }, new { @class = "my-class" })
-        </button> |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
-</body>
-</html>
+        <dt>
+            @Html.DisplayNameFor(model => model.LoaiTour.loaiTour1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoaiTour.loaiTour1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DichVu.tenDichVu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DichVu.tenDichVu)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDTour }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -10,107 +10,112 @@ using HeThongQuanLyDuLich.Models;
 
 namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
 {
-    public class DichVuController : Controller
+    public class ChiTietDichVuController : Controller
     {
         private HeThongQuanLyDuLichEntities db = new HeThongQuanLyDuLichEntities();
 
-        // GET: Admin/DichVu
+        // GET: Admin/ChiTietDichVu
         public ActionResult Index()
         {
-            return View(db.DichVus.ToList());
+            var chiTietDichVus = db.ChiTietDichVus.Include(c => c.DichVu);
+            return View(chiTietDichVus.ToList());
         }
 
-        // GET: Admin/DichVu/Details/5
+        // GET: Admin/ChiTietDichVu/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DichVu dichVu = db.DichVus.Find(id);
-            if (dichVu == null)
+            ChiTietDichVu chiTietDichVu = db.ChiTietDichVus.Find(id);
+            if (chiTietDichVu == null)
             {
                 return HttpNotFound();
             }
-            return View(dichVu);
+            return View(chiTietDichVu);
         }
 
-        // GET: Admin/DichVu/Create
+        // GET: Admin/ChiTietDichVu/Create
         public ActionResult Create()
         {
+            ViewBag.IDDichVu = new SelectList(db.DichVus, "IDDichVu", "tenDichVu");
             return View();
         }
 
-        // POST: Admin/DichVu/Create
+        // POST: Admin/ChiTietDichVu/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IDDichVu,tenDichVu,giaDichVu")] DichVu dichVu)
+        public ActionResult Create([Bind(Include = "IDChiTietDichVu,moTaDichVu,IDDichVu,tenChiTietDichVu")] ChiTietDichVu chiTietDichVu)
         {
             if (ModelState.IsValid)
             {
-                db.DichVus.Add(dichVu);
+                db.ChiTietDichVus.Add(chiTietDichVu);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(dichVu);
+            ViewBag.IDDichVu = new SelectList(db.DichVus, "IDDichVu", "tenDichVu", chiTietDichVu.IDDichVu);
+            return View(chiTietDichVu);
         }
 
-        // GET: Admin/DichVu/Edit/5
+        // GET: Admin/ChiTietDichVu/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DichVu dichVu = db.DichVus.Find(id);
-            if (dichVu == null)
+            ChiTietDichVu chiTietDichVu = db.ChiTietDichVus.Find(id);
+            if (chiTietDichVu == null)
             {
                 return HttpNotFound();
             }
-            return View(dichVu);
+            ViewBag.IDDichVu = new SelectList(db.DichVus, "IDDichVu", "tenDichVu", chiTietDichVu.IDDichVu);
+            return View(chiTietDichVu);
         }
 
-        // POST: Admin/DichVu/Edit/5
+        // POST: Admin/ChiTietDichVu/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IDDichVu,tenDichVu,giaDichVu")] DichVu dichVu)
+        public ActionResult Edit([Bind(Include = "IDChiTietDichVu,moTaDichVu,IDDichVu,tenChiTietDichVu")] ChiTietDichVu chiTietDichVu)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(dichVu).State = System.Data.Entity.EntityState.Modified;
+                db.Entry(chiTietDichVu).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(dichVu);
+            ViewBag.IDDichVu = new SelectList(db.DichVus, "IDDichVu", "tenDichVu", chiTietDichVu.IDDichVu);
+            return View(chiTietDichVu);
         }
 
-        // GET: Admin/DichVu/Delete/5
+        // GET: Admin/ChiTietDichVu/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DichVu dichVu = db.DichVus.Find(id);
-            if (dichVu == null)
+            ChiTietDichVu chiTietDichVu = db.ChiTietDichVus.Find(id);
+            if (chiTietDichVu == null)
             {
                 return HttpNotFound();
             }
-            return View(dichVu);
+            return View(chiTietDichVu);
         }
 
-        // POST: Admin/DichVu/Delete/5
+        // POST: Admin/ChiTietDichVu/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            DichVu dichVu = db.DichVus.Find(id);
-            db.DichVus.Remove(dichVu);
+            ChiTietDichVu chiTietDichVu = db.ChiTietDichVus.Find(id);
+            db.ChiTietDichVus.Remove(chiTietDichVu);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

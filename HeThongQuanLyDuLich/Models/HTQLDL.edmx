@@ -4,7 +4,16 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="HeThongQuanLyDuLichModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="HeThongQuanLyDuLichModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ChiTietDichVu">
+          <Key>
+            <PropertyRef Name="IDChiTietDichVu" />
+          </Key>
+          <Property Name="IDChiTietDichVu" Type="int" Nullable="false" />
+          <Property Name="moTaDichVu" Type="ntext" />
+          <Property Name="IDDichVu" Type="int" />
+          <Property Name="tenChiTietDichVu" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="ChiTietHanhTrinh">
           <Key>
             <PropertyRef Name="IDChiTietHanhTrinh" />
@@ -26,7 +35,6 @@
           </Key>
           <Property Name="IDDichVu" Type="int" Nullable="false" />
           <Property Name="tenDichVu" Type="ntext" />
-          <Property Name="moTaDichVu" Type="ntext" />
           <Property Name="giaDichVu" Type="int" />
         </EntityType>
         <EntityType Name="Feedback">
@@ -102,6 +110,13 @@
           <Property Name="IDLoaiTaiKhoan" Type="int" Nullable="false" />
           <Property Name="loaiTaiKhoan" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="LoaiTour">
+          <Key>
+            <PropertyRef Name="IDLoaiTour" />
+          </Key>
+          <Property Name="IDLoaiTour" Type="int" Nullable="false" />
+          <Property Name="loaiTour" Type="nvarchar" MaxLength="20" />
+        </EntityType>
         <EntityType Name="NhanVien">
           <Key>
             <PropertyRef Name="IDNhanVien" />
@@ -138,6 +153,7 @@
           <Property Name="IDKhachSan" Type="int" />
           <Property Name="IDKhuyenMai" Type="int" />
           <Property Name="gia" Type="int" />
+          <Property Name="IDLoaiTour" Type="int" />
         </EntityType>
         <EntityType Name="VeDatTour">
           <Key>
@@ -294,6 +310,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_ChiTietDichVu_DichVu">
+          <End Role="DichVu" Type="Self.DichVu" Multiplicity="0..1" />
+          <End Role="ChiTietDichVu" Type="Self.ChiTietDichVu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DichVu">
+              <PropertyRef Name="IDDichVu" />
+            </Principal>
+            <Dependent Role="ChiTietDichVu">
+              <PropertyRef Name="IDDichVu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_ChiTietHanhTrinh_HanhTrinh">
           <End Role="HanhTrinh" Type="Self.HanhTrinh" Multiplicity="0..1" />
           <End Role="ChiTietHanhTrinh" Type="Self.ChiTietHanhTrinh" Multiplicity="*" />
@@ -330,7 +358,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_LoaiTour_Tour">
+          <End Role="LoaiTour" Type="Self.LoaiTour" Multiplicity="0..1" />
+          <End Role="Tour" Type="Self.Tour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiTour">
+              <PropertyRef Name="IDLoaiTour" />
+            </Principal>
+            <Dependent Role="Tour">
+              <PropertyRef Name="IDLoaiTour" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="HeThongQuanLyDuLichModelStoreContainer">
+          <EntitySet Name="ChiTietDichVu" EntityType="Self.ChiTietDichVu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChiTietHanhTrinh" EntityType="Self.ChiTietHanhTrinh" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChucVu" EntityType="Self.ChucVu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DichVu" EntityType="Self.DichVu" Schema="dbo" store:Type="Tables" />
@@ -342,6 +383,7 @@
           <EntitySet Name="KhuyenMai" EntityType="Self.KhuyenMai" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LoaiHinhAnh" EntityType="Self.LoaiHinhAnh" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LoaiTaiKhoan" EntityType="Self.LoaiTaiKhoan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoaiTour" EntityType="Self.LoaiTour" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NhanVien" EntityType="Self.NhanVien" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TaiKhoan" EntityType="Self.TaiKhoan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tour" EntityType="Self.Tour" Schema="dbo" store:Type="Tables" />
@@ -394,6 +436,10 @@
             <End Role="Tour" EntitySet="Tour" />
             <End Role="VeDatTour" EntitySet="VeDatTour" />
           </AssociationSet>
+          <AssociationSet Name="fk_ChiTietDichVu_DichVu" Association="Self.fk_ChiTietDichVu_DichVu">
+            <End Role="DichVu" EntitySet="DichVu" />
+            <End Role="ChiTietDichVu" EntitySet="ChiTietDichVu" />
+          </AssociationSet>
           <AssociationSet Name="fk_ChiTietHanhTrinh_HanhTrinh" Association="Self.fk_ChiTietHanhTrinh_HanhTrinh">
             <End Role="HanhTrinh" EntitySet="HanhTrinh" />
             <End Role="ChiTietHanhTrinh" EntitySet="ChiTietHanhTrinh" />
@@ -406,9 +452,12 @@
             <End Role="Tour" EntitySet="Tour" />
             <End Role="HinhAnh" EntitySet="HinhAnh" />
           </AssociationSet>
+          <AssociationSet Name="fk_LoaiTour_Tour" Association="Self.fk_LoaiTour_Tour">
+            <End Role="LoaiTour" EntitySet="LoaiTour" />
+            <End Role="Tour" EntitySet="Tour" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="HeThongQuanLyDuLichModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -435,9 +484,9 @@
           </Key>
           <Property Name="IDDichVu" Type="Int32" Nullable="false" />
           <Property Name="tenDichVu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="moTaDichVu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="giaDichVu" Type="Int32" />
-          <NavigationProperty Name="Tours" Relationship="Self.FK__Tour__IDDichVu__48CFD27E" FromRole="DichVu" ToRole="Tour" />
+          <NavigationProperty Name="Tours" Relationship="HeThongQuanLyDuLichModel.FK__Tour__IDDichVu__48CFD27E1" FromRole="DichVu" ToRole="Tour" />
+          <NavigationProperty Name="ChiTietDichVus" Relationship="HeThongQuanLyDuLichModel.fk_ChiTietDichVu_DichVu" FromRole="DichVu" ToRole="ChiTietDichVu" />
         </EntityType>
         <EntityType Name="Feedback">
           <Key>
@@ -525,6 +574,14 @@
           <Property Name="loaiTaiKhoan1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="TaiKhoans" Relationship="Self.FK__TaiKhoan__IDLoai__3A81B327" FromRole="LoaiTaiKhoan" ToRole="TaiKhoan" />
         </EntityType>
+        <EntityType Name="LoaiTour">
+          <Key>
+            <PropertyRef Name="IDLoaiTour" />
+          </Key>
+          <Property Name="IDLoaiTour" Type="Int32" Nullable="false" />
+          <Property Name="loaiTour1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tours" Relationship="Self.fk_LoaiTour_Tour" FromRole="LoaiTour" ToRole="Tour" />
+        </EntityType>
         <EntityType Name="NhanVien">
           <Key>
             <PropertyRef Name="IDNhanVien" />
@@ -566,13 +623,15 @@
           <Property Name="IDKhachSan" Type="Int32" />
           <Property Name="IDKhuyenMai" Type="Int32" />
           <Property Name="gia" Type="Int32" />
-          <NavigationProperty Name="DichVu" Relationship="Self.FK__Tour__IDDichVu__48CFD27E" FromRole="Tour" ToRole="DichVu" />
+          <Property Name="IDLoaiTour" Type="Int32" />
           <NavigationProperty Name="Feedbacks" Relationship="Self.FK__Feedback__IDTour__4E88ABD4" FromRole="Tour" ToRole="Feedback" />
           <NavigationProperty Name="HanhTrinh" Relationship="Self.FK__Tour__IDHanhTrin__47DBAE45" FromRole="Tour" ToRole="HanhTrinh" />
           <NavigationProperty Name="HinhAnhs" Relationship="Self.fk_HinhAnh_Tour" FromRole="Tour" ToRole="HinhAnh" />
           <NavigationProperty Name="KhachSan" Relationship="Self.FK__Tour__IDKhachSan__49C3F6B7" FromRole="Tour" ToRole="KhachSan" />
           <NavigationProperty Name="KhuyenMai" Relationship="Self.FK__Tour__IDKhuyenMa__4AB81AF0" FromRole="Tour" ToRole="KhuyenMai" />
+          <NavigationProperty Name="LoaiTour" Relationship="Self.fk_LoaiTour_Tour" FromRole="Tour" ToRole="LoaiTour" />
           <NavigationProperty Name="VeDatTours" Relationship="Self.FK__VeDatTour__IDTou__5165187F" FromRole="Tour" ToRole="VeDatTour" />
+          <NavigationProperty Name="DichVu" Relationship="HeThongQuanLyDuLichModel.FK__Tour__IDDichVu__48CFD27E1" FromRole="Tour" ToRole="DichVu" />
         </EntityType>
         <EntityType Name="VeDatTour">
           <Key>
@@ -608,18 +667,6 @@
             </Principal>
             <Dependent Role="NhanVien">
               <PropertyRef Name="IDChucVu" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Tour__IDDichVu__48CFD27E">
-          <End Role="DichVu" Type="Self.DichVu" Multiplicity="0..1" />
-          <End Role="Tour" Type="Self.Tour" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DichVu">
-              <PropertyRef Name="IDDichVu" />
-            </Principal>
-            <Dependent Role="Tour">
-              <PropertyRef Name="IDDichVu" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -743,6 +790,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_LoaiTour_Tour">
+          <End Role="LoaiTour" Type="Self.LoaiTour" Multiplicity="0..1" />
+          <End Role="Tour" Type="Self.Tour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiTour">
+              <PropertyRef Name="IDLoaiTour" />
+            </Principal>
+            <Dependent Role="Tour">
+              <PropertyRef Name="IDLoaiTour" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__NhanVien__IDTaiK__403A8C7D">
           <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="0..1" />
           <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="*" />
@@ -779,6 +838,7 @@
           <EntitySet Name="KhuyenMais" EntityType="Self.KhuyenMai" />
           <EntitySet Name="LoaiHinhAnhs" EntityType="Self.LoaiHinhAnh" />
           <EntitySet Name="LoaiTaiKhoans" EntityType="Self.LoaiTaiKhoan" />
+          <EntitySet Name="LoaiTours" EntityType="Self.LoaiTour" />
           <EntitySet Name="NhanViens" EntityType="Self.NhanVien" />
           <EntitySet Name="TaiKhoans" EntityType="Self.TaiKhoan" />
           <EntitySet Name="Tours" EntityType="Self.Tour" />
@@ -790,10 +850,6 @@
           <AssociationSet Name="FK__NhanVien__IDChuc__3F466844" Association="Self.FK__NhanVien__IDChuc__3F466844">
             <End Role="ChucVu" EntitySet="ChucVus" />
             <End Role="NhanVien" EntitySet="NhanViens" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Tour__IDDichVu__48CFD27E" Association="Self.FK__Tour__IDDichVu__48CFD27E">
-            <End Role="DichVu" EntitySet="DichVus" />
-            <End Role="Tour" EntitySet="Tours" />
           </AssociationSet>
           <AssociationSet Name="FK__Feedback__IDKhac__4D94879B" Association="Self.FK__Feedback__IDKhac__4D94879B">
             <End Role="KhachHang" EntitySet="KhachHangs" />
@@ -835,6 +891,10 @@
             <End Role="LoaiTaiKhoan" EntitySet="LoaiTaiKhoans" />
             <End Role="TaiKhoan" EntitySet="TaiKhoans" />
           </AssociationSet>
+          <AssociationSet Name="fk_LoaiTour_Tour" Association="Self.fk_LoaiTour_Tour">
+            <End Role="LoaiTour" EntitySet="LoaiTours" />
+            <End Role="Tour" EntitySet="Tours" />
+          </AssociationSet>
           <AssociationSet Name="FK__NhanVien__IDTaiK__403A8C7D" Association="Self.FK__NhanVien__IDTaiK__403A8C7D">
             <End Role="TaiKhoan" EntitySet="TaiKhoans" />
             <End Role="NhanVien" EntitySet="NhanViens" />
@@ -843,7 +903,50 @@
             <End Role="Tour" EntitySet="Tours" />
             <End Role="VeDatTour" EntitySet="VeDatTours" />
           </AssociationSet>
+          <AssociationSet Name="FK__Tour__IDDichVu__48CFD27E1" Association="HeThongQuanLyDuLichModel.FK__Tour__IDDichVu__48CFD27E1">
+            <End Role="DichVu" EntitySet="DichVus" />
+            <End Role="Tour" EntitySet="Tours" />
+          </AssociationSet>
+          <EntitySet Name="ChiTietDichVus" EntityType="HeThongQuanLyDuLichModel.ChiTietDichVu" />
+          <AssociationSet Name="fk_ChiTietDichVu_DichVu" Association="HeThongQuanLyDuLichModel.fk_ChiTietDichVu_DichVu">
+            <End Role="DichVu" EntitySet="DichVus" />
+            <End Role="ChiTietDichVu" EntitySet="ChiTietDichVus" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK__Tour__IDDichVu__48CFD27E1">
+          <End Type="HeThongQuanLyDuLichModel.DichVu" Role="DichVu" Multiplicity="0..1" />
+          <End Type="HeThongQuanLyDuLichModel.Tour" Role="Tour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DichVu">
+              <PropertyRef Name="IDDichVu" />
+            </Principal>
+            <Dependent Role="Tour">
+              <PropertyRef Name="IDDichVu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ChiTietDichVu">
+          <Key>
+            <PropertyRef Name="IDChiTietDichVu" />
+          </Key>
+          <Property Name="IDChiTietDichVu" Type="Int32" Nullable="false" />
+          <Property Name="moTaDichVu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IDDichVu" Type="Int32" />
+          <Property Name="tenChiTietDichVu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DichVu" Relationship="HeThongQuanLyDuLichModel.fk_ChiTietDichVu_DichVu" FromRole="ChiTietDichVu" ToRole="DichVu" />
+        </EntityType>
+        <Association Name="fk_ChiTietDichVu_DichVu">
+          <End Type="HeThongQuanLyDuLichModel.DichVu" Role="DichVu" Multiplicity="0..1" />
+          <End Type="HeThongQuanLyDuLichModel.ChiTietDichVu" Role="ChiTietDichVu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DichVu">
+              <PropertyRef Name="IDDichVu" />
+            </Principal>
+            <Dependent Role="ChiTietDichVu">
+              <PropertyRef Name="IDDichVu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -872,7 +975,6 @@
               <MappingFragment StoreEntitySet="DichVu">
                 <ScalarProperty Name="IDDichVu" ColumnName="IDDichVu" />
                 <ScalarProperty Name="tenDichVu" ColumnName="tenDichVu" />
-                <ScalarProperty Name="moTaDichVu" ColumnName="moTaDichVu" />
                 <ScalarProperty Name="giaDichVu" ColumnName="giaDichVu" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -958,6 +1060,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="LoaiTours">
+            <EntityTypeMapping TypeName="HeThongQuanLyDuLichModel.LoaiTour">
+              <MappingFragment StoreEntitySet="LoaiTour">
+                <ScalarProperty Name="IDLoaiTour" ColumnName="IDLoaiTour" />
+                <ScalarProperty Name="loaiTour1" ColumnName="loaiTour" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="NhanViens">
             <EntityTypeMapping TypeName="HeThongQuanLyDuLichModel.NhanVien">
               <MappingFragment StoreEntitySet="NhanVien">
@@ -995,6 +1105,7 @@
                 <ScalarProperty Name="IDKhachSan" ColumnName="IDKhachSan" />
                 <ScalarProperty Name="IDKhuyenMai" ColumnName="IDKhuyenMai" />
                 <ScalarProperty Name="gia" ColumnName="gia" />
+                <ScalarProperty Name="IDLoaiTour" ColumnName="IDLoaiTour" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1007,6 +1118,16 @@
                 <ScalarProperty Name="IDTour" ColumnName="IDTour" />
                 <ScalarProperty Name="IDKhachHang" ColumnName="IDKhachHang" />
                 <ScalarProperty Name="soLuongVeDatTour" ColumnName="soLuongVeDatTour" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChiTietDichVus">
+            <EntityTypeMapping TypeName="HeThongQuanLyDuLichModel.ChiTietDichVu">
+              <MappingFragment StoreEntitySet="ChiTietDichVu">
+                <ScalarProperty Name="tenChiTietDichVu" ColumnName="tenChiTietDichVu" />
+                <ScalarProperty Name="IDDichVu" ColumnName="IDDichVu" />
+                <ScalarProperty Name="moTaDichVu" ColumnName="moTaDichVu" />
+                <ScalarProperty Name="IDChiTietDichVu" ColumnName="IDChiTietDichVu" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

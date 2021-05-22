@@ -1,0 +1,51 @@
+﻿
+/*Right column*/
+.bodySection {
+    padding: 3rem 0
+}
+.formThongTinDatVe {
+    border: 1px solid #808080;
+    border-radius: 10px;
+    padding: 2rem 2rem
+}
+
+td {
+    padding: 1rem
+}
+
+
+/*Left column*/
+.formHienThiThongTinTour {
+    border-radius: 10px;
+    border: 1px solid  #808080;
+    margin-bottom: 3rem
+}
+.wrapTourInfo {
+    padding: 1rem;
+}
+
+h3 {
+    margin: 0;
+    font-weight: 700;
+    padding-bottom: 1rem
+}
+.wrapTourInfo-title {
+   border-bottom: 1px solid black;
+   padding-bottom: 1rem 
+}
+
+.wrapTourInfo-content {
+    padding-top: 1rem
+}
+
+ul {
+    padding: 0
+}
+
+ul li {
+    list-style-type: none
+}
+p {
+    padding: 0;
+    margin: 0
+}

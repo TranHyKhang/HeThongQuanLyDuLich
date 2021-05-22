@@ -18,7 +18,7 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            var tours = db.Tours.Include(t => t.DichVu).Include(t => t.HanhTrinh).Include(t => t.KhachSan).Include(t => t.KhuyenMai);
+            var tours = db.Tours.Include(t => t.HanhTrinh).Include(t => t.KhachSan).Include(t => t.KhuyenMai).Include(t => t.LoaiTour).Include(t => t.DichVu);
             return View(tours.ToList());
         }
 
@@ -42,10 +42,11 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
         [Authorize]
         public ActionResult Create()
         {
-            ViewBag.IDDichVu = new SelectList(db.DichVus, "IDDichVu", "tenDichVu");
             ViewBag.IDHanhTrinh = new SelectList(db.HanhTrinhs, "IDHanhTrinh", "tenHanhTrinh");
             ViewBag.IDKhachSan = new SelectList(db.KhachSans, "IDKhachSan", "tenKhachSan");
             ViewBag.IDKhuyenMai = new SelectList(db.KhuyenMais, "IDKhuyenMai", "tenKhuyenMai");
+            ViewBag.IDLoaiTour = new SelectList(db.LoaiTours, "IDLoaiTour", "loaiTour1");
+            ViewBag.IDDichVu = new SelectList(db.DichVus, "IDDichVu", "tenDichVu");
             return View();
         }
 
@@ -54,7 +55,7 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IDTour,tourName,tourDescription,soLuongKhachToiDa,soLuongKhachHienTai,tinhTrangTour,IDHanhTrinh,IDDichVu,IDKhachSan,IDKhuyenMai,gia")] Tour tour)
+        public ActionResult Create([Bind(Include = "IDTour,tourName,tourDescription,soLuongKhachToiDa,soLuongKhachHienTai,tinhTrangTour,IDHanhTrinh,IDDichVu,IDKhachSan,IDKhuyenMai,gia,IDLoaiTour")] Tour tour)
         {
             if (ModelState.IsValid)
             {
@@ -63,10 +64,11 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IDDichVu = new SelectList(db.DichVus, "IDDichVu", "tenDichVu", tour.IDDichVu);
             ViewBag.IDHanhTrinh = new SelectList(db.HanhTrinhs, "IDHanhTrinh", "tenHanhTrinh", tour.IDHanhTrinh);
             ViewBag.IDKhachSan = new SelectList(db.KhachSans, "IDKhachSan", "tenKhachSan", tour.IDKhachSan);
             ViewBag.IDKhuyenMai = new SelectList(db.KhuyenMais, "IDKhuyenMai", "tenKhuyenMai", tour.IDKhuyenMai);
+            ViewBag.IDLoaiTour = new SelectList(db.LoaiTours, "IDLoaiTour", "loaiTour1", tour.IDLoaiTour);
+            ViewBag.IDDichVu = new SelectList(db.DichVus, "IDDichVu", "tenDichVu", tour.IDDichVu);
             return View(tour);
         }
 
@@ -83,10 +85,11 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.IDDichVu = new SelectList(db.DichVus, "IDDichVu", "tenDichVu", tour.IDDichVu);
             ViewBag.IDHanhTrinh = new SelectList(db.HanhTrinhs, "IDHanhTrinh", "tenHanhTrinh", tour.IDHanhTrinh);
             ViewBag.IDKhachSan = new SelectList(db.KhachSans, "IDKhachSan", "tenKhachSan", tour.IDKhachSan);
             ViewBag.IDKhuyenMai = new SelectList(db.KhuyenMais, "IDKhuyenMai", "tenKhuyenMai", tour.IDKhuyenMai);
+            ViewBag.IDLoaiTour = new SelectList(db.LoaiTours, "IDLoaiTour", "loaiTour1", tour.IDLoaiTour);
+            ViewBag.IDDichVu = new SelectList(db.DichVus, "IDDichVu", "tenDichVu", tour.IDDichVu);
             return View(tour);
         }
 
@@ -95,7 +98,7 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IDTour,tourName,tourDescription,soLuongKhachToiDa,soLuongKhachHienTai,tinhTrangTour,IDHanhTrinh,IDDichVu,IDKhachSan,IDKhuyenMai,gia")] Tour tour)
+        public ActionResult Edit([Bind(Include = "IDTour,tourName,tourDescription,soLuongKhachToiDa,soLuongKhachHienTai,tinhTrangTour,IDHanhTrinh,IDDichVu,IDKhachSan,IDKhuyenMai,gia,IDLoaiTour")] Tour tour)
         {
             if (ModelState.IsValid)
             {
@@ -103,10 +106,11 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IDDichVu = new SelectList(db.DichVus, "IDDichVu", "tenDichVu", tour.IDDichVu);
             ViewBag.IDHanhTrinh = new SelectList(db.HanhTrinhs, "IDHanhTrinh", "tenHanhTrinh", tour.IDHanhTrinh);
             ViewBag.IDKhachSan = new SelectList(db.KhachSans, "IDKhachSan", "tenKhachSan", tour.IDKhachSan);
             ViewBag.IDKhuyenMai = new SelectList(db.KhuyenMais, "IDKhuyenMai", "tenKhuyenMai", tour.IDKhuyenMai);
+            ViewBag.IDLoaiTour = new SelectList(db.LoaiTours, "IDLoaiTour", "loaiTour1", tour.IDLoaiTour);
+            ViewBag.IDDichVu = new SelectList(db.DichVus, "IDDichVu", "tenDichVu", tour.IDDichVu);
             return View(tour);
         }
 

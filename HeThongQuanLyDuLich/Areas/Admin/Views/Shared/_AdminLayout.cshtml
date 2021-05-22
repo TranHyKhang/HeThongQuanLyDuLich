@@ -31,6 +31,8 @@
     <link href="/Assets/AdminPage/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
     <!-- bootstrap wysihtml5 - text editor -->
     <link href="/Assets/AdminPage/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Areas/Admin/Assets/AdminStyle.css" rel="stylesheet" />
+
 </head>
 <body class="wysihtml5-supported skin-black">
     <div class="wrapper">
@@ -324,10 +326,16 @@
                             <li><a href="/Admin/ChiTietHanhTrinh"><i class="fa fa-circle-o"></i> Chi tiết hành trình</a></li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="/Admin/DichVu">
-                            <i class="fa fa-th"></i> <span>Dịch vụ</span>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-laptop"></i>
+                            <span>Dịch vụ</span>
+                            <i class="fa fa-angle-left pull-right"></i>
                         </a>
+                        <ul class="treeview-menu">
+                            <li><a href="/Admin/DichVu"><i class="fa fa-circle-o"></i> Dịch vụ</a></li>
+                            <li><a href="/Admin/ChiTietDichVu"><i class="fa fa-circle-o"></i> Chi tiết dịch vụ</a></li>
+                        </ul>
                     </li>
                     <li class="treeview">
                         <a href="/Admin/KhachSan">

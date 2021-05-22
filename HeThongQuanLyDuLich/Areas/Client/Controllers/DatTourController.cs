@@ -58,19 +58,7 @@ namespace HeThongQuanLyDuLich.Areas.Client.Controllers
 
             
             Tour tour = db.Tours.Where(s => s.IDTour == thongTinDatVe.Tour.IDTour).FirstOrDefault();
-            //Tour updateTour = new Tour()
-            //{
-            //    tourName = tour.tourName,
-            //    tourDescription = tour.tourDescription,
-            //    soLuongKhachToiDa = tour.soLuongKhachToiDa,
-            //    soLuongKhachHienTai = tour.soLuongKhachHienTai + thongTinDatVe.SoLuongKhach,
-            //    tinhTrangTour = tour.tinhTrangTour,
-            //    IDHanhTrinh = tour.IDHanhTrinh,
-            //    IDDichVu = tour.IDDichVu,
-            //    IDKhachSan = tour.IDKhachSan,
-            //    IDKhuyenMai = tour.IDKhuyenMai,
-            //    gia = tour.gia
-            //};
+           
             if (tour.soLuongKhachHienTai + thongTinDatVe.SoLuongKhach <= tour.soLuongKhachToiDa)
             {
                 tour.soLuongKhachHienTai = tour.soLuongKhachHienTai + thongTinDatVe.SoLuongKhach;
@@ -114,6 +102,24 @@ namespace HeThongQuanLyDuLich.Areas.Client.Controllers
             }
             return num;
         }
-
+        //Display images
+        public ActionResult RetrieveImage(int id)
+        {
+            byte[] cover = GetImageFromDataBase(id);
+            if (id != null)
+            {
+                return File(cover, "image/jpg");
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public byte[] GetImageFromDataBase(int id)
+        {
+            var q = from temp in db.HinhAnhs where temp.IDHinhAnh == id select temp.imageUrl;
+            byte[] cover = q.First();
+            return cover;
+        }
     }
 }

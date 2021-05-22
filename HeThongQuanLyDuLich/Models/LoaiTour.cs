@@ -12,22 +12,18 @@ namespace HeThongQuanLyDuLich.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class DichVu
+    public partial class LoaiTour
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public DichVu()
+        public LoaiTour()
         {
             this.Tours = new HashSet<Tour>();
-            this.ChiTietDichVus = new HashSet<ChiTietDichVu>();
         }
     
-        public int IDDichVu { get; set; }
-        public string tenDichVu { get; set; }
-        public Nullable<int> giaDichVu { get; set; }
+        public int IDLoaiTour { get; set; }
+        public string loaiTour1 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tour> Tours { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietDichVu> ChiTietDichVus { get; set; }
     }
 }
