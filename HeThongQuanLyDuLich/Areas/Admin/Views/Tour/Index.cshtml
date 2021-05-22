@@ -1,73 +1,63 @@
 ﻿@model IEnumerable<HeThongQuanLyDuLich.Models.Tour>
 
 @{
+    ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<!DOCTYPE html>
+<h2>Tour</h2>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-    <link href="~/Areas/Admin/Assets/AdminStyle.css" rel="stylesheet" />
-</head>
+<button class="btn btn-danger my-button">
+    @Html.ActionLink("Create New", "Create", null, new { @class = "my-class" })
+</button>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.tourName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tourDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.soLuongKhachToiDa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.soLuongKhachHienTai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tinhTrangTour)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HanhTrinh.tenHanhTrinh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KhachSan.tenKhachSan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KhuyenMai.tenKhuyenMai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoaiTour.loaiTour1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DichVu.tenDichVu)
+        </th>
+        <th></th>
+    </tr>
 
-<body>
-    <button class="btn btn-danger my-button">
-        @Html.ActionLink("Create New Tour", "Create", null, new { @class = "my-class"})
-    </button>
-    <p>
-       
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-
-               @Html.Label("Tên Tour")
-            </th>
-            <th>
-                @Html.Label("Mô Tả")
-            </th>
-            <th>
-                @Html.Label("Số Lượng Tối Đa")
-            </th>
-            <th>
-                @Html.Label("Số Lượng Khách Hiện Tại")
-            </th>
-            <th>
-               @Html.Label("Trạng Thái Tour")
-            </th>
-            <th>
-               @Html.Label("Giá Tour")
-            </th>
-            <th>
-              @Html.Label("Dịch Vụ")
-            </th>
-            <th>
-               @Html.Label("Lịch Trình")
-            </th>
-            <th>
-               @Html.Label("Khách Sạn")
-            </th>
-            <th>
-                @Html.Label("Khuyến Mãi")
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
+@foreach (var item in Model) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.tourName)
         </td>
         <td>
-            @{
-                string newStr = item.tourDescription.ToString().Substring(0, 20) + "...";
+            @{ 
+                string a = item.tourDescription.Substring(0, 30) + "...";
             }
-            @Html.DisplayFor(modelItem => newStr)
-
+            @Html.DisplayFor(modelItem => a)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.soLuongKhachToiDa)
@@ -82,9 +72,6 @@
             @Html.DisplayFor(modelItem => item.gia)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DichVu.tenDichVu)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.HanhTrinh.tenHanhTrinh)
         </td>
         <td>
@@ -94,16 +81,17 @@
             @Html.DisplayFor(modelItem => item.KhuyenMai.tenKhuyenMai)
         </td>
         <td>
-            <button class="btn btn-primary my-button">
-                @Html.ActionLink("Details", "Details", new { id = item.IDTour }, new { @class = "my-class" })
+            @Html.DisplayFor(modelItem => item.LoaiTour.loaiTour1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DichVu.tenDichVu)
+        </td>
+        <td>
+            <button class="btn btn-success my-button">
+                @Html.ActionLink("Details", "Details", new { id = item.IDTour }, new { @class="my-class"})
             </button>
         </td>
-        
     </tr>
-        }
+}
 
-    </table>
-  
-
-</body>
-</html>
+</table>

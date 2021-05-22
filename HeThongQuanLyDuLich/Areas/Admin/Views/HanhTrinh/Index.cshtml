@@ -5,74 +5,55 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <link href="~/Areas/Admin/Assets/AdminStyle.css" rel="stylesheet" />
-    <style type="text/css">
-        .title{
-            text-align:center;
-            font-size:25px;
-            border:1px solid black;
-            margin-left:30%;
-            margin-right:30%;
-        }
-    </style>
-</head>
-<body>
-    <h2 class="title">HÀNH TRÌNH</h2>
+<h2 class="title">HÀNH TRÌNH</h2>
 
-    <p>
-        <button class="btn btn-danger my-button">
-            @Html.ActionLink("Create New", "Create", null, new { @class= "my-class"})
-        </button>
-    </p>
-    <table class="table">
+<p>
+    <button class="btn btn-danger my-button">
+        @Html.ActionLink("Create New", "Create", null, new { @class = "my-class" })
+    </button>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.Label("Hành Trình")
+        </th>
+        <th>
+            @Html.Label("Điểm Khởi Hành")
+        </th>
+        <th>
+            @Html.Label("Điểm Đến")
+        </th>
+        <th>
+            @Html.Label("Ngày Bắt Đầu")
+        </th>
+        <th>
+            @Html.Label("Ngày Kết Thúc")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
         <tr>
-            <th>
-              @Html.Label("Hành Trình")
-            </th>
-            <th>
-               @Html.Label("Điểm Khởi Hành")
-            </th>
-            <th>
-                @Html.Label("Điểm Đến")
-            </th>
-            <th>
-              @Html.Label("Ngày Bắt Đầu")
-            </th>
-            <th>
-               @Html.Label("Ngày Kết Thúc")
-            </th>
-            <th></th>
+            <td>
+                @Html.DisplayFor(modelItem => item.tenHanhTrinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.diemKhoiHanh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.diemKetThuc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.thoiGianKhoiHanh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.thoiGianKetThuc)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.IDHanhTrinh }) 
+            </td>
         </tr>
+    }
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.tenHanhTrinh)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.diemKhoiHanh)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.diemKetThuc)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.thoiGianKhoiHanh)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.thoiGianKetThuc)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.IDHanhTrinh }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.IDHanhTrinh }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.IDHanhTrinh })
-                </td>
-            </tr>
-        }
-
-    </table>
-
-</body>
-</html>
+</table>

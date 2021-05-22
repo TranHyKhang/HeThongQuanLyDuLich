@@ -36,9 +36,11 @@ namespace HeThongQuanLyDuLich.Models
         public virtual DbSet<KhuyenMai> KhuyenMais { get; set; }
         public virtual DbSet<LoaiHinhAnh> LoaiHinhAnhs { get; set; }
         public virtual DbSet<LoaiTaiKhoan> LoaiTaiKhoans { get; set; }
+        public virtual DbSet<LoaiTour> LoaiTours { get; set; }
         public virtual DbSet<NhanVien> NhanViens { get; set; }
         public virtual DbSet<TaiKhoan> TaiKhoans { get; set; }
         public virtual DbSet<Tour> Tours { get; set; }
         public virtual DbSet<VeDatTour> VeDatTours { get; set; }
+        public virtual DbSet<ChiTietDichVu> ChiTietDichVus { get; set; }
     }
 }

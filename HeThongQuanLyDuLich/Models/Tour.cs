@@ -33,8 +33,8 @@ namespace HeThongQuanLyDuLich.Models
         public Nullable<int> IDKhachSan { get; set; }
         public Nullable<int> IDKhuyenMai { get; set; }
         public Nullable<int> gia { get; set; }
+        public Nullable<int> IDLoaiTour { get; set; }
     
-        public virtual DichVu DichVu { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Feedback> Feedbacks { get; set; }
         public virtual HanhTrinh HanhTrinh { get; set; }
@@ -42,7 +42,9 @@ namespace HeThongQuanLyDuLich.Models
         public virtual ICollection<HinhAnh> HinhAnhs { get; set; }
         public virtual KhachSan KhachSan { get; set; }
         public virtual KhuyenMai KhuyenMai { get; set; }
+        public virtual LoaiTour LoaiTour { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VeDatTour> VeDatTours { get; set; }
+        public virtual DichVu DichVu { get; set; }
     }
 }

@@ -4,127 +4,100 @@
     Layout = "~/Areas/Client/Views/Shared/_Layout.cshtml";
 }
 
-<html class="no-js">
-<!--<![endif]-->
-<head>
-</head>
-<body id="bodi" style="padding:0">
-    <div id="fh5co-wrapper">
-        <div id="fh5co-page">
-            <div class="fh5co-hero">
-                <div class="fh5co-overlay"></div>
-                @*<div class="fh5co-overlay"></div>*@
-                <div class="fh5co-cover text-center" data-stellar-background-ratio="0.5" style="background-image:url(../../../../Content/image/wp2004047-travelling-wallpapers.jpg);">
-                    <div class="desc animate-box">
-                        <h2>Du lịch Việt Nam</h2>
-                        <span><a class="btn btn-primary btn-lg" href="#">Đặt Tour</a></span>
-                    </div>
+
+<div id="fh5co-wrapper">
+    <div id="fh5co-page">
+        <div class="fh5co-hero">
+            <div class="fh5co-overlay"></div>
+            @*<div class="fh5co-overlay"></div>*@
+            <div class="fh5co-cover text-center" data-stellar-background-ratio="0.5" style="background-image:url(../../../../Content/image/wp2004047-travelling-wallpapers.jpg);">
+                <div class="desc animate-box">
+                    <h2>Du lịch Việt Nam</h2>
+                    <span><a class="btn btn-primary btn-lg" href="#">Đặt Tour</a></span>
                 </div>
             </div>
-            <div class="fh5co-listing">
-                <div class="container">
-                    <div class="row">
-                        @foreach (var item in Model)
-                        {
-
-
-                            <div class="col-md-4 col-sm-4 fh5co-item-wrap">
-                                <a href="@Url.Action("Index","DatTour", new { id = item.IDTour})" class="fh5co-listing-item">
-                                    <img src="~/Content/image/mb.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co" class="img-responsive">
-                                    <div class="fh5co-listing-copy">
-                                        <h2>@item.tourName</h2>
-                                        <span class="icon">
-                                            <i class="fa fa-chevron-right"></i>
-                                        </span>
-                                    </div>
-                                </a>
-                            </div>
-
-                        }
-
-                        <!-- END 3 row -->
-                        @foreach (var item in Model)
-                        {
-                            <div class="col-md-4 col-sm-4 fh5co-item-wrap">
-                                <div class="fh5co-listing-copy">
-                                    <p>
-                                        @item.tourDescription
-                                    </p>
-                                </div>
-
-                            </div>
-
-                        }
-                        <!-- END 3 row -->
-
-
-                    </div>
-                </div>
-            </div>
-            <div class="fh5co-section">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6 fh5co-news">
-                            <h3>Tin Tức</h3>
-                            <ul>
-                                <li>
-                                    <a href="https://www.vntrip.vn/cam-nang/kinh-nghiem-du-lich-phu-quoc-170">
-                                        <span class="fh5co-date">15/05/2021</span>
-                                        <h3>Du lịch Phú Quốc</h3>
-                                        <p>Phú Quốc còn có tên gọi khác là đảo Ngọc hòn đảo lớn nhất nước ta thuộc Vịnh Thái Lan...</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://quynhonme.vn/33-dia-diem-du-lich-quy-nhon-tuyet-dep">
-                                        <span class="fh5co-date">01/05/2021</span>
-                                        <h3>Quy Nhơn có gì chơi ?</h3>
-                                        <p>Vùng đất xinh đẹp Quy Nhơn Bình Định trong những năm gần đây đang dần trở thành điểm đến yêu thích của các bạn trẻ đam mê du lịch. !</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://tuoitre.vn/sang-6-5-them-8-ca-mac-covid-19-tai-benh-vien-benh-nhiet-doi-trung-uong-20210506052705944.htm">
-                                        <span class="fh5co-date">17/04/2021</span>
-                                        <h3>Cập nhật Covid-19</h3>
-                                        <p>Sáng 6-5, thêm 8 ca mắc COVID-19 tại Bệnh viện Bệnh nhiệt đới trung ương..!</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-md-6 fh5co-testimonial">
-                            <img src="~/Content/image/seaa.jpeg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co" class="img-responsive mb20">
-                            <img src="~/Content/image/vedep.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co" class="img-responsive">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <footer>
-                <div id="footer">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-6 col-md-offset-3 text-center">
-                                <p class="fh5co-social-icons">
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-instagram"></i></a>
-                                    <a href="#"><i class="fa fa-dribbble"></i></a>
-                                    <a href="#"><i class="fa fa-youtube"></i></a>
-                                </p>
-                                <p>
-                                    Công Ty TNHH 3ThànhViên <br>
-                                    Email :<a href="#">DulichViet@gmail.com</a>.<br />
-                                    Địa chỉ: 155 Sư Vạn Hạnh, phường 13, quận 10, TPHCM.<br />
-                                    Đường dây nóng : 0389443948
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-
         </div>
-    </div>
+        <div class="fh5co-listing">
+            <div class="container">
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
 
-</body>
-</html>
+
+                        <div class="col-md-4 col-sm-4 fh5co-item-wrap">
+                            <a href="@Url.Action("Index","DatTour", new { id = item.IDTour})" class="fh5co-listing-item">
+                                <img src="~/Content/image/mb.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co" class="img-responsive">
+                                <div class="fh5co-listing-copy">
+                                    <h2>@item.tourName</h2>
+                                    <span class="icon">
+                                        <i class="fa fa-chevron-right"></i>
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+
+                    }
+
+                    <!-- END 3 row -->
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-md-4 col-sm-4 fh5co-item-wrap">
+                            <div class="fh5co-listing-copy">
+                                <p>
+                                    @item.tourDescription
+                                </p>
+                            </div>
+
+                        </div>
+
+                    }
+                    <!-- END 3 row -->
+
+
+                </div>
+            </div>
+        </div>
+        <div class="fh5co-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 fh5co-news">
+                        <h3>Tin Tức</h3>
+                        <ul>
+                            <li>
+                                <a href="https://www.vntrip.vn/cam-nang/kinh-nghiem-du-lich-phu-quoc-170">
+                                    <span class="fh5co-date">15/05/2021</span>
+                                    <h3>Du lịch Phú Quốc</h3>
+                                    <p>Phú Quốc còn có tên gọi khác là đảo Ngọc hòn đảo lớn nhất nước ta thuộc Vịnh Thái Lan...</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://quynhonme.vn/33-dia-diem-du-lich-quy-nhon-tuyet-dep">
+                                    <span class="fh5co-date">01/05/2021</span>
+                                    <h3>Quy Nhơn có gì chơi ?</h3>
+                                    <p>Vùng đất xinh đẹp Quy Nhơn Bình Định trong những năm gần đây đang dần trở thành điểm đến yêu thích của các bạn trẻ đam mê du lịch. !</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://tuoitre.vn/sang-6-5-them-8-ca-mac-covid-19-tai-benh-vien-benh-nhiet-doi-trung-uong-20210506052705944.htm">
+                                    <span class="fh5co-date">17/04/2021</span>
+                                    <h3>Cập nhật Covid-19</h3>
+                                    <p>Sáng 6-5, thêm 8 ca mắc COVID-19 tại Bệnh viện Bệnh nhiệt đới trung ương..!</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 fh5co-testimonial">
+                        <img src="~/Content/image/seaa.jpeg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co" class="img-responsive mb20">
+                        <img src="~/Content/image/vedep.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co" class="img-responsive">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            
+
+    </div>
+</div>
+
+
 

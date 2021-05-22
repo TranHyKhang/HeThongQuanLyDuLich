@@ -1,94 +1,232 @@
 ﻿@model HeThongQuanLyDuLich.Areas.Client.Models.ThongTinDatVe
 
 @{
-    ViewBag.Title = "Dat Tour";
-    Layout = null; }
+ViewBag.Title = "Dat Tour";
+Layout = null;
+}
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title></title>
-    <style type="text/css">
-        .title{
-            text-align:center;
-            font-size:24px;
-        }
-        .subtitle{
-            background-color:royalblue
-        }
-        .subtable{
-          
-        }
-    </style>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <title>VIETNAM &mdash; DU LICH</title>
+
+
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'> -->
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="~/Content/animate.css">
+    <!-- Icomoon Icon Fonts-->
+    <link rel="stylesheet" href="~/Content/icomoon.css">
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="~/Content/bootstrap.css">
+    <!-- Superfish -->
+    <link rel="stylesheet" href="~/Content/superfish.css">
+
+    <link rel="stylesheet" href="~/Content/style.css">
+    <link rel="stylesheet" href="~/Content/Site.css">
+    <link href="~/Areas/Client/Assets/DatTourComponentStyle.css" rel="stylesheet" />
+
+
+    <!-- Modernizr JS -->
+    <script src="~/Scripts/modernizr-2.6.2.min.js"></script>
+    <!-- FOR IE9 below -->
+
+    <script src="js/respond.min.js"></script>
 </head>
-<body style="background-image:url(../../../../Content/image/wp2004047-travelling-wallpapers.jpg);">
-    @using (Html.BeginForm("PostVeDatTour", "DatTour", FormMethod.Post))
-    {
-        @Html.ValidationSummary(true, null, new { @class = "alert alert-danger" })
+<body>
+    <div id="fh5co-wrapper">
+        <div id="fh5co-page">                
+            <div id="fh5co-header">
+                <header id="">
+                    <div class="container">
+                        <div class="nav-header">
+                            <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
+                            <h1 id="fh5co-logo"><a href="index.html">VIETNAM</a></h1>
+                            <!-- START #fh5co-menu-wrap -->
+                            <nav id="fh5co-menu-wrap" role="navigation">
+                                <ul class="sf-menu" id="fh5co-primary-menu">
+                                    <li
+>
+                                        <a href="#">Trang Chủ</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Tour</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Đánh Giá</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="fh5co-sub-ddown sf-with-ul">Đăng Nhập</a>
+                                        <ul class="fh5co-sub-menu " style="display:none;">
+                                            <li><a href="#" target="_blank">Thông tin cá nhân</a></li>
+                                            <li><a href="#" target="_blank">Đăng Xuất</a></li>
+                                        </ul>
+                                    </li>
 
-        <table>
-            <tr>
-                <td colspan="2" class="title">THÔNG TIN ĐẶT VÉ</td>
-            </tr>
-            <tr>
-                <td colspan="2" class="subtitle">Thông Tin Khách Hàng</td>
-            </tr>
-            <tr>
-                <td>@Html.Label("Tên Khách Hàng:")</td>
-                <td>@Html.EditorFor(model => model.TenKH)</td>
-            </tr>
-            <tr>
-                <td>@Html.Label("Điện Thoại:")</td>
-                <td>@Html.EditorFor(model => model.SoDT)</td>
-            </tr>
-            <tr>
-                <td>@Html.Label("Địa Chỉ:")</td>
-                <td>@Html.EditorFor(model => model.DiaChi)</td>
-            </tr>
-            <tr>
-                <td>@Html.Label("CMND:")</td>
-                <td>@Html.EditorFor(model => model.Cmnd)</td>
-            </tr>
-            <tr>
-                <td>@Html.Label("Số Lượng Khách:")</td>
-                <td>@Html.EditorFor(model => model.SoLuongKhach)</td>
-            </tr>
-            <tr>
-                <td colspan="2" class="subtitle">Thông Tin Tour</td>
-            </tr>
-            <tr>
-                <td colspan="2">
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </header>
+            </div>
+            
+            
+            <div class="bodySection" style="background-color: white">
+                <div class="container mt-3">
+                    <div class="row">
+                        <div class="col col-12 col-md-6 col-lg-7 s_gutters">
+                            <div class="formHienThiThongTinTour">
+                                <img src="/DatTour/RetrieveImage/@Model.Tour.HinhAnhs.FirstOrDefault().IDHinhAnh" style="width: 100%; height: 300px; border-top-left-radius: 10px; border-top-right-radius: 10px" alt="Alternate Text" />
+                                <div class="wrapTourInfo">
+                                    <div class="wrapTourInfo-title">
+                                        <h3>@Html.DisplayFor(model => model.Tour.tourName)</h3>
+                                        <img src="~/Areas/Client/Assets/img/start.png" alt="Alternate Text" />
+                                    </div>
+                                    <div class="wrapTourInfo-content">
+                                        <h3>Dịch vụ</h3>
+                                        <ul>
+                                            @foreach (var x in Model.Tour.DichVu.ChiTietDichVus)
+                                            {
+                                                <li>
+                                                    <img style="width: 1.5rem; height: 1.5rem" src="~/Areas/Client/Assets/img/check-mark.png" alt="Alternate Text" />
+                                                    <span>@x.tenChiTietDichVu</span>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="formHienThiThongTinTour">
+                                <div class="wrapTourInfo">
+                                    <div class="wrapTourInfo-title" style="justify-content: space-between; display: flex">
+                                        <h3 style="display: inline">Giá tham khảo</h3>
+                                        @{ 
+                                            var tongTien = Model.Tour.gia + Model.Tour.DichVu.giaDichVu + Model.Tour.KhachSan.giaKhachSan - Model.Tour.KhuyenMai.giaTriKhuyenMai;
+                                        }
+                                        <h3 style="display: inline">@tongTien VND/Nguời</h3>
 
-                    <table class="subtable">
-                        <tr>
-                            <td>@Html.EditorFor(model => model.Tour.IDTour)</td>
-                        </tr>
-                        <tr>
-                            <td style="width:200px">Tên Tour:</td>
-                            <td>@Html.DisplayFor(model => model.Tour.tourName)</td>
-                        </tr>
-                        <tr>
-                            <td>@Html.Label("Giá Tour:")</td>
-                            <td>@Html.DisplayFor(model => model.Tour.gia)</td>
-                        </tr>
-                        <tr>
-                            <td>@Html.Label("Hành Trình:")</td>
-                            <td>
-                                <div>@Html.DisplayFor(model => model.Tour.HanhTrinh.tenHanhTrinh)</div>
-                                <div>Thời Gian Khởi Hành: @Html.DisplayFor(model => model.Tour.HanhTrinh.thoiGianKhoiHanh)</div>
-                                <div>Thời Gian Kết Thúc: @Html.DisplayFor(model => model.Tour.HanhTrinh.thoiGianKetThuc)</div>
+                                    </div>
+                                    <div class="wrapTourInfo-content">
+                                        <p>Đã áp dụng khuyến mãi</p>
+                                        <p>Đã bao gồm thuế + phí + khách sạn</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col-12 col-md-6 col-lg-5 s_gutters">
+                            <div class="formThongTinDatVe">
+                                <div class="card-body">
+                                    @using (Html.BeginForm("PostVeDatTour", "DatTour", FormMethod.Post))
+                                    {
+                                        @Html.ValidationSummary(true, null, new { @class = "alert alert-danger" })
 
-                            </td>
+                                        <table>
+                                            <tr>
+                                                <td colspan="2" class="title" style="font-weight: 700">THÔNG TIN ĐẶT VÉ</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">(Vui lòng điền đầy đủ thông tin) <hr /></td>
+                                            </tr>
+                                            <tr class="textInput">
+                                                <td>@Html.Label("Tên Khách Hàng:")</td>
+                                                <td>@Html.EditorFor(model => model.TenKH)</td>
+                                            </tr>
+                                            <tr class="textInput">
+                                                <td>@Html.Label("Điện Thoại:")</td>
+                                                <td>@Html.EditorFor(model => model.SoDT)</td>
+                                            </tr>
+                                            <tr class="textInput">
+                                                <td>@Html.Label("Địa Chỉ:")</td>
+                                                <td>@Html.EditorFor(model => model.DiaChi)</td>
+                                            </tr>
+                                            <tr class="textInput">
+                                                <td>@Html.Label("CMND:")</td>
+                                                <td>@Html.EditorFor(model => model.Cmnd)</td>
+                                            </tr>
+                                            <tr class="textInput">
+                                                <td>@Html.Label("Số Lượng Khách:")</td>
+                                                <td>@Html.EditorFor(model => model.SoLuongKhach)</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" class="subtitle">Thông Tin Tour</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">
 
-                        </tr>
-                    </table>
+                                                    <table class="subtable">
+                                                        <tr>
+                                                            <td>@Html.TextBoxFor(model => model.Tour.IDTour, new { @class = "hidden" })</td>
+                                                        </tr>
+                                                    </table>
 
 
-                </td>
-            </tr>
+                                                </td>
+                                            </tr>
 
-        </table>
-        <div>
-            <input type="submit" value="Đặt Vé" />
+                                        </table>
+                                        <div>
+                                            <input type="submit" value="Đặt Vé" />
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <footer>
+                <div id="footer">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6 col-md-offset-3 text-center">
+                                <p class="fh5co-social-icons">
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="#"><i class="fa fa-instagram"></i></a>
+                                    <a href="#"><i class="fa fa-dribbble"></i></a>
+                                    <a href="#"><i class="fa fa-youtube"></i></a>
+                                </p>
+                                <p>
+                                    Công Ty TNHH 3ThànhViên <br>
+                                    Email :<a href="#">DulichViet@gmail.com</a>.<br />
+                                    Địa chỉ: 155 Sư Vạn Hạnh, phường 13, quận 10, TPHCM.<br />
+                                    Đường dây nóng : 0389443948
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
         </div>
-    }
+    </div>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <!-- jQuery Easing -->
+    <script src="~/Scripts/jquery.easing.1.3.js"></script>
+    <!-- Bootstrap -->
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <!-- Waypoints -->
+    <script src="~/Scripts/jquery.waypoints.min.js"></script>
+    <!-- Stellar -->
+    <script src="~/Scripts/jquery.stellar.min.js"></script>
+    <!-- Superfish -->
+    <script src="~/Scripts/hoverIntent.js"></script>
+    <script src="~/Scripts/superfish.js"></script>
+    <script src="~/Scripts/respond.min.js"></script>
+    <script src="~/Scripts/modernizr-2.6.2.min.js"></script>
+    <!-- Main JS -->
+    <script src="~/Scripts/main.js"></script>
 </body>
 </html>
