@@ -1,4 +1,5 @@
-﻿@model IEnumerable<HeThongQuanLyDuLich.Models.Tour>
+﻿@model HeThongQuanLyDuLich.Areas.Client.Models.ViewHomeModel
+
 @{
     ViewBag.Title = "Home Page";
     Layout = "~/Areas/Client/Views/Shared/_Layout.cshtml";
@@ -20,40 +21,21 @@
         <div class="fh5co-listing">
             <div class="container">
                 <div class="row">
-                    @foreach (var item in Model)
+                    @foreach (var item in Model.LoaiTours)
                     {
-
-
-                        <div class="col-md-4 col-sm-4 fh5co-item-wrap">
-                            <a href="@Url.Action("Index","DatTour", new { id = item.IDTour})" class="fh5co-listing-item">
+                        <div style="border-radius: 10px" class="col-md-4 col-sm-4 fh5co-item-wrap">
+                            @*<a href="@Url.Action("Index","DatTour", new { id = item.IDTour})" class="fh5co-listing-item">*@
+                            <a href="#" class="fh5co-listing-item">
                                 <img src="~/Content/image/mb.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co" class="img-responsive">
                                 <div class="fh5co-listing-copy">
-                                    <h2>@item.tourName</h2>
+                                    <h2>@item.loaiTour1</h2>
                                     <span class="icon">
                                         <i class="fa fa-chevron-right"></i>
                                     </span>
                                 </div>
                             </a>
                         </div>
-
                     }
-
-                    <!-- END 3 row -->
-                    @foreach (var item in Model)
-                    {
-                        <div class="col-md-4 col-sm-4 fh5co-item-wrap">
-                            <div class="fh5co-listing-copy">
-                                <p>
-                                    @item.tourDescription
-                                </p>
-                            </div>
-
-                        </div>
-
-                    }
-                    <!-- END 3 row -->
-
-
                 </div>
             </div>
         </div>
@@ -94,7 +76,7 @@
             </div>
         </div>
 
-            
+
 
     </div>
 </div>

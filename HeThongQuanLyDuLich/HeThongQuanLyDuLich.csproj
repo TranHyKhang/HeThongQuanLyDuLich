@@ -135,8 +135,6 @@
     <Compile Include="Areas\Admin\Code\ContentRepository.cs" />
     <Compile Include="Areas\Admin\Code\SessionHelper.cs" />
     <Compile Include="Areas\Admin\Code\UserSession.cs" />
-    <Compile Include="Areas\Admin\Controllers\ChiTietDichVuController.cs" />
-    <Compile Include="Areas\Admin\Controllers\ChiTietHanhTrinhController.cs" />
     <Compile Include="Areas\Admin\Controllers\DichVuController.cs" />
     <Compile Include="Areas\Admin\Controllers\HanhTrinhController.cs" />
     <Compile Include="Areas\Admin\Controllers\HinhAnhController.cs" />
@@ -152,22 +150,21 @@
     <Compile Include="Areas\Admin\Models\AccountModel.cs" />
     <Compile Include="Areas\Admin\Models\LoginModel.cs" />
     <Compile Include="Areas\Admin\Models\SignUpModel.cs" />
+    <Compile Include="Areas\Admin\Models\ViewTourModel.cs" />
     <Compile Include="Areas\Client\ClientAreaRegistration.cs" />
+    <Compile Include="Areas\Client\Code\Extensions.cs" />
     <Compile Include="Areas\Client\Controllers\DatTourController.cs" />
+    <Compile Include="Areas\Client\Controllers\DoSomeThingController.cs" />
     <Compile Include="Areas\Client\Models\ThongTinDatVe.cs" />
     <Compile Include="Areas\Client\Controllers\HomeController.cs" />
     <Compile Include="Areas\Client\Controllers\LoginController.cs" />
     <Compile Include="Areas\Client\Controllers\SignUpController.cs" />
     <Compile Include="Areas\Client\Models\AccountModel.cs" />
     <Compile Include="Areas\Client\Models\LoginModel.cs" />
+    <Compile Include="Areas\Client\Models\ViewDetailModel.cs" />
+    <Compile Include="Areas\Client\Models\ViewHomeModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ChiTietDichVu.cs">
-      <DependentUpon>HTQLDL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ChiTietHanhTrinh.cs">
-      <DependentUpon>HTQLDL.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ChucVu.cs">
       <DependentUpon>HTQLDL.tt</DependentUpon>
@@ -235,9 +232,11 @@
   <ItemGroup>
     <Content Include="Areas\Admin\Assets\AdminStyle.css" />
     <Content Include="Areas\Admin\styles\LoginStyle.css" />
-    <Content Include="Areas\Client\Assets\DatTourComponentStyle.css" />
+    <Content Include="Areas\Client\Assets\css\DatTourComponentStyle.css" />
+    <Content Include="Areas\Client\Assets\css\DetailTourStyle.css" />
     <Content Include="Areas\Client\Assets\img\check-mark.png" />
     <Content Include="Areas\Client\Assets\img\start.png" />
+    <Content Include="Areas\Client\Assets\js\main.js" />
     <Content Include="Assets\AdminPage\bootstrap\css\bootstrap.css" />
     <Content Include="Assets\AdminPage\bootstrap\css\bootstrap.min.css" />
     <Content Include="Assets\AdminPage\bootstrap\fonts\glyphicons-halflings-regular.svg" />
@@ -976,11 +975,6 @@
     <Content Include="Areas\Admin\Views\LoaiHinhAnh\Details.cshtml" />
     <Content Include="Areas\Admin\Views\LoaiHinhAnh\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\LoaiHinhAnh\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\HanhTrinh\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\HanhTrinh\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\HanhTrinh\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\HanhTrinh\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\HanhTrinh\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ChiTietHanhTrinh\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ChiTietHanhTrinh\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\ChiTietHanhTrinh\Details.cshtml" />
@@ -997,6 +991,13 @@
     <Content Include="Areas\Admin\Views\VeDatTour\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\VeDatTour\Index.cshtml" />
     <Content Include="Areas\Admin\Views\VeDatTour\VeChuaXacNhan.cshtml" />
+    <Content Include="Areas\Admin\Views\ChiTietDichVu\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ChiTietDichVu\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\ChiTietDichVu\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\ChiTietDichVu\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ChiTietDichVu\Index.cshtml" />
+    <Content Include="Areas\Client\Views\Home\DetailTour.cshtml" />
+    <Content Include="Areas\Client\Views\Shared\_TheSecondLayout.cshtml" />
     <EntityDeploy Include="Models\HTQLDL.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>HTQLDL.Designer.cs</LastGenOutput>
@@ -1004,21 +1005,21 @@
     <Content Include="Models\HTQLDL.edmx.diagram">
       <DependentUpon>HTQLDL.edmx</DependentUpon>
     </Content>
-    <Content Include="Areas\Admin\Views\DichVu\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\DichVu\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\DichVu\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\DichVu\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\DichVu\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\ChiTietDichVu\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\ChiTietDichVu\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\ChiTietDichVu\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\ChiTietDichVu\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\ChiTietDichVu\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Tour\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Tour\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Tour\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Tour\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Tour\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\HanhTrinh\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\HanhTrinh\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\HanhTrinh\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\HanhTrinh\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\HanhTrinh\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\DichVu\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\DichVu\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\DichVu\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\DichVu\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\DichVu\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\hoverIntent.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -1053,6 +1054,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Client\Views\DoSomeThing\" />
     <Folder Include="Areas\Client\Views\SignUp\" />
     <Folder Include="Controllers\" />
   </ItemGroup>

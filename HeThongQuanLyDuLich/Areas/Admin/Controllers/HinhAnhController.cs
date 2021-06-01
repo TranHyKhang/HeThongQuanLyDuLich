@@ -43,7 +43,7 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
         [Authorize]
         public ActionResult Create()
         {
-            ViewBag.IDTour = new SelectList(db.Tours, "IDTour", "tourName");
+            ViewBag.IDTour = db.Tours.ToList();
             ViewBag.IDLoaiHinhAnh = new SelectList(db.LoaiHinhAnhs, "IDLoaiHinhAnh", "loaiHinhAnh1");
             return View();
         }

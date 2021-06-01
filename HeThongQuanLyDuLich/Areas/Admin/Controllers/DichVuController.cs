@@ -109,7 +109,7 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            DichVu dichVu = db.DichVus.Find(id);
+            DichVu dichVu = db.DichVus.Include(a => a.Tours).FirstOrDefault(s => s.IDDichVu == id);
             db.DichVus.Remove(dichVu);
             db.SaveChanges();
             return RedirectToAction("Index");

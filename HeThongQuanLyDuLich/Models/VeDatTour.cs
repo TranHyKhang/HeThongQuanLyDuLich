@@ -14,6 +14,12 @@ namespace HeThongQuanLyDuLich.Models
     
     public partial class VeDatTour
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public VeDatTour()
+        {
+            this.Feedbacks = new HashSet<Feedback>();
+        }
+    
         public int IDVeDatTour { get; set; }
         public string hinhThucThanhToan { get; set; }
         public Nullable<bool> trangThaiVeDatTour { get; set; }
@@ -21,6 +27,8 @@ namespace HeThongQuanLyDuLich.Models
         public Nullable<int> IDKhachHang { get; set; }
         public Nullable<int> soLuongVeDatTour { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Feedback> Feedbacks { get; set; }
         public virtual KhachHang KhachHang { get; set; }
         public virtual Tour Tour { get; set; }
     }

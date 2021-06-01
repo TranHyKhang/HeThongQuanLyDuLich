@@ -5,9 +5,10 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Details Tour</h2>
+<h2>Details</h2>
 
 <div>
+    <h4>Tour</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -59,14 +60,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.HanhTrinh.tenHanhTrinh)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.HanhTrinh.tenHanhTrinh)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.KhachSan.tenKhachSan)
         </dt>
 
@@ -88,14 +81,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.LoaiTour.loaiTour1)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DichVu.tenDichVu)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DichVu.tenDichVu)
         </dd>
 
     </dl>

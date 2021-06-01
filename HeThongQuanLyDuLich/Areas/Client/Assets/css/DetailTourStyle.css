@@ -1,0 +1,224 @@
+﻿body {
+    padding: 0 !important
+}
+.wrap_img {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 30px
+}
+
+.wrap_img .col_img {
+    float: left;
+    background-color: #f6f6f6;
+    position: relative;
+    overflow: hidden;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.wrap_img .col_img img {
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0 !important;
+    border: none;
+}
+
+.wrap_img .col_img_1 {
+    width: 62.7%;
+    position: relative;
+    height: 390px;
+}
+
+.wrap_img .col_img_2 {
+    width: 36.5%;
+    height: 190px;
+    margin-left: .8%;
+}
+
+.wrap_img .col_img_3,
+.wrap_img .col_img_4 {
+    width: 17.85%;
+    height: 190px;
+    margin-left: .8%;
+    margin-top: .81%;
+}
+
+.wrap_img .col_img_4 .see_modalImg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .5);
+}
+
+.wrap_img .see_modalImg span {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    transform: translateY(-50%);
+    font-size: 14px;
+    font-weight: 800;
+    color: #fff
+}
+
+/*Modal*/
+.modal{
+    margin-top: 5rem !important
+}
+.fade.in {
+    display: block !important;
+    padding: 0 !important
+}
+
+.modal-header {
+    border-bottom: none !important
+}
+
+
+
+
+/*Carousel*/
+.carousel_img {
+    width: 100%;
+    height: 500px !important
+}
+
+.myCarousel {
+    position: relative
+}
+
+.wrap_carousel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0, 0.8);
+    z-index: 1000
+}
+
+
+/*Heade Component*/
+
+h3 {
+    margin: 0 !important
+}
+p {
+    margin: 0 !important
+}
+.headerComponent {
+    background-color: var(--blue-navy);
+    color: white;
+    padding: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding-left: 2rem;
+    display: flex;
+    align-items: center;
+
+}
+
+.wrapContentComponent {
+    border: 1px solid var(--blue-navy);
+    border-radius: 10px;
+    padding: 2rem
+}
+
+.dichVuContent {
+    display: flex;
+    flex-direction: row;
+    align-items: center
+}
+
+.hanhTrinhContent {
+    display: flex;
+    flex-direction: column 
+}
+
+.listDetailHanhTrinh {
+    display: none
+}
+
+.hanhTrinhTitle {
+    font-size: 2rem
+}
+
+.seeMoreDetail {
+    cursor: pointer;
+    color: var(--orange);
+    margin-left: 1rem
+}
+
+.ShowDetailHanhTrinh {
+    display: block;
+}
+
+.wrap-title-seeMore {
+    display: flex;
+    align-items: flex-end
+}
+
+
+
+
+/*Dat tour*/
+
+.wrap_datTourComponent {
+    background-color: white;
+    border: 1px solid var(--blue-navy);
+    height: 300px;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+}
+
+.wrap_datTourComponent.scrolled {
+    position: fixed;
+    top: 0;
+    width: 360px;
+}
+.wrapDatTourContent {
+    flex: 9
+}
+
+.lineInfo {
+    margin: 0 1rem;
+    border-bottom: 1px solid var(--blue-navy);
+    padding: 1rem
+}
+
+.btnDatTour {
+    background-color: var(--blue-navy);
+    padding: 1rem 2rem;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    font-weight: 700;
+    font-size: 2rem;
+    color: white;
+    align-self: center;
+    flex: 1;
+    justify-content: center;
+}
+
+.btnDatTour:hover {
+    background-color: var(--orange)
+}
+
+
+

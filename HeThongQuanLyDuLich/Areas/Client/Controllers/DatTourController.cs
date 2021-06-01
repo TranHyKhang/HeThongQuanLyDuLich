@@ -102,24 +102,6 @@ namespace HeThongQuanLyDuLich.Areas.Client.Controllers
             }
             return num;
         }
-        //Display images
-        public ActionResult RetrieveImage(int id)
-        {
-            byte[] cover = GetImageFromDataBase(id);
-            if (id != null)
-            {
-                return File(cover, "image/jpg");
-            }
-            else
-            {
-                return null;
-            }
-        }
-        public byte[] GetImageFromDataBase(int id)
-        {
-            var q = from temp in db.HinhAnhs where temp.IDHinhAnh == id select temp.imageUrl;
-            byte[] cover = q.First();
-            return cover;
-        }
+        
     }
 }

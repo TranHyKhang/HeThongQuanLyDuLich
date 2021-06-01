@@ -17,7 +17,6 @@ namespace HeThongQuanLyDuLich.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public KhachHang()
         {
-            this.Feedbacks = new HashSet<Feedback>();
             this.VeDatTours = new HashSet<VeDatTour>();
         }
     
@@ -28,8 +27,6 @@ namespace HeThongQuanLyDuLich.Models
         public string CMND { get; set; }
         public Nullable<int> IDTaiKhoan { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Feedback> Feedbacks { get; set; }
         public virtual TaiKhoan TaiKhoan { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VeDatTour> VeDatTours { get; set; }

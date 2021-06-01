@@ -12,6 +12,7 @@ namespace HeThongQuanLyDuLich.Areas.Client.Models
         public string DiaChi { get; set; }
         public string Cmnd { get; set; }
         public int SoLuongKhach { get; set; }
+        public string HinhThucThanhToan { get; set; }
         public  Tour Tour { get; set; }     
 
         

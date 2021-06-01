@@ -18,7 +18,6 @@ namespace HeThongQuanLyDuLich.Models
         public DichVu()
         {
             this.Tours = new HashSet<Tour>();
-            this.ChiTietDichVus = new HashSet<ChiTietDichVu>();
         }
     
         public int IDDichVu { get; set; }
@@ -27,7 +26,5 @@ namespace HeThongQuanLyDuLich.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tour> Tours { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietDichVu> ChiTietDichVus { get; set; }
     }
 }

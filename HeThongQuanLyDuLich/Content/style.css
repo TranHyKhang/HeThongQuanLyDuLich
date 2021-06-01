@@ -5,6 +5,11 @@
   font-weight: normal;
   font-style: normal;
 }
+
+:root {
+    --blue-navy: #1a3863;
+    --orange: #f26135
+}
 /* =======================================================
 *
 * 	Template Style 
@@ -73,7 +78,12 @@ figure {
 #fh5co-header {
   position: relative;
   margin-bottom: 0;
-  z-index: 9999999;
+  /*z-index: 9999999;*/
+}
+
+.header-custom {
+    background-color: #1a3863;
+    height: 89px !important
 }
 
 .fh5co-cover,
@@ -709,11 +719,11 @@ figure {
 }
 
 #footer {
-  float: left;
-  width: 100%;
-  clear: both;
-  background: #000;
-  padding: 60px 0 40px;
+    float: left;
+    width: 100%;
+    clear: both;
+    background: #000;
+    padding: 60px 0 40px;
 }
 #footer p {
   color: rgba(255, 255, 255, 0.7);
@@ -855,7 +865,7 @@ figure {
   display: -moz-inline-stack;
   display: inline-block;
   zoom: 1;
-  *display: inline;
+  /*display: inline;*/
   width: 30px;
   height: 2px;
   color: #fff;

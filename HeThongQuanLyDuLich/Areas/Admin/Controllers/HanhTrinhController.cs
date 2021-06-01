@@ -15,14 +15,12 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
         private HeThongQuanLyDuLichEntities db = new HeThongQuanLyDuLichEntities();
 
         // GET: Admin/HanhTrinh
-        [Authorize]
         public ActionResult Index()
         {
             return View(db.HanhTrinhs.ToList());
         }
 
         // GET: Admin/HanhTrinh/Details/5
-        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -38,7 +36,6 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
         }
 
         // GET: Admin/HanhTrinh/Create
-        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -49,7 +46,7 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IDHanhTrinh,tenHanhTrinh,diemKhoiHanh,diemKetThuc,thoiGianKhoiHanh,thoiGianKetThuc")] HanhTrinh hanhTrinh)
+        public ActionResult Create([Bind(Include = "IDHanhTrinh,tenHanhTrinh,diemKhoiHanh,diemKetThuc,thoiGianKhoiHanh,thoiGianKetThuc,moTaHanhTrinh")] HanhTrinh hanhTrinh)
         {
             if (ModelState.IsValid)
             {
@@ -62,7 +59,6 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
         }
 
         // GET: Admin/HanhTrinh/Edit/5
-        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -82,7 +78,7 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IDHanhTrinh,tenHanhTrinh,diemKhoiHanh,diemKetThuc,thoiGianKhoiHanh,thoiGianKetThuc")] HanhTrinh hanhTrinh)
+        public ActionResult Edit([Bind(Include = "IDHanhTrinh,tenHanhTrinh,diemKhoiHanh,diemKetThuc,thoiGianKhoiHanh,thoiGianKetThuc,moTaHanhTrinh")] HanhTrinh hanhTrinh)
         {
             if (ModelState.IsValid)
             {
@@ -94,7 +90,6 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
         }
 
         // GET: Admin/HanhTrinh/Delete/5
-        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
