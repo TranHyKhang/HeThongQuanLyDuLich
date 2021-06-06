@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="HeThongQuanLyDuLichModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="HeThongQuanLyDuLichModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ChucVu">
           <Key>
             <PropertyRef Name="IDChucVu" />
@@ -120,6 +120,7 @@
           <Property Name="email" Type="nvarchar" MaxLength="50" />
           <Property Name="matKhau" Type="nvarchar" MaxLength="50" />
           <Property Name="IDLoaiTaiKhoan" Type="int" />
+          <Property Name="avatar" Type="image" />
         </EntityType>
         <EntityType Name="Tour">
           <Key>
@@ -162,6 +163,7 @@
           <Property Name="IDTour" Type="int" />
           <Property Name="IDKhachHang" Type="int" />
           <Property Name="soLuongVeDatTour" Type="int" />
+          <Property Name="ngayDatVe" Type="datetime" />
         </EntityType>
         <Association Name="FK__KhachHang__IDTai__4316F928">
           <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="0..1" />
@@ -438,8 +440,7 @@
             <End Role="Tour_HanhTrinh" EntitySet="Tour_HanhTrinh" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="HeThongQuanLyDuLichModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -576,6 +577,7 @@
           <NavigationProperty Name="KhachHangs" Relationship="Self.FK__KhachHang__IDTai__4316F928" FromRole="TaiKhoan" ToRole="KhachHang" />
           <NavigationProperty Name="LoaiTaiKhoan" Relationship="Self.FK__TaiKhoan__IDLoai__3A81B327" FromRole="TaiKhoan" ToRole="LoaiTaiKhoan" />
           <NavigationProperty Name="NhanViens" Relationship="Self.FK__NhanVien__IDTaiK__403A8C7D" FromRole="TaiKhoan" ToRole="NhanVien" />
+          <Property Name="avatar" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="Tour">
           <Key>
@@ -612,6 +614,7 @@
           <NavigationProperty Name="Feedbacks" Relationship="Self.FK_Feedback_VeDatTour" FromRole="VeDatTour" ToRole="Feedback" />
           <NavigationProperty Name="KhachHang" Relationship="Self.FK__VeDatTour__IDKha__52593CB8" FromRole="VeDatTour" ToRole="KhachHang" />
           <NavigationProperty Name="Tour" Relationship="Self.FK__VeDatTour__IDTou__5165187F" FromRole="VeDatTour" ToRole="Tour" />
+          <Property Name="ngayDatVe" Type="DateTime" Precision="3" />
         </EntityType>
         <Association Name="FK__NhanVien__IDChuc__3F466844">
           <End Role="ChucVu" Type="Self.ChucVu" Multiplicity="0..1" />
@@ -966,6 +969,7 @@
           <EntitySetMapping Name="TaiKhoans">
             <EntityTypeMapping TypeName="HeThongQuanLyDuLichModel.TaiKhoan">
               <MappingFragment StoreEntitySet="TaiKhoan">
+                <ScalarProperty Name="avatar" ColumnName="avatar" />
                 <ScalarProperty Name="IDTaiKhoan" ColumnName="IDTaiKhoan" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="matKhau" ColumnName="matKhau" />
@@ -992,6 +996,7 @@
           <EntitySetMapping Name="VeDatTours">
             <EntityTypeMapping TypeName="HeThongQuanLyDuLichModel.VeDatTour">
               <MappingFragment StoreEntitySet="VeDatTour">
+                <ScalarProperty Name="ngayDatVe" ColumnName="ngayDatVe" />
                 <ScalarProperty Name="IDVeDatTour" ColumnName="IDVeDatTour" />
                 <ScalarProperty Name="hinhThucThanhToan" ColumnName="hinhThucThanhToan" />
                 <ScalarProperty Name="trangThaiVeDatTour" ColumnName="trangThaiVeDatTour" />

@@ -1,4 +1,4 @@
-﻿@model HeThongQuanLyDuLich.Areas.Client.Models.ThongTinDatVe
+﻿@model List<HeThongQuanLyDuLich.Areas.Client.Models.ThongTinDatVe>
 
 @{
     ViewBag.Title = "Dat Tour";
@@ -18,16 +18,16 @@
             <div class="row">
                 <div class="col col-12 col-md-6 col-lg-7 s_gutters">
                     <div class="formHienThiThongTinTour">
-                        <img src="/DoSomeThing/RetrieveImage/@Model.Tour.HinhAnhs.FirstOrDefault().IDHinhAnh" style="width: 100%; height: 300px; border-top-left-radius: 10px; border-top-right-radius: 10px" alt="Alternate Text" />
+                        <img src="/DoSomeThing/RetrieveImage/@Model.FirstOrDefault().Tour.HinhAnhs.FirstOrDefault().IDHinhAnh" style="width: 100%; height: 300px; border-top-left-radius: 10px; border-top-right-radius: 10px" alt="Alternate Text" />
                         <div class="wrapTourInfo">
                             <div class="wrapTourInfo-title">
-                                <h3>@Html.DisplayFor(model => model.Tour.tourName)</h3>
+                                <h3>@Html.DisplayFor(model => model.FirstOrDefault().Tour.tourName)</h3>
                                 <img src="~/Areas/Client/Assets/img/start.png" alt="Alternate Text" />
                             </div>
                             <div class="wrapTourInfo-content">
                                 <h3>Dịch vụ</h3>
                                 <ul>
-                                    @foreach (var x in Model.Tour.DichVus)
+                                    @foreach (var x in Model.FirstOrDefault().Tour.DichVus)
                                     {
                                         <li>
                                             <img style="width: 1.5rem; height: 1.5rem" src="~/Areas/Client/Assets/img/check-mark.png" alt="Alternate Text" />
@@ -44,11 +44,11 @@
                                 <h3 style="display: inline">Giá tham khảo</h3>
                                 @{
                                     int tienDichVu = 0;
-                                    foreach (var item in Model.Tour.DichVus)
+                                    foreach (var item in Model.FirstOrDefault().Tour.DichVus)
                                     {
                                         tienDichVu += int.Parse(item.giaDichVu.ToString());
                                     }
-                                    var tongTien = Model.Tour.gia + tienDichVu + Model.Tour.KhachSan.giaKhachSan - Model.Tour.KhuyenMai.giaTriKhuyenMai;
+                                    var tongTien = Model.FirstOrDefault().Tour.gia + tienDichVu + Model.FirstOrDefault().Tour.KhachSan.giaKhachSan - Model.FirstOrDefault().Tour.KhuyenMai.giaTriKhuyenMai;
                                 }
                                 <h3 id="temp" style="display: inline; color: #f26135">@tongTien VND/Người</h3>
 
@@ -67,61 +67,81 @@
                             {
                                 @Html.ValidationSummary(true, null, new { @class = "alert alert-danger" })
 
-                                <table>
-                                    <tr>
-                                        <td colspan="2" class="title" style="font-weight: 700; color: #f26135">THÔNG TIN ĐẶT VÉ</td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">(Vui lòng điền đầy đủ thông tin) <hr /></td>
-                                    </tr>
+                            <table>
+                                <tr>
+                                    <td colspan="2" class="title" style="font-weight: 700; color: #f26135">THÔNG TIN ĐẶT VÉ</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">(Vui lòng điền đầy đủ thông tin) <hr /></td>
+                                </tr>
+                                <tr class="textInput">
+                                    <td>@Html.Label("Số Lượng Khách:")</td>
+                                    @{ 
+                                        int sl = Model.Count();
+                                    }
+                                    <td>@Html.DisplayFor(model => sl)</td>
+                                </tr>
+                                @for(int i = 1; i <= Model.ToArray().Length; i ++)
+                                {
                                     <tr class="textInput">
-                                        <td>@Html.Label("Tên Khách Hàng:")</td>
-                                        <td>@Html.EditorFor(model => model.TenKH)</td>
+                                        <td>@Html.Label("Tên Khách Hàng " + i + ":")</td>
+                                        <td>@Html.EditorFor(model => model.ToArray()[i - 1].TenKH)</td>
                                     </tr>
                                     <tr class="textInput">
                                         <td>@Html.Label("Điện Thoại:")</td>
-                                        <td>@Html.EditorFor(model => model.SoDT)</td>
+                                        <td>@Html.EditorFor(model => model.ToArray()[i - 1].SoDT)</td>
                                     </tr>
                                     <tr class="textInput">
                                         <td>@Html.Label("Địa Chỉ:")</td>
-                                        <td>@Html.EditorFor(model => model.DiaChi)</td>
+                                        <td>@Html.EditorFor(model => model.ToArray()[i - 1].DiaChi)</td>
                                     </tr>
                                     <tr class="textInput">
                                         <td>@Html.Label("CMND:")</td>
-                                        <td>@Html.EditorFor(model => model.Cmnd)</td>
+                                        <td>@Html.EditorFor(model => model.ToArray()[i - 1].Cmnd)</td>
                                     </tr>
-                                    <tr class="textInput">
-                                        <td>@Html.Label("Số Lượng Khách:")</td>
-                                        <td>@Html.TextBoxFor(model => model.SoLuongKhach, new { @id = "soLuong", @onchange = "onChangeEvent();" })</td>
-                                    </tr>
-                                    <tr></tr>
                                     <tr>
-                                        <td>@Html.Label("Hình thức thanh toán")</td>
-                                        <td>
-                                            <p>@Html.RadioButtonFor(model => model.HinhThucThanhToan, "Tiền mặt") @Html.Label("Tiền mặt") </p>
-                                            <p> @Html.RadioButtonFor(model => model.HinhThucThanhToan, "Chuyển khoản") @Html.Label("Chuyển khoản")</p>
-                                        </td>
+                                        <td><br /></td>
+                                    </tr>
+                                }
 
-                                    </tr>
-                                    <tr>
-                                        <td>@Html.Label("Tổng tiền")</td>
-                                        <td style="color: #f26135">
-                                            <h3 id="totalMoney" class="totalMoney">0</h3>
-                                            <h3 class="totalMoney">VND</h3>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>@Html.TextBoxFor(model => model.Tour.IDTour, new { @class = "hidden" })</td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>
-                                            <div style="display: flex; justify-content: flex-end">
-                                                <input class="button-custom" type="submit" value="Đặt Vé" />
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </table>
+                                <tr></tr>
+                                <tr>
+                                    <td>@Html.Label("Hình thức thanh toán")</td>
+                                    <td>
+                                        <p>@Html.RadioButtonFor(model => model.ToArray()[0].HinhThucThanhToan, "Tiền mặt") @Html.Label("Tiền mặt") </p>
+                                        <p> @Html.RadioButtonFor(model => model.ToArray()[0].HinhThucThanhToan, "Chuyển khoản") @Html.Label("Chuyển khoản")</p>
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+                                    <td>@Html.Label("Tổng tiền")</td>
+                                    <td style="color: #f26135">
+                                        @{ 
+                                            int temp = 0;
+                                            foreach(var x in Model.ToArray()[0].Tour.DichVus)
+                                            {
+                                                temp += (int)x.giaDichVu;
+                                            }
+
+                                            var sum = (Model.ToArray()[0].Tour.gia + Model.ToArray()[0].Tour.KhachSan.giaKhachSan + temp - Model.ToArray()[0].Tour.KhuyenMai.giaTriKhuyenMai) * Model.Count();
+                                        }
+                                        <h3 id="totalMoney" class="totalMoney">@sum</h3>
+                                        <h3 class="totalMoney">VND</h3>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.TextBoxFor(model => model.ToArray()[0].Tour.IDTour, new { @class = "hidden" })</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <div style="display: flex; justify-content: flex-end">
+                                            <input class="button-custom" type="submit" value="Đặt Vé" />
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
 
                             }
                         </div>

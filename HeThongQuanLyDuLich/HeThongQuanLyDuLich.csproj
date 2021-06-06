@@ -53,6 +53,12 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System">
       <HintPath>..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.dll</HintPath>
     </Reference>
@@ -133,8 +139,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Code\ContentRepository.cs" />
-    <Compile Include="Areas\Admin\Code\SessionHelper.cs" />
-    <Compile Include="Areas\Admin\Code\UserSession.cs" />
+    <Compile Include="Areas\Admin\Controllers\VeDatTourController.cs" />
+    <Compile Include="Areas\Client\Code\SessionHelper.cs" />
+    <Compile Include="Areas\Client\Code\UserSession.cs" />
     <Compile Include="Areas\Admin\Controllers\DichVuController.cs" />
     <Compile Include="Areas\Admin\Controllers\HanhTrinhController.cs" />
     <Compile Include="Areas\Admin\Controllers\HinhAnhController.cs" />
@@ -146,7 +153,6 @@
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\SignUpController.cs" />
     <Compile Include="Areas\Admin\Controllers\TourController.cs" />
-    <Compile Include="Areas\Admin\Controllers\VeDatTourController.cs" />
     <Compile Include="Areas\Admin\Models\AccountModel.cs" />
     <Compile Include="Areas\Admin\Models\LoginModel.cs" />
     <Compile Include="Areas\Admin\Models\SignUpModel.cs" />
@@ -155,12 +161,15 @@
     <Compile Include="Areas\Client\Code\Extensions.cs" />
     <Compile Include="Areas\Client\Controllers\DatTourController.cs" />
     <Compile Include="Areas\Client\Controllers\DoSomeThingController.cs" />
+    <Compile Include="Areas\Client\Controllers\TraCuuVeDatTourController.cs" />
+    <Compile Include="Areas\Client\Models\SignUpModel.cs" />
     <Compile Include="Areas\Client\Models\ThongTinDatVe.cs" />
     <Compile Include="Areas\Client\Controllers\HomeController.cs" />
     <Compile Include="Areas\Client\Controllers\LoginController.cs" />
     <Compile Include="Areas\Client\Controllers\SignUpController.cs" />
     <Compile Include="Areas\Client\Models\AccountModel.cs" />
     <Compile Include="Areas\Client\Models\LoginModel.cs" />
+    <Compile Include="Areas\Client\Models\ViewDanhSachTourModel.cs" />
     <Compile Include="Areas\Client\Models\ViewDetailModel.cs" />
     <Compile Include="Areas\Client\Models\ViewHomeModel.cs" />
     <Compile Include="Global.asax.cs">
@@ -232,8 +241,10 @@
   <ItemGroup>
     <Content Include="Areas\Admin\Assets\AdminStyle.css" />
     <Content Include="Areas\Admin\styles\LoginStyle.css" />
+    <Content Include="Areas\Client\Assets\css\DanhSachTourStyle.css" />
     <Content Include="Areas\Client\Assets\css\DatTourComponentStyle.css" />
     <Content Include="Areas\Client\Assets\css\DetailTourStyle.css" />
+    <Content Include="Areas\Client\Assets\css\TraCuuVeDatTourStyle.css" />
     <Content Include="Areas\Client\Assets\img\check-mark.png" />
     <Content Include="Areas\Client\Assets\img\start.png" />
     <Content Include="Areas\Client\Assets\js\main.js" />
@@ -839,6 +850,7 @@
     <Content Include="Content\image\wp2004047-travelling-wallpapers.jpg" />
     <Content Include="Content\Login.css" />
     <Content Include="Content\LayoutStyle.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\superfish.css" />
     <Content Include="Content\trangchu.css" />
@@ -985,12 +997,6 @@
     <Content Include="Areas\Client\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Client\Views\DatTour\Index.cshtml" />
     <Content Include="Areas\Client\Views\Home\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\VeDatTour\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\VeDatTour\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\VeDatTour\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\VeDatTour\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\VeDatTour\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\VeDatTour\VeChuaXacNhan.cshtml" />
     <Content Include="Areas\Admin\Views\ChiTietDichVu\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ChiTietDichVu\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\ChiTietDichVu\Details.cshtml" />
@@ -1020,6 +1026,16 @@
     <Content Include="Areas\Admin\Views\DichVu\Details.cshtml" />
     <Content Include="Areas\Admin\Views\DichVu\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\DichVu\Index.cshtml" />
+    <Content Include="Areas\Client\Views\Home\DanhSachTour.cshtml" />
+    <Content Include="Areas\Client\Views\DatTour\SoLuongVeDatTour.cshtml" />
+    <Content Include="Areas\Client\Views\SignUp\Index.cshtml" />
+    <Content Include="Areas\Client\Views\TraCuuVeDatTour\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\VeDatTour\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\VeDatTour\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\VeDatTour\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\VeDatTour\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\VeDatTour\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\VeDatTour\VeChuaXacNhan.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\hoverIntent.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -1055,7 +1071,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Client\Views\DoSomeThing\" />
-    <Folder Include="Areas\Client\Views\SignUp\" />
     <Folder Include="Controllers\" />
   </ItemGroup>
   <ItemGroup>

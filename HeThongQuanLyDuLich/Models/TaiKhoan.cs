@@ -25,6 +25,7 @@ namespace HeThongQuanLyDuLich.Models
         public string email { get; set; }
         public string matKhau { get; set; }
         public Nullable<int> IDLoaiTaiKhoan { get; set; }
+        public byte[] avatar { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KhachHang> KhachHangs { get; set; }

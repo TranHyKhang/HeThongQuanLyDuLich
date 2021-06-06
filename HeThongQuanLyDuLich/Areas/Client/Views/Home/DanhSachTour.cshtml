@@ -1,0 +1,133 @@
+﻿@model HeThongQuanLyDuLich.Areas.Client.Models.ViewDanhSachTourModel
+@{
+    ViewBag.Title = "Danh sách tour";
+    Layout = "~/Areas/Client/Views/Shared/_TheSecondLayout.cshtml";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link href="~/Areas/Client/Assets/css/DanhSachTourStyle.css" rel="stylesheet" />
+
+
+</head>
+<body>
+    <div class="bodySection" style="background-color: white">
+        <div class="container mt-3">
+            <div class="row">
+                <div class="col col-12 col-md-12 col-lg-12 s_gutters">
+                    <div class="page-title headerComponent">
+                        <h3 class="title">Du lịch @Model.loaiTour.loaiTour1</h3>
+                    </div>
+                    <div style="text-align: justify">
+                        <span class="paragraph-bold">Du lịch @Model.loaiTour.loaiTour1</span>
+                        -
+                        <span class="paragraph-bold">@Model.loaiTour.loaiTour1</span>
+                        <span class="paragraph-normal">@Model.gioiThieuLoaiTour</span>
+                        <br />
+                        <br />
+                        <span class="paragraph-bold">Tour du lịch @Model.loaiTour.loaiTour1</span>
+                        <span class="paragraph-normal">
+                             khám phá trọn vẹn vẻ đẹp về thiên nhiên và con người của vùng đất @Model.loaiTour.loaiTour1 Việt Nam. Tin chắc rằng chuyến đi sẽ để lại cho du khách và gia đình những trải nghiệm thú vị và những kỷ niệm đẹp khó phai.
+                        </span>
+                    </div>
+
+                    <br />
+                    <hr />
+
+                    <div class="listTourContainer">
+                        <div class="listTourTitle">
+                            <h3 class="title">Du lịch @Model.loaiTour.loaiTour1 - Danh sách các tour du lịch @Model.loaiTour.loaiTour1 - Tour @Model.loaiTour.loaiTour1</h3>
+                        </div>
+
+                        <hr />
+
+                        <div class="listTourOptionBar">
+                            @using (Html.BeginForm("DanhSachTour", "Home", FormMethod.Get))
+                            {
+                                <input type="text" name="searchValue" />
+                                <input type="submit" value="Search" />
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col col-12 col-md-12 col-lg-12 s_gutters">
+                    <div class="listTourContent">
+
+                        @foreach (var item in Model.danhSachTour)
+                        {
+                            <div class="col-md-4 custom-col-md-3">
+                                <div class="tourItemContainer">
+                                    <div class="imgTour">
+                                        <a href="/Client/Home/DetailTour/@item.IDTour">
+                                            @{
+                                                string ngay1 = item.HanhTrinhs.Count() + "N";
+                                                string dem1 = (item.HanhTrinhs.Count() - 1) + "Đ";
+                                            }
+                                            <div class="overlayImg">
+                                                <span class="moTaTour">
+                                                    Combo @ngay1 @dem1 + Dịch vụ bao gồm: Vé máy bay khứ hồi
+                                                    @item.HanhTrinhs.FirstOrDefault().diemKhoiHanh - @item.HanhTrinhs.FirstOrDefault().diemKetThuc,
+                                                    bao gồm 7kg hành lý xách tay - @dem1  nghỉ dưỡng tại @item.KhachSan.tenKhachSan
+                                                </span>
+                                            </div>
+                                            <img class="imageTourItem" src="/Client/DoSomeThing/RetrieveImage/@item.HinhAnhs.FirstOrDefault().IDHinhAnh" alt="Alternate Text" />
+                                        </a>
+
+                                        <div class="fromWhere">
+                                            <span style="font-size: 1.5rem; color: white">TP Hồ Chí Minh</span>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="wrapTourItemTitle">
+                                        <span class="tourTitle">Combo du lịch @item.tourName - @item.KhachSan.tenKhachSan</span>
+                                    </div>
+
+                                    <div class="wrapTourItemContent">
+                                        @{
+                                            int ngay = item.HanhTrinhs.Count();
+                                            int dem = item.HanhTrinhs.Count() - 1;
+                                        }
+                                        <div class="wrapDetailTourItem">
+                                            <i class="glyphicon glyphicon-time"></i>
+                                            <span>@ngay Ngày @dem Đêm</span>
+                                        </div>
+                                        <div class="wrapDetailTourItem">
+                                            <i class="glyphicon glyphicon-calendar"></i>
+                                            @{
+                                                string[] dateTimeKhoiHanh = item.HanhTrinhs.ToArray()[0].thoiGianKhoiHanh.ToString().Split(' ');
+                                                string dateKhoiHanh = dateTimeKhoiHanh[0];
+                                                string[] dateTimeKetThuc = item.HanhTrinhs.ToArray()[item.HanhTrinhs.ToArray().Length - 1].thoiGianKetThuc.ToString().Split(' ');
+                                                string dateKetThuc = dateTimeKetThuc[0];
+                                            }
+                                            <span>@dateKhoiHanh - @dateKetThuc</span>
+                                            @{
+                                                int tongTienDichVu = 0;
+                                                foreach (var x in item.DichVus)
+                                                {
+                                                    tongTienDichVu += (int)x.giaDichVu;
+                                                }
+
+                                                var tongTien = item.gia + item.KhachSan.giaKhachSan - item.KhuyenMai.giaTriKhuyenMai + tongTienDichVu;
+                                            }
+                                            <span class="tourItemPrice">@tongTien VND</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -73,6 +73,15 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
                     tour.DichVus.Add(newArrDichVU[i]);
                 }
             }
+
+            foreach (var hanhTrinh in db.HanhTrinhs)
+            {
+                if (hanhTrinh.tenHanhTrinh == tour.tourName)
+                {
+                    tour.HanhTrinhs.Add(hanhTrinh);
+                }
+            }
+
             if (ModelState.IsValid)
             {
                 db.Tours.Add(tour);
@@ -111,6 +120,13 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "IDTour,tourName,tourDescription,soLuongKhachToiDa,soLuongKhachHienTai,tinhTrangTour,IDKhachSan,IDKhuyenMai,gia,IDLoaiTour")] Tour tour)
         {
+            foreach (var hanhTrinh in db.HanhTrinhs)
+            {
+                if (hanhTrinh.tenHanhTrinh == tour.tourName)
+                {
+                    tour.HanhTrinhs.Add(hanhTrinh);
+                }
+            }
             if (ModelState.IsValid)
             {
                 db.Entry(tour).State = System.Data.Entity.EntityState.Modified;

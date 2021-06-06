@@ -13,9 +13,6 @@ namespace HeThongQuanLyDuLich.Areas.Client.Models
         public string Cmnd { get; set; }
         public int SoLuongKhach { get; set; }
         public string HinhThucThanhToan { get; set; }
-        public  Tour Tour { get; set; }     
-
-        
-
+        public  Tour Tour { get; set; }
     }
 }

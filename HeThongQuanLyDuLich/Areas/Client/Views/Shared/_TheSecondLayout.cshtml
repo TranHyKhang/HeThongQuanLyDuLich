@@ -1,4 +1,4 @@
-﻿
+﻿@using HeThongQuanLyDuLich.Areas.Client.Code;
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 
@@ -41,7 +41,7 @@
                     <div class="container">
                         <div class="nav-header">
                             <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
-                            <h1 id="fh5co-logo"><a href="index.html">TRAVEL</a></h1>
+                            <h1 id="fh5co-logo"><a href="/Client">TRAVEL</a></h1>
                             <!-- START #fh5co-menu-wrap -->
                             <nav id="fh5co-menu-wrap" role="navigation">
                                 <ul class="sf-menu" id="fh5co-primary-menu">
@@ -55,11 +55,24 @@
                                         <a href="#">Đánh Giá</a>
                                     </li>
                                     <li>
-                                        <a href="#" class="fh5co-sub-ddown sf-with-ul">Đăng Nhập</a>
-                                        <ul class="fh5co-sub-menu " style="display:none;">
-                                            <li><a href="#" target="_blank">Thông tin cá nhân</a></li>
-                                            <li><a href="#" target="_blank">Đăng Xuất</a></li>
-                                        </ul>
+                                        @{
+                                            var a = HttpContext.Current.Session["LoginSession"] as UserSession;
+                                            if (a != null)
+                                            {
+                                                <a href="#" class="fh5co-sub-ddown sf-with-ul">@a.UserName</a>
+                                                <ul class="fh5co-sub-menu " style="display:none;">
+                                                    <li><a href="#">Thông tin cá nhân</a></li>
+                                                    <li><a href="/Client/TraCuuVeDatTour">Lịch sử đặt vé</a></li>
+                                                    <li><a href="/Client/Login/SignOut">Đăng Xuất</a></li>
+                                                </ul>
+                                            }
+                                            else
+                                            {
+                                                <a href="/Client/Login" class="fh5co-sub-ddown">Đăng nhập</a>
+                                               
+                                            }
+                                        }
+                                       
                                     </li>
 
                                 </ul>

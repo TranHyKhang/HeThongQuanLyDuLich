@@ -1,7 +1,5 @@
-﻿@model HeThongQuanLyDuLich.Areas.Client.Models.LoginModel
-@{ 
-    Layout = null;
-}
+﻿@model HeThongQuanLyDuLich.Areas.Client.Models.SignUpModel
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -23,31 +21,27 @@
             <div class="row justify-content-center">
                 <div class="col-md-6 col-lg-4">
                     <div class="login-wrap p-0">
-                        <h3 class="mb-4 text-center">Have an account?</h3>
+                        <h3 class="mb-4 text-center">Create Account</h3>
                         @using (Html.BeginForm())
                         {
                             @Html.AntiForgeryToken()
-                            @Html.ValidationSummary(true, null, new { @class="alert alert-danger"})
+                            @Html.ValidationSummary(true, null, new { @class = "alert alert-danger" })
                             <div class="form-group">
-                                @Html.TextBoxFor(model => model.UserName, new { @class= "form-control", @placeholder = "Username", @autofocus="autofocus"  })
+                                @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", @placeholder = "Username", @autofocus = "autofocus" })
                             </div>
                             <div class="form-group">
-                                @Html.TextBoxFor(model => model.UserPassword, new { @class = "form-control", @placeholder = "Password", @type="password"})
+                                @Html.TextBoxFor(model => model.Password, new { @class = "form-control", @placeholder = "Password", @type = "password" })
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="form-control btn btn-primary submit px-3">Sign In</button>
+                                @Html.TextBoxFor(model => model.ConfirmPassword, new { @class = "form-control", @placeholder = "Nhập lại mật khẩu", @type = "password" })
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="form-control btn btn-primary submit px-3">Sign Up</button>
                             </div>
                             <div class="form-group d-md-flex">
-                                @*<div class="w-50">
-                                    <label class="checkbox-wrap checkbox-primary">
-                                        Remember Me
-                                        @Html.CheckBoxFor(model => model.RememberMe)
-                                        <input type="checkbox" checked>
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>*@
+
                                 <div class="w-50 text-md-right">
-                                    <a href="/Admin/SignUp" style="color: #fff">Sign Up</a>
+                                    <a href="/Admin/Login" style="color: #fff">Sign In</a>
                                 </div>
                             </div>
                         }

@@ -26,7 +26,6 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
             var veDatTours = db.VeDatTours.Include(v => v.KhachHang).Include(v => v.Tour).Where(s => s.trangThaiVeDatTour == false);
             return View(veDatTours.ToList());
         }
-
         // GET: Admin/VeDatTour/Details/5
         public ActionResult Details(int? id)
         {
@@ -55,7 +54,7 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IDVeDatTour,hinhThucThanhToan,trangThaiVeDatTour,IDTour,IDKhachHang,soLuongVeDatTour")] VeDatTour veDatTour)
+        public ActionResult Create([Bind(Include = "IDVeDatTour,hinhThucThanhToan,trangThaiVeDatTour,IDTour,IDKhachHang,soLuongVeDatTour,ngayDatVe")] VeDatTour veDatTour)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +90,7 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IDVeDatTour,hinhThucThanhToan,trangThaiVeDatTour,IDTour,IDKhachHang,soLuongVeDatTour")] VeDatTour veDatTour)
+        public ActionResult Edit([Bind(Include = "IDVeDatTour,hinhThucThanhToan,trangThaiVeDatTour,IDTour,IDKhachHang,soLuongVeDatTour,ngayDatVe")] VeDatTour veDatTour)
         {
             if (ModelState.IsValid)
             {
@@ -125,9 +124,6 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             VeDatTour veDatTour = db.VeDatTours.Find(id);
-            Tour tour = db.Tours.Where(s => s.IDTour == veDatTour.IDTour).FirstOrDefault();
-            tour.soLuongKhachHienTai -= veDatTour.soLuongVeDatTour;
-            db.Entry(tour).State = System.Data.Entity.EntityState.Modified;
             db.VeDatTours.Remove(veDatTour);
             db.SaveChanges();
             return RedirectToAction("Index");
