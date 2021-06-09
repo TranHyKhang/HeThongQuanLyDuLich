@@ -67,3 +67,8 @@ p {
     background-color: #f26135 !important; 
     color: white
 }
+
+
+.validateString {
+    font-weight: 700
+}
