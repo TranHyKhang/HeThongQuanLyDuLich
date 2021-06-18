@@ -8,19 +8,34 @@ using System.Web;
 using System.Web.Mvc;
 using HeThongQuanLyDuLich.Areas.Admin.Code;
 using HeThongQuanLyDuLich.Models;
+using PagedList;
+using PagedList.Mvc;
 
 namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
 {
     public class HinhAnhController : Controller
     {
         private HeThongQuanLyDuLichEntities db = new HeThongQuanLyDuLichEntities();
+        Random rnd = new Random();
 
         // GET: Admin/HinhAnh
         [Authorize]
-        public ActionResult Index()
+        public ActionResult Index(int? page, string searchValue)
         {
-            var hinhAnhs = db.HinhAnhs.Include(h => h.Tour).Include(h => h.LoaiHinhAnh);
-            return View(hinhAnhs.ToList());
+            List<HinhAnh> dsHinhAnh = new List<HinhAnh>();
+
+            if (searchValue == null)
+            {
+                dsHinhAnh = db.HinhAnhs.Include(h => h.Tour).Include(h => h.LoaiHinhAnh).ToList();
+            } else
+            {
+                string[] temp = searchValue.Split('+');
+                string a = string.Join(" ", temp).ToLower();
+                dsHinhAnh = db.HinhAnhs.Include(h => h.Tour).Include(h => h.LoaiHinhAnh).Where(s => s.Tour.tourName.ToLower().Contains(a)).ToList();
+            }
+            int pageSize = 8;
+            int pageNum = (page ?? 1);
+            return View(dsHinhAnh.ToPagedList(pageNum, pageSize));
         }
 
         // GET: Admin/HinhAnh/Details/5
@@ -32,6 +47,7 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             HinhAnh hinhAnh = db.HinhAnhs.Find(id);
+            Console.WriteLine(hinhAnh);
             if (hinhAnh == null)
             {
                 return HttpNotFound();
@@ -53,8 +69,9 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IDHinhAnh,imageUrl,IDTour,IDLoaiHinhAnh")] HinhAnh hinhAnh)
+        public ActionResult Create([Bind(Include = "imageUrl,IDTour,IDLoaiHinhAnh")] HinhAnh hinhAnh)
         {
+            hinhAnh.IDHinhAnh = RandomHinhAnhID();
             HttpPostedFileBase file = Request.Files["ImageData"];
             ContentRepository service = new ContentRepository();
             int i = service.UploadImageInDatabase(file, hinhAnh);
@@ -93,6 +110,11 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "IDHinhAnh,imageUrl,IDTour,IDLoaiHinhAnh")] HinhAnh hinhAnh)
         {
+
+            HttpPostedFileBase file = Request.Files["ImageData"];
+            ContentRepository service = new ContentRepository();
+            byte[] img = service.ConvertToBytes(file);
+            hinhAnh.imageUrl = img;
             if (ModelState.IsValid)
             {
                 db.Entry(hinhAnh).State = System.Data.Entity.EntityState.Modified;
@@ -150,6 +172,19 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
             var q = from temp in db.HinhAnhs where temp.IDHinhAnh == id select temp.imageUrl;
             byte[] cover = q.First();
             return cover;
+        }
+
+        public int RandomHinhAnhID()
+        {
+            int num = rnd.Next(1, 10000);
+            foreach (var x in db.HinhAnhs)
+            {
+                if (x.IDHinhAnh == num)
+                {
+                    RandomHinhAnhID();
+                }
+            }
+            return num;
         }
 
         protected override void Dispose(bool disposing)

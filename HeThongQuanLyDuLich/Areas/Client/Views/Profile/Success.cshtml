@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Dat Tour";
+    Layout = "~/Areas/Client/Views/Shared/_TheSecondLayout.cshtml";
+}
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="~/Areas/Client/Assets/css/DatTourComponentStyle.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="bodySection" style="background-color: white">
+        <div class="container mt-3">
+            <div class="row">
+                <div class="col col-12 col-md-6 col-lg-12 s_gutters">
+                    <div style="display: flex; flex-direction: column ;align-items: center; justify-content: center; padding: 4rem">
+                        <div style="width: 200px; height: 200px; overflow: hidden; display: flex; justify-content: center; border-radius: 100px">
+                            <img src="~/Areas/Client/Assets/img/success-removebg-preview.png" alt="Alternate Text" width="250px" height="auto" style="object-fit: cover" />
+                        </div>
+                        <div style="display: flex; flex-direction: column; align-items: center; margin-top: 1.5rem">
+                            <span style="font-size: 3rem; font-weight: 700; color: var(--orange) ">Cập nhật thông tin thành công</span>
+                            @*<span>Chúng tôi đã gửi mail cho bạn.</span>
+                                <span>Xin cám ơn quý khách đã tin tưởng đồng hành cùng chúng tôi.</span>*@
+                        </div>
+                        <div style="margin-top: 1.7rem">
+                            <a href="/Client" class="button-custom" style="background-color: var(--blue-navy)">Về trang chủ</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+</html>

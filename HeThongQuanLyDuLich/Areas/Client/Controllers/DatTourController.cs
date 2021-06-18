@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.IO;
 
 namespace HeThongQuanLyDuLich.Areas.Client.Controllers
 {
@@ -134,9 +135,7 @@ namespace HeThongQuanLyDuLich.Areas.Client.Controllers
             Tour tour = db.Tours.Where(s => s.IDTour == idTour).FirstOrDefault();
             thongTinDatVe.FirstOrDefault().Tour = tour;
             var userName = SessionHelper.GetSession();
-
             int? idTaiKhoan = null;
-
             if (userName != null)
             {
                 foreach (var x in db.TaiKhoans)
@@ -156,10 +155,20 @@ namespace HeThongQuanLyDuLich.Areas.Client.Controllers
                     khachHang = kh1;
                 }
             }
-            
+
             tour.soLuongKhachHienTai = tour.soLuongKhachHienTai + thongTinDatVe.Count();
             db.Entry(tour).State = System.Data.Entity.EntityState.Modified;
 
+
+            //Tinh tong tien
+            int tongTienDichVu = 0;
+            foreach(var x in db.DichVus)
+            {
+                tongTienDichVu += (int)x.giaDichVu;
+            }
+            int tongTien = (int)tour.gia + tongTienDichVu + (int)tour.KhachSan.giaKhachSan - (int)tour.KhuyenMai.giaTriKhuyenMai;
+
+            int tong = tongTien;
             if (idTaiKhoan != null)
             {
                 VeDatTour veDatTourOfMember = new VeDatTour()
@@ -185,7 +194,7 @@ namespace HeThongQuanLyDuLich.Areas.Client.Controllers
                         CMND = thongTinDatVe.ToArray()[i].Cmnd,
                         IDTaiKhoan = null
                     };
-                    
+
                     VeDatTour veDatTour = new VeDatTour()
                     {
                         IDVeDatTour = kh.IDKhachHang + 1,
@@ -197,48 +206,70 @@ namespace HeThongQuanLyDuLich.Areas.Client.Controllers
                         ngayDatVe = DateTime.Now
 
                     };
+                    tong += tongTien;
                     db.VeDatTours.Add(veDatTour);
                     db.KhachHangs.Add(kh);
                 }
             }
             else
             {
-                foreach (var x in thongTinDatVe)
-                {
-                    KhachHang kh = new KhachHang()
-                    {
-                        IDKhachHang = RandomIDKhachHang(),
-                        hoTenKhachHang = x.TenKH,
-                        sdtKhachHang = x.SoDT,
-                        diaChi = x.DiaChi,
-                        CMND = x.Cmnd,
-                        IDTaiKhoan = null
-                    };
-                    
-                    VeDatTour veDatTour = new VeDatTour()
-                    {
-                        IDVeDatTour = kh.IDKhachHang + 1,
-                        hinhThucThanhToan = thongTinDatVe.FirstOrDefault().HinhThucThanhToan,
-                        trangThaiVeDatTour = false,
-                        IDTour = thongTinDatVe.FirstOrDefault().Tour.IDTour,
-                        IDKhachHang = kh.IDKhachHang,
-                        soLuongVeDatTour = kh.IDKhachHang,
-                        ngayDatVe = DateTime.Now
+                //foreach (var x in thongTinDatVe)
+                //{
+                //    KhachHang kh = new KhachHang()
+                //    {
+                //        IDKhachHang = RandomIDKhachHang(),
+                //        hoTenKhachHang = x.TenKH,
+                //        sdtKhachHang = x.SoDT,
+                //        diaChi = x.DiaChi,
+                //        CMND = x.Cmnd,
+                //        IDTaiKhoan = null
+                //    };
 
-                    };
-                    db.KhachHangs.Add(kh);
-                    db.VeDatTours.Add(veDatTour);
-                }
+                //    VeDatTour veDatTour = new VeDatTour()
+                //    {
+                //        IDVeDatTour = kh.IDKhachHang + 1,
+                //        hinhThucThanhToan = thongTinDatVe.FirstOrDefault().HinhThucThanhToan,
+                //        trangThaiVeDatTour = false,
+                //        IDTour = thongTinDatVe.FirstOrDefault().Tour.IDTour,
+                //        IDKhachHang = kh.IDKhachHang,
+                //        soLuongVeDatTour = kh.IDKhachHang,
+                //        ngayDatVe = DateTime.Now
+
+                //    };
+                //    db.KhachHangs.Add(kh);
+                //    db.VeDatTours.Add(veDatTour);
+                //}
+                return RedirectToAction("Index", "Login");
             }
-            
-            if(ModelState.IsValid)
+
+            if (ModelState.IsValid)
             {
                 db.SaveChanges();
 
-                return RedirectToAction("Index", "Home");
+                //Send mail
+                DateTime date;
+                DateTime dateTime = DateTime.Now;
+                date = dateTime.AddDays(3);
+
+                string content = System.IO.File.ReadAllText(Server.MapPath("~/Areas/Client/template/neworder.html"));
+                content = content.Replace("{{IDVeDatTour}}", tour.IDTour.ToString());
+                content = content.Replace("{{TenKhachHang}}", khachHang.hoTenKhachHang);
+                content = content.Replace("{{Email}}", userName.UserName);
+                content = content.Replace("{{SDT}}", khachHang.sdtKhachHang);
+                content = content.Replace("{{DiaChi}}", khachHang.diaChi);
+                content = content.Replace("{{ThoiHanThanhToan}}", date.ToString());
+                content = content.Replace("{{TongTien}}", tong.ToString());
+                new MailHelper().SendMail(userName.UserName, "Vé đặt tour", content);
+
+                return RedirectToAction("PostVeDatTourSuccess", "DatTour");
             }
             return View("Index", thongTinDatVe);
 
+        }
+
+        public ActionResult PostVeDatTourSuccess()
+        {
+            return View();
         }
 
         public int RandomIDKhachHang()
@@ -268,7 +299,6 @@ namespace HeThongQuanLyDuLich.Areas.Client.Controllers
            
             return num;
         }
-
-
+        
     }
 }

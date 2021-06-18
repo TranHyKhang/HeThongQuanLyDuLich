@@ -39,11 +39,135 @@
                 </div>
             </div>
         </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col col-12 col-md-12 col-lg-12 s_gutters" style="padding: 0 !important ">
+                    <div class="listTourContent">
+                        <div>
+                            <h3 style=" color: white">Tour miền Bắc nổi bật</h3>
+                        </div>
+                        @foreach (var item in Model.DsTourMienBac)
+                        {
+                            <div class="col-md-3 custom-col-md-3" style="padding: 0 !important">
+                                <div class="tourItemContainer">
+                                    <div class="imgTour">
+                                        <a href="/Client/Home/DetailTour/@item.IDTour">
+                                            @{
+                                                string ngay1 = item.HanhTrinhs.Count() + "N";
+                                                string dem1 = (item.HanhTrinhs.Count() - 1) + "Đ";
+                                            }
+                                            <div class="overlayImg" style="display: flex; align-items: center; justify-content: center">
+                                                <span class="moTaTour">
+                                                    Xem chi tiết
+                                                </span>
+                                            </div>
+                                            <img class="imageTourItem" src="/Client/DoSomeThing/RetrieveImage/@item.HinhAnhs.FirstOrDefault().IDHinhAnh" alt="Alternate Text" />
+                                        </a>
+
+                                        <div class="fromWhere">
+                                            <span style="font-size: 1.5rem; color: white">TP Hồ Chí Minh</span>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="wrapTourItemTitle">
+                                        <span class="tourTitle">Combo du lịch @item.tourName - @item.KhachSan.tenKhachSan</span>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col col-12 col-md-12 col-lg-12 s_gutters" style="padding: 0 !important ">
+                    <div class="listTourContent">
+                        <div>
+                            <h3 style=" color: white">Tour miền Trung nổi bật</h3>
+                        </div>
+                        @foreach (var item in Model.DsTourMienTrung)
+                        {
+                            <div class="col-md-3 custom-col-md-3" style="padding: 0 !important">
+                                <div class="tourItemContainer">
+                                    <div class="imgTour">
+                                        <a href="/Client/Home/DetailTour/@item.IDTour">
+                                            @{
+                                                string ngay1 = item.HanhTrinhs.Count() + "N";
+                                                string dem1 = (item.HanhTrinhs.Count() - 1) + "Đ";
+                                            }
+                                            <div class="overlayImg" style="display: flex; align-items: center; justify-content: center">
+                                                <span class="moTaTour">
+                                                    Xem chi tiết
+                                                </span>
+                                            </div>
+                                            <img class="imageTourItem" src="/Client/DoSomeThing/RetrieveImage/@item.HinhAnhs.FirstOrDefault().IDHinhAnh" alt="Alternate Text" />
+                                        </a>
+
+                                        <div class="fromWhere">
+                                            <span style="font-size: 1.5rem; color: white">TP Hồ Chí Minh</span>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="wrapTourItemTitle">
+                                        <span class="tourTitle">Combo du lịch @item.tourName - @item.KhachSan.tenKhachSan</span>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col col-12 col-md-12 col-lg-12 s_gutters" style="padding: 0 !important ">
+                    <div class="listTourContent">
+                        <div>
+                            <h3 style=" color: white">Tour miền Nam nổi bật</h3>
+                        </div>
+                        @foreach (var item in Model.DsTourMienNam)
+                        {
+                            <div class="col-md-3 custom-col-md-3" style="padding: 0 !important">
+                                <div class="tourItemContainer">
+                                    <div class="imgTour">
+                                        <a href="/Client/Home/DetailTour/@item.IDTour">
+                                            @{
+                                                string ngay1 = item.HanhTrinhs.Count() + "N";
+                                                string dem1 = (item.HanhTrinhs.Count() - 1) + "Đ";
+                                            }
+                                            <div class="overlayImg" style="display: flex; align-items: center; justify-content: center">
+                                                <span class="moTaTour">
+                                                    Xem chi tiết
+                                                </span>
+                                            </div>
+                                            <img class="imageTourItem" src="/Client/DoSomeThing/RetrieveImage/@item.HinhAnhs.FirstOrDefault().IDHinhAnh" alt="Alternate Text" />
+                                        </a>
+
+                                        <div class="fromWhere">
+                                            <span style="font-size: 1.5rem; color: white">TP Hồ Chí Minh</span>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="wrapTourItemTitle">
+                                        <span class="tourTitle">Combo du lịch @item.tourName - @item.KhachSan.tenKhachSan</span>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
         <div class="fh5co-section">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 fh5co-news">
-                        <h3>Tin Tức</h3>
+                        <h3 style="color: white">Tin Tức</h3>
                         <ul>
                             <li>
                                 <a href="https://www.vntrip.vn/cam-nang/kinh-nghiem-du-lich-phu-quoc-170">

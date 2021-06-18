@@ -13,14 +13,17 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
     public class DichVuController : Controller
     {
         private HeThongQuanLyDuLichEntities db = new HeThongQuanLyDuLichEntities();
+        Random rnd = new Random();
 
         // GET: Admin/DichVu
+        [Authorize]
         public ActionResult Index()
         {
             return View(db.DichVus.ToList());
         }
 
         // GET: Admin/DichVu/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,6 +39,7 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
         }
 
         // GET: Admin/DichVu/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -46,8 +50,10 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IDDichVu,tenDichVu,giaDichVu")] DichVu dichVu)
+        public ActionResult Create([Bind(Include = "tenDichVu,giaDichVu")] DichVu dichVu)
         {
+            dichVu.IDDichVu = RandomDichVuID();
+
             if (ModelState.IsValid)
             {
                 db.DichVus.Add(dichVu);
@@ -59,6 +65,7 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
         }
 
         // GET: Admin/DichVu/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -90,6 +97,7 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
         }
 
         // GET: Admin/DichVu/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -113,6 +121,19 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
             db.DichVus.Remove(dichVu);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public int RandomDichVuID()
+        {
+            int num = rnd.Next(1, 10000);
+            foreach (var x in db.DichVus)
+            {
+                if (x.IDDichVu == num)
+                {
+                    RandomDichVuID();
+                }
+            }
+            return num;
         }
 
         protected override void Dispose(bool disposing)

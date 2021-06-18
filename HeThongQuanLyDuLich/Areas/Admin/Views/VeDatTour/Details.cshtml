@@ -5,12 +5,39 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Chi tiết vé đặt tour</h2>
 
 <div>
-    <h4>VeDatTour</h4>
     <hr />
     <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IDVeDatTour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDVeDatTour)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.KhachHang.hoTenKhachHang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KhachHang.hoTenKhachHang)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Tour.tourName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tour.tourName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ngayDatVe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngayDatVe)
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.hinhThucThanhToan)
         </dt>
@@ -35,33 +62,20 @@
             @Html.DisplayFor(model => model.soLuongVeDatTour)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ngayDatVe)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ngayDatVe)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.KhachHang.hoTenKhachHang)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.KhachHang.hoTenKhachHang)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Tour.tourName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Tour.tourName)
-        </dd>
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IDVeDatTour }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<button class="btn btn-warning my-button">
+    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.IDVeDatTour }, new { @class = "my-class" })
+</button>
+<button class="btn btn-danger my-button">
+    @Html.ActionLink("Xóa", "Delete", new { id = Model.IDVeDatTour }, new { @class = "my-class" })
+</button>
+<span>
+    |
+    @Html.ActionLink("Quay về", "Index")
+</span>

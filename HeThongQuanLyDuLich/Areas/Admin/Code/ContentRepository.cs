@@ -32,6 +32,7 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Code
                 return 0;
             }
         }
+        
 
         public byte[] ConvertToBytes(HttpPostedFileBase image)
         {

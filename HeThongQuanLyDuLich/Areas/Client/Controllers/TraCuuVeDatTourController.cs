@@ -52,7 +52,11 @@ namespace HeThongQuanLyDuLich.Areas.Client.Controllers
         public ActionResult HuyVeDatTour(int id)
         {
             VeDatTour veDatTour = db.VeDatTours.Find(id);
+            Tour tour = db.Tours.Where(s => s.IDTour == veDatTour.IDTour).FirstOrDefault();
+            tour.soLuongKhachHienTai = tour.soLuongKhachHienTai - 1;
             db.VeDatTours.Remove(veDatTour);
+            db.Entry(tour).State = System.Data.Entity.EntityState.Modified;
+
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -11,6 +11,7 @@ namespace HeThongQuanLyDuLich.Areas.Client.Controllers
     public class SignUpController : Controller
     {
         HeThongQuanLyDuLichEntities database = new HeThongQuanLyDuLichEntities();
+        Random rnd = new Random();
         // GET: Admin/SignUp
         [AllowAnonymous]
         [HttpGet]
@@ -21,7 +22,6 @@ namespace HeThongQuanLyDuLich.Areas.Client.Controllers
 
         public int RandomID()
         {
-            Random rnd = new Random();
             int num = rnd.Next(1, 1000000);
             foreach (var acc in database.TaiKhoans)
             {
@@ -36,6 +36,10 @@ namespace HeThongQuanLyDuLich.Areas.Client.Controllers
         public bool CheckUserName(TaiKhoan tk)
         {
             bool rs = true;
+            if(tk.email == null)
+            {
+                return false;
+            }
             foreach (var acc in database.TaiKhoans)
             {
                 if (acc.email == tk.email)
@@ -48,7 +52,7 @@ namespace HeThongQuanLyDuLich.Areas.Client.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index([Bind(Include = "IDTaiKhoan, UserName, Password, ConfirmPassword, IDLoaiTaiKhoan")]SignUpModel model)
+        public ActionResult Index([Bind(Include = "IDTaiKhoan, UserName, Password, ConfirmPassword, IDLoaiTaiKhoan, IDKhachHang, HoTenKhachHang, SDT, DiaChi, CMND")]SignUpModel model)
         {
 
             TaiKhoan tk = new TaiKhoan()
@@ -58,11 +62,24 @@ namespace HeThongQuanLyDuLich.Areas.Client.Controllers
                 matKhau = model.Password,
                 IDLoaiTaiKhoan = 2
             };
+
+            KhachHang kh = new KhachHang()
+            {
+                IDKhachHang = tk.IDTaiKhoan + 1,
+                hoTenKhachHang = model.HoTenKhachHang,
+                sdtKhachHang = model.SDT,
+                diaChi = model.DiaChi,
+                CMND = model.CMND,
+                IDTaiKhoan = tk.IDTaiKhoan
+            };
+
             if (CheckUserName(tk) == true)
             {
                 if (model.ConfirmPassword == tk.matKhau)
                 {
                     new AccountModel().SignUp(tk);
+                    database.KhachHangs.Add(kh);
+                    database.SaveChanges();
                     return RedirectToAction("Index", "Login");
                 }
                 else
@@ -72,7 +89,7 @@ namespace HeThongQuanLyDuLich.Areas.Client.Controllers
             }
             else
             {
-                ModelState.AddModelError("", "Tên tài khoản đã tồn tại");
+                ModelState.AddModelError("", "Tên tài khoản đã tồn tại hoặc không hợp lệ");
             }
             return View(model);
 

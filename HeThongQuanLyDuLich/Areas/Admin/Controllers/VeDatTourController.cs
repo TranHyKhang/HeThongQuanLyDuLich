@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using HeThongQuanLyDuLich.Models;
+using PagedList;
+using PagedList.Mvc;
 
 namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
 {
@@ -15,18 +17,37 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
         private HeThongQuanLyDuLichEntities db = new HeThongQuanLyDuLichEntities();
 
         // GET: Admin/VeDatTour
-        public ActionResult Index()
+        [Authorize]
+        public ActionResult Index(string searchValue, int? page)
         {
-            var veDatTours = db.VeDatTours.Include(v => v.KhachHang).Include(v => v.Tour).Where(s => s.trangThaiVeDatTour == true);
-            return View(veDatTours.ToList());
+
+            int pageSize = 8;
+            int pageNum = (page ?? 1);
+            if (searchValue != null)
+            {
+                string[] temp = searchValue.Split('+');
+                string a = string.Join(" ", temp).ToLower();
+                return View(db.VeDatTours.Include(v => v.KhachHang).Include(v => v.Tour).ToList().Where(s => s.trangThaiVeDatTour == true).Where(s => s.KhachHang.hoTenKhachHang.ToLower().Contains(a)).ToPagedList(pageNum, pageSize));
+            }
+            return View(db.VeDatTours.Include(v => v.KhachHang).Include(v => v.Tour).ToList().Where(s => s.trangThaiVeDatTour == true).ToPagedList(pageNum, pageSize));
         }
 
-        public ActionResult VeChuaXacNhan()
+        [Authorize]
+        public ActionResult VeChuaXacNhan(string searchValue, int? page)
         {
-            var veDatTours = db.VeDatTours.Include(v => v.KhachHang).Include(v => v.Tour).Where(s => s.trangThaiVeDatTour == false);
-            return View(veDatTours.ToList());
+
+            int pageSize = 8;
+            int pageNum = (page ?? 1);
+            if (searchValue != null)
+            {
+                string[] temp = searchValue.Split('+');
+                string a = string.Join(" ", temp).ToLower();
+                return View(db.VeDatTours.Include(v => v.KhachHang).Include(v => v.Tour).ToList().Where(s => s.trangThaiVeDatTour == false).Where(s => s.KhachHang.hoTenKhachHang.ToLower().Contains(a)).ToPagedList(pageNum, pageSize));
+            }
+            return View(db.VeDatTours.Include(v => v.KhachHang).Include(v => v.Tour).ToList().Where(s => s.trangThaiVeDatTour == false).ToPagedList(pageNum, pageSize));
         }
         // GET: Admin/VeDatTour/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -42,6 +63,7 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
         }
 
         // GET: Admin/VeDatTour/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.IDKhachHang = new SelectList(db.KhachHangs, "IDKhachHang", "hoTenKhachHang");
@@ -69,6 +91,7 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
         }
 
         // GET: Admin/VeDatTour/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -104,6 +127,7 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
         }
 
         // GET: Admin/VeDatTour/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)

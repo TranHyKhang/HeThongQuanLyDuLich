@@ -139,7 +139,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Code\ContentRepository.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProfileController.cs" />
     <Compile Include="Areas\Admin\Controllers\VeDatTourController.cs" />
+    <Compile Include="Areas\Admin\Models\ViewDanhSachVeDatTourModel.cs" />
+    <Compile Include="Areas\Admin\Models\ViewProfileModel.cs" />
+    <Compile Include="Areas\Client\Code\ContentRepository.cs" />
+    <Compile Include="Areas\Client\Code\MailHelper.cs" />
     <Compile Include="Areas\Client\Code\SessionHelper.cs" />
     <Compile Include="Areas\Client\Code\UserSession.cs" />
     <Compile Include="Areas\Admin\Controllers\DichVuController.cs" />
@@ -161,7 +166,9 @@
     <Compile Include="Areas\Client\Code\Extensions.cs" />
     <Compile Include="Areas\Client\Controllers\DatTourController.cs" />
     <Compile Include="Areas\Client\Controllers\DoSomeThingController.cs" />
+    <Compile Include="Areas\Client\Controllers\ProfileController.cs" />
     <Compile Include="Areas\Client\Controllers\TraCuuVeDatTourController.cs" />
+    <Compile Include="Areas\Client\Models\ProfileModel.cs" />
     <Compile Include="Areas\Client\Models\SignUpModel.cs" />
     <Compile Include="Areas\Client\Models\ThongTinDatVe.cs" />
     <Compile Include="Areas\Client\Controllers\HomeController.cs" />
@@ -172,6 +179,7 @@
     <Compile Include="Areas\Client\Models\ViewDanhSachTourModel.cs" />
     <Compile Include="Areas\Client\Models\ViewDetailModel.cs" />
     <Compile Include="Areas\Client\Models\ViewHomeModel.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -240,14 +248,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Assets\AdminStyle.css" />
+    <Content Include="Areas\Admin\Assets\DanhSachKhachHangStyle.css" />
     <Content Include="Areas\Admin\styles\LoginStyle.css" />
     <Content Include="Areas\Client\Assets\css\DanhSachTourStyle.css" />
     <Content Include="Areas\Client\Assets\css\DatTourComponentStyle.css" />
     <Content Include="Areas\Client\Assets\css\DetailTourStyle.css" />
+    <Content Include="Areas\Client\Assets\css\HomeStyle.css" />
+    <Content Include="Areas\Client\Assets\css\ProfileStyle.css" />
     <Content Include="Areas\Client\Assets\css\TraCuuVeDatTourStyle.css" />
     <Content Include="Areas\Client\Assets\img\check-mark.png" />
+    <Content Include="Areas\Client\Assets\img\defaultAvatar.jpg" />
+    <Content Include="Areas\Client\Assets\img\email.jpg" />
     <Content Include="Areas\Client\Assets\img\start.png" />
+    <Content Include="Areas\Client\Assets\img\success-removebg-preview.png" />
     <Content Include="Areas\Client\Assets\js\main.js" />
+    <Content Include="Areas\Client\template\neworder.html" />
     <Content Include="Assets\AdminPage\bootstrap\css\bootstrap.css" />
     <Content Include="Assets\AdminPage\bootstrap\css\bootstrap.min.css" />
     <Content Include="Assets\AdminPage\bootstrap\fonts\glyphicons-halflings-regular.svg" />
@@ -1036,6 +1051,14 @@
     <Content Include="Areas\Admin\Views\VeDatTour\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\VeDatTour\Index.cshtml" />
     <Content Include="Areas\Admin\Views\VeDatTour\VeChuaXacNhan.cshtml" />
+    <Content Include="Areas\Client\Views\DatTour\PostVeDatTourSuccess.cshtml" />
+    <Content Include="Areas\Client\Views\Profile\Index.cshtml" />
+    <Content Include="Areas\Client\Views\Profile\ThayDoiThongTin.cshtml" />
+    <Content Include="Areas\Client\Views\Profile\Success.cshtml" />
+    <Content Include="Areas\Admin\Views\Profile\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Profile\ThayDoiThongTin.cshtml" />
+    <Content Include="Areas\Admin\Views\Profile\Success.cshtml" />
+    <Content Include="Areas\Admin\Views\Tour\DanhSachKhachHang.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\hoverIntent.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -1070,8 +1093,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Client\Views\Account\" />
     <Folder Include="Areas\Client\Views\DoSomeThing\" />
-    <Folder Include="Controllers\" />
+    <Folder Include="Views\Home\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

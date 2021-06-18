@@ -6,9 +6,11 @@
 }
 
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<h2>Danh sách khách sạn</h2>
+
+<button class="btn btn-danger my-button">
+    @Html.ActionLink("Thêm mới", "Create", null, new { @class = "my-class" })
+</button>
 <table class="table">
     <tr>
         <th>
@@ -23,23 +25,24 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.tenKhachSan)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.moTaKhachSan)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.giaKhachSan)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IDKhachSan }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IDKhachSan }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IDKhachSan })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.tenKhachSan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.moTaKhachSan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.giaKhachSan)
+            </td>
+            <td>
+                <button class="btn btn-info my-button">
+                    @Html.ActionLink("Chi tiết", "Details", new { id = item.IDKhachSan }, new { @class = "my-class" })
+                </button>
+            </td>
+        </tr>
+    }
 
 </table>

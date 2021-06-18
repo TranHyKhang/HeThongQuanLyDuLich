@@ -12,6 +12,8 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Models
 
         public Tour Tour { get; set; }
         
+        public List<DichVu> listDichVu { get; set; }
+
         public bool[] dsDichVuDuoChon { get; set; }
     }
 }

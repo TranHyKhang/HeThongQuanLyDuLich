@@ -10,5 +10,9 @@ namespace HeThongQuanLyDuLich.Areas.Client.Models
     {
         public List<Tour> Tours { get; set; }
         public List<LoaiTour> LoaiTours { get; set; }
+        public List<Tour> DsTourMienBac { get; set; }
+        public List<Tour> DsTourMienTrung { get; set; }
+        public List<Tour> DsTourMienNam { get; set; }
+
     }
 }

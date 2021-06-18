@@ -11,6 +11,7 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
     public class SignUpController : Controller
     {
         HeThongQuanLyDuLichEntities database = new HeThongQuanLyDuLichEntities();
+        Random rnd = new Random();
         // GET: Admin/SignUp
         [AllowAnonymous]
         [HttpGet]
@@ -48,7 +49,7 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
         }
 
         [HttpPost] 
-        public ActionResult Index([Bind(Include ="IDTaiKhoan, UserName, Password, ConfirmPassword, IDLoaiTaiKhoan")]SignUpModel model)
+        public ActionResult Index([Bind(Include = "IDTaiKhoan, UserName, Password, ConfirmPassword, IDLoaiTaiKhoan, IDNhanVien, HoTenNhanVien, SDT, DiaChi, CMND")]SignUpModel model)
         {
             
             TaiKhoan tk = new TaiKhoan()
@@ -58,11 +59,24 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
                 matKhau = model.Password,
                 IDLoaiTaiKhoan = 1
             };
+
+            NhanVien nv = new NhanVien()
+            {
+                IDNhanVien = tk.IDTaiKhoan + 1,
+                hoTenNhanVien = model.HoTenNhanVien,
+                sdtNhanVien = model.SDT,
+                diaChi = model.DiaChi,
+                CMND = model.CMND,
+                IDChucVu = 1,
+                IDTaiKhoan = tk.IDTaiKhoan
+            };
             if (CheckUserName(tk) == true)
             {
                 if(model.ConfirmPassword == tk.matKhau)
                 {
                     new AccountModel().SignUp(tk);
+                    database.NhanViens.Add(nv);
+                    database.SaveChanges();
                     return RedirectToAction("Index", "Login");
                 }
                 else
