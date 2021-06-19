@@ -136,3 +136,21 @@ form {
     border-top-right-radius: 10px;
     transition: height 0.1s linear, padding 0.1s linear
 }
+
+/*.testAnimateClass {
+    animation-name: item-loading;
+    animation-duration: 1s;
+    z-index: 1000
+}*/
+
+@keyframes item-loading {
+    0% {
+        transform: scale(0);
+        opacity: 0
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1
+    }
+}

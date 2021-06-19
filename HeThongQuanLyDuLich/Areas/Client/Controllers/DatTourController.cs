@@ -213,32 +213,6 @@ namespace HeThongQuanLyDuLich.Areas.Client.Controllers
             }
             else
             {
-                //foreach (var x in thongTinDatVe)
-                //{
-                //    KhachHang kh = new KhachHang()
-                //    {
-                //        IDKhachHang = RandomIDKhachHang(),
-                //        hoTenKhachHang = x.TenKH,
-                //        sdtKhachHang = x.SoDT,
-                //        diaChi = x.DiaChi,
-                //        CMND = x.Cmnd,
-                //        IDTaiKhoan = null
-                //    };
-
-                //    VeDatTour veDatTour = new VeDatTour()
-                //    {
-                //        IDVeDatTour = kh.IDKhachHang + 1,
-                //        hinhThucThanhToan = thongTinDatVe.FirstOrDefault().HinhThucThanhToan,
-                //        trangThaiVeDatTour = false,
-                //        IDTour = thongTinDatVe.FirstOrDefault().Tour.IDTour,
-                //        IDKhachHang = kh.IDKhachHang,
-                //        soLuongVeDatTour = kh.IDKhachHang,
-                //        ngayDatVe = DateTime.Now
-
-                //    };
-                //    db.KhachHangs.Add(kh);
-                //    db.VeDatTours.Add(veDatTour);
-                //}
                 return RedirectToAction("Index", "Login");
             }
 
@@ -251,16 +225,19 @@ namespace HeThongQuanLyDuLich.Areas.Client.Controllers
                 DateTime dateTime = DateTime.Now;
                 date = dateTime.AddDays(3);
 
-                string content = System.IO.File.ReadAllText(Server.MapPath("~/Areas/Client/template/neworder.html"));
-                content = content.Replace("{{IDVeDatTour}}", tour.IDTour.ToString());
-                content = content.Replace("{{TenKhachHang}}", khachHang.hoTenKhachHang);
-                content = content.Replace("{{Email}}", userName.UserName);
-                content = content.Replace("{{SDT}}", khachHang.sdtKhachHang);
-                content = content.Replace("{{DiaChi}}", khachHang.diaChi);
-                content = content.Replace("{{ThoiHanThanhToan}}", date.ToString());
-                content = content.Replace("{{TongTien}}", tong.ToString());
-                new MailHelper().SendMail(userName.UserName, "Vé đặt tour", content);
-
+                if(khachHang.IDTaiKhoan != null)
+                {
+                    string content = System.IO.File.ReadAllText(Server.MapPath("~/Areas/Client/template/neworder.html"));
+                    content = content.Replace("{{IDVeDatTour}}", tour.IDTour.ToString());
+                    content = content.Replace("{{TenKhachHang}}", khachHang.hoTenKhachHang);
+                    content = content.Replace("{{Email}}", userName.UserName);
+                    content = content.Replace("{{SDT}}", khachHang.sdtKhachHang);
+                    content = content.Replace("{{DiaChi}}", khachHang.diaChi);
+                    content = content.Replace("{{ThoiHanThanhToan}}", date.ToString());
+                    content = content.Replace("{{TongTien}}", tong.ToString());
+                    new MailHelper().SendMail(userName.UserName, "Vé đặt tour", content);
+                }
+                
                 return RedirectToAction("PostVeDatTourSuccess", "DatTour");
             }
             return View("Index", thongTinDatVe);

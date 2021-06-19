@@ -50,9 +50,21 @@
             @Html.DisplayNameFor(model => model.trangThaiVeDatTour)
         </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.trangThaiVeDatTour)
-        </dd>
+        @{
+            if (Model.trangThaiVeDatTour == true)
+            {
+                <dd>
+                    Đã xác nhận
+                </dd>
+            }
+            else
+            {
+                <dd>
+                    Chưa xác nhận
+                </dd>
+            }
+        }
+
 
         <dt>
             @Html.DisplayNameFor(model => model.soLuongVeDatTour)
@@ -69,6 +81,21 @@
 
     </dl>
 </div>
+
+@{
+    if (Model.trangThaiVeDatTour == false)
+    {
+        <button class="btn btn-success my-button">
+            @Html.ActionLink("Xác nhận vé", "XacNhanVeDatTour", new { id = Model.IDVeDatTour }, new { @class = "my-class" })
+        </button>
+    }
+    else
+    {
+        <button class="btn btn-success my-button" disabled>
+            @Html.ActionLink("Xác nhận vé", "XacNhanVeDatTour", new { id = Model.IDVeDatTour }, new { @class = "my-class" })
+        </button>
+    }
+}
 <button class="btn btn-warning my-button">
     @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.IDVeDatTour }, new { @class = "my-class" })
 </button>

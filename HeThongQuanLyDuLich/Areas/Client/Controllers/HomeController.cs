@@ -118,7 +118,17 @@ namespace HeThongQuanLyDuLich.Areas.Client.Controllers
                 }
             } else
             {
-                dsTour = db.Tours.ToList();
+                if (searchValue != null)
+                {
+                    string[] temp = searchValue.Split('+');
+                    string a = string.Join(" ", temp).ToLower();
+                    dsTour = db.Tours.Where(s => s.tourName.ToLower().Contains(a)).ToList();
+
+                }
+                else
+                {
+                    dsTour = db.Tours.ToList();
+                }
                 loaiTour = new LoaiTour()
                 {
                     IDLoaiTour = 0,

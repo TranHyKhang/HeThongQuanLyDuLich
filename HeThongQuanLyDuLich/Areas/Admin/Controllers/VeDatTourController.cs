@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using HeThongQuanLyDuLich.Areas.Client.Code;
 using HeThongQuanLyDuLich.Models;
 using PagedList;
 using PagedList.Mvc;
@@ -148,8 +149,40 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             VeDatTour veDatTour = db.VeDatTours.Find(id);
+            Tour tour = db.Tours.Where(s => s.IDTour == veDatTour.IDTour).FirstOrDefault();
+            tour.soLuongKhachHienTai = tour.soLuongKhachHienTai - 1;
+            db.Entry(tour).State = System.Data.Entity.EntityState.Modified;
             db.VeDatTours.Remove(veDatTour);
             db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult XacNhanVeDatTour(int id)
+        {
+            VeDatTour veDatTour = null;
+            foreach(var x in db.VeDatTours)
+            {
+                if(x.IDVeDatTour ==  id)
+                {
+                    veDatTour = x;
+                }
+            }
+
+            veDatTour.trangThaiVeDatTour = true;
+            db.Entry(veDatTour).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+
+            if(veDatTour.KhachHang.IDTaiKhoan != null)
+            {
+                string content = System.IO.File.ReadAllText(Server.MapPath("~/Areas/Client/template/OrderSuccess.html"));
+                content = content.Replace("{{IDVeDatTour}}", veDatTour.IDVeDatTour.ToString());
+                content = content.Replace("{{TenKhachHang}}", veDatTour.KhachHang.hoTenKhachHang);
+                content = content.Replace("{{Email}}", veDatTour.KhachHang.TaiKhoan.email);
+                content = content.Replace("{{SDT}}", veDatTour.KhachHang.sdtKhachHang);
+                content = content.Replace("{{DiaChi}}", veDatTour.KhachHang.diaChi);
+                new MailHelper().SendMail(veDatTour.KhachHang.TaiKhoan.email, "Xác nhận vé đặt tour", content);
+            }
+            
             return RedirectToAction("Index");
         }
 
