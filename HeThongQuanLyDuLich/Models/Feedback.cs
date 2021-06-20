@@ -16,10 +16,9 @@ namespace HeThongQuanLyDuLich.Models
     {
         public int IDFeedback { get; set; }
         public string noiDung { get; set; }
-        public Nullable<int> IDKhachHang { get; set; }
-        public Nullable<int> IDTour { get; set; }
+        public Nullable<int> IDVeDatTour { get; set; }
+        public Nullable<System.DateTime> ngayFeedback { get; set; }
     
-        public virtual KhachHang KhachHang { get; set; }
-        public virtual Tour Tour { get; set; }
+        public virtual VeDatTour VeDatTour { get; set; }
     }
 }

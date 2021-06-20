@@ -5,7 +5,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Details Tour</h2>
+<h2>Chi tiết tour</h2>
 
 <div>
     <hr />
@@ -59,14 +59,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.HanhTrinh.tenHanhTrinh)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.HanhTrinh.tenHanhTrinh)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.KhachSan.tenKhachSan)
         </dt>
 
@@ -90,17 +82,18 @@
             @Html.DisplayFor(model => model.LoaiTour.loaiTour1)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DichVu.tenDichVu)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DichVu.tenDichVu)
-        </dd>
-
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IDTour }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<button class="btn btn-success my-button">
+    @Html.ActionLink("Danh sách khách hàng", "DanhSachKhachHang", new { id = Model.IDTour }, new { @class = "my-class" })
+</button>
+<button class="btn btn-warning my-button">
+    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.IDTour }, new { @class = "my-class" })
+</button>
+<button class="btn btn-danger my-button">
+    @Html.ActionLink("Xóa", "Delete", new { id = Model.IDTour }, new { @class = "my-class" })
+</button>
+<span>
+    |
+    @Html.ActionLink("Quay về", "Index")
+</span>

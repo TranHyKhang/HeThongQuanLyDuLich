@@ -1,0 +1,61 @@
+﻿
+:root {
+    --blue-navy: #1a3863;
+    --orange: #f26135
+}
+
+/*left column*/
+.wrapLeftComponent {
+    display: flex;
+    align-items: center;
+    flex-direction: column
+}
+
+.wrapBtn {
+    margin-top: 2rem
+}
+
+.btnEditProfile {
+    margin-top: 1rem;
+    background-color: var(--blue-navy);
+    padding: 1rem;
+    border-radius: 10px;
+    color:white;
+    transition: background-color 0.1s linear
+}
+
+.btnEditProfile:hover {
+    background-color: var(--orange);
+    color: white
+}
+
+/*Right column*/
+.wrapContentItem {
+    display: flex;
+    flex: 1;
+    margin: 2rem 0;
+}
+
+.labelInfo {
+    font-size: 2rem;
+    font-weight: 500;
+    width: 20%
+}
+
+.contentInfo {
+    font-size: 2rem;
+    font-weight: 700;
+    flex-grow: 1;
+    max-width: none !important;
+}
+
+.wrapBtnItem {
+    display: flex;
+    justify-content: flex-end
+}
+
+.notification {
+    margin-left: 20%
+}
+
+/*Upload photo*/

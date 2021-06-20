@@ -1,0 +1,76 @@
+﻿@model HeThongQuanLyDuLich.Areas.Client.Models.ViewThayDoiMatKhauModel
+@{
+    ViewBag.Title = "ThayDoiMatKhau";
+    Layout = "~/Areas/Client/Views/Shared/_TheSecondLayout.cshtml";
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style>
+        .wrapItemInput {
+            display: flex;
+            margin: 1rem 0
+        }
+        .itemLabel {
+            flex: 2
+        }
+        .wrapInput {
+            display: flex;
+            flex: 8
+        }
+        .itemInput {
+            flex: 1
+        }
+
+        .btn-custom {
+
+        }
+
+            .btn-custom:hover {
+                background-color: #00ad00 !important
+            }
+    </style>
+</head>
+<body>
+    <div class="bodySection" style="background-color: white; padding: 4rem 0; height: 53%">
+        <div class="container">
+
+            <div class="row">
+                <h2>Thay đổi mật khẩu</h2>
+                @Html.ValidationMessage("ResetPasswordError", new { @class="text-danger"})
+                @using (Html.BeginForm("PostThayDoiMatKhau", "Profile", FormMethod.Post))
+                {
+                    @Html.ValidationMessageFor(model => model.MatKhauCu, null, new { @class = "text-danger" })
+                    <div class="wrapItemInput">
+                        @Html.Label("Mật khẩu cũ", new { @class = "itemLabel" })
+                        <div class="wrapInput">
+                            @Html.TextBoxFor(model => model.MatKhauCu, new { @class = "itemInput" })
+
+                        </div>
+                    </div>
+                    @Html.ValidationMessageFor(model => model.MatKhauMoi, null, new { @class = "text-danger" })
+                    <div class="wrapItemInput">
+                        @Html.Label("Nhập mật khẩu mới", new { @class = "itemLabel" })
+                        <div class="wrapInput">
+                            @Html.TextBoxFor(model => model.MatKhauMoi, new { @class = "itemInput" })
+
+                        </div>
+                    </div>
+                    @Html.ValidationMessageFor(model => model.XacNhanMatKhauMoi, null, new { @class = "text-danger" })
+                    <div class="wrapItemInput">
+                        @Html.Label("Nhập lại mật khẩu", new { @class = "itemLabel" })
+                        <div class="wrapInput">
+                            @Html.TextBoxFor(model => model.XacNhanMatKhauMoi, new { @class = "itemInput" })
+
+                        </div>
+                    </div>
+
+                    <div>
+                        <button class="btn btn-success btn-custom" type="submit">Lưu</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</body>
+</html>

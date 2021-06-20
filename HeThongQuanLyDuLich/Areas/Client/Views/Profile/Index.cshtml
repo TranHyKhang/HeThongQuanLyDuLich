@@ -1,0 +1,79 @@
+﻿@model HeThongQuanLyDuLich.Areas.Client.Models.ProfileModel
+@{
+    ViewBag.Title = "Dat Tour";
+    Layout = "~/Areas/Client/Views/Shared/_TheSecondLayout.cshtml";
+}
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="~/Areas/Client/Assets/css/ProfileStyle.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="bodySection" style="background-color: white; padding: 3rem 0">
+        <div class="container mt-3">
+            <div class="row">
+                <div class="col col-12 col-md-6 col-lg-4 s_gutters">
+                    <div class="wrapLeftComponent">
+                        @{
+                            if(Model.TaiKhoan.avatar != null)
+                            {
+                                <img src="/DoSomeThing/RetrieveUserImage/@Model.TaiKhoan.IDTaiKhoan" style="object-fit: cover; width: 80%; height: auto; border-radius: 1000px"/>
+                            } else
+                            {
+
+                                <img src="~/Areas/Client/Assets/img/defaultAvatar.jpg" style="object-fit: cover; width: 80%; height: auto; border-radius: 1000px"/>
+                            }
+                        }
+                        <hr />
+                        <div class="wrapBtn">
+                            <a href="/Client/Profile/ThayDoiThongTin" class="btnEditProfile">Thay đổi thông tin</a>
+                            <a href="/Client/Profile/ThayDoiMatKhau/@Model.TaiKhoan.IDTaiKhoan" class="btnEditProfile">Thay đổi mật khẩu</a>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col col-12 col-md-6 col-lg-8 s_gutters">
+                    <h3 style="font-weight: 700">Thông tin cá nhân</h3>
+                    <hr />
+                    <div>
+                        @Html.Label("Họ tên: ", new { @class = "labelInfo" })
+                        <span class="contentInfo">
+                            @Html.DisplayFor(model => model.KhachHang.hoTenKhachHang)
+                        </span>
+                    </div>
+                    <div>
+                        @Html.Label("Số điện thoại: ", new { @class = "labelInfo" })
+                        <span class="contentInfo">
+                            @Html.DisplayFor(model => model.KhachHang.sdtKhachHang)
+                        </span>
+                    </div>
+                    <div>
+                        @Html.Label("Địa chỉ: ", new { @class = "labelInfo" })
+                        <span class="contentInfo">
+                            @Html.DisplayFor(model => model.KhachHang.diaChi)
+                        </span>
+                    </div>
+                    <div>
+                        @Html.Label("CMND: ", new { @class = "labelInfo" })
+                        <span class="contentInfo">
+                            @Html.DisplayFor(model => model.KhachHang.CMND)
+                        </span>
+                    </div>
+                    <div>
+                        @Html.Label("Email: ", new { @class = "labelInfo" })
+                        <span class="contentInfo">
+                            @Html.DisplayFor(model => model.TaiKhoan.email)
+                        </span>
+                    </div>
+                   
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+</html>
+

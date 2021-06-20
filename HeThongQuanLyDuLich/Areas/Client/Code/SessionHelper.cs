@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace HeThongQuanLyDuLich.Areas.Admin.Code
+namespace HeThongQuanLyDuLich.Areas.Client.Code
 {
     public class SessionHelper
     {

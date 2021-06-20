@@ -1,0 +1,87 @@
+﻿@model HeThongQuanLyDuLich.Areas.Client.Models.SignUpModel
+
+@{ 
+    Layout = null;
+}
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Login 10</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Areas/Admin/styles/LoginStyle.css">
+
+    <style>
+        .danger-text {
+            font-weight:700
+        }
+    </style>
+</head>
+<body class="img js-fullheight" style="background-image: url(../../../../Content/image/bg.jpg);">
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center mb-2">
+                    <h2 class="heading-section" style="font-weight: 700">Travel</h2>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-4">
+                    <div class="login-wrap p-0">
+                        <h3 class="mb-4 text-center">Create Account</h3>
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, null, new { @class = "alert alert-danger" })
+                            <div class="form-group">
+                                @Html.ValidationMessageFor(model => model.UserName, "", new { @class="text-danger danger-text"})
+                                @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", @placeholder = "Email", @autofocus = "autofocus" })
+                            </div>
+                            <div class="form-group">
+                                @Html.ValidationMessageFor(model => model.HoTenKhachHang, "", new { @class = "text-danger danger-text" })
+                                @Html.TextBoxFor(model => model.HoTenKhachHang, new { @class = "form-control", @placeholder = "Họ tên" })
+                            </div>
+                            <div class="form-group">
+                                @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger danger-text" })
+                                @Html.TextBoxFor(model => model.SDT, new { @class = "form-control", @placeholder = "Số điện thoại" })
+                            </div>
+                            <div class="form-group">
+                                @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger danger-text" })
+                                @Html.TextBoxFor(model => model.DiaChi, new { @class = "form-control", @placeholder = "Địa chỉ" })
+                            </div>
+                            <div class="form-group">
+                                @Html.ValidationMessageFor(model => model.CMND, "", new { @class = "text-danger danger-text" })
+                                @Html.TextBoxFor(model => model.CMND, new { @class = "form-control", @placeholder = "Chứng minh thư" })
+                            </div>
+                            <div class="form-group">
+                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger danger-text" })
+                                @Html.TextBoxFor(model => model.Password, new { @class = "form-control", @placeholder = "Mật khẩu", @type = "password" })
+                            </div>
+                            <div class="form-group">
+                                @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger danger-text" })
+                                @Html.TextBoxFor(model => model.ConfirmPassword, new { @class = "form-control", @placeholder = "Nhập lại mật khẩu", @type = "password" })
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="form-control btn btn-primary submit px-3">Sign Up</button>
+                            </div>
+                            <div class="form-group d-md-flex" style="justify-content: center">
+
+                                <div class="w-50 text-md-center">
+                                    <a href="/Client/Login" style="color: #fff">Sign In</a>
+                                </div>
+                            </div>
+                        }
+                        <p class="w-100 text-center">&mdash; Or Sign In With &mdash;</p>
+                        <div class="social d-flex text-center">
+                            <a href="#" class="px-2 py-2 mr-md-1 rounded"><span class="ion-logo-facebook mr-2"></span> Facebook</a>
+                            <a href="#" class="px-2 py-2 ml-md-1 rounded"><span class="ion-logo-twitter mr-2"></span> Twitter</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

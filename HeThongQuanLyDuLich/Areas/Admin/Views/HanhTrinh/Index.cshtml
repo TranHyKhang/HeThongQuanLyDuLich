@@ -1,33 +1,35 @@
-﻿@model IEnumerable<HeThongQuanLyDuLich.Models.HanhTrinh>
+﻿@using PagedList.Mvc;
+@model PagedList.PagedList<HeThongQuanLyDuLich.Models.HanhTrinh>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2 class="title">HÀNH TRÌNH</h2>
+<h2>Danh sách hành trình</h2>
 
-<p>
-    <button class="btn btn-danger my-button">
-        @Html.ActionLink("Create New", "Create", null, new { @class = "my-class" })
-    </button>
-</p>
+<button class="btn btn-danger my-button">
+    @Html.ActionLink("Thêm mới", "Create", null, new { @class = "my-class" })
+</button>
 <table class="table">
     <tr>
         <th>
-            @Html.Label("Hành Trình")
+            @Html.DisplayNameFor(model => model.FirstOrDefault().tenHanhTrinh)
         </th>
         <th>
-            @Html.Label("Điểm Khởi Hành")
+            @Html.DisplayNameFor(model => model.FirstOrDefault().diemKhoiHanh)
         </th>
         <th>
-            @Html.Label("Điểm Đến")
+            @Html.DisplayNameFor(model => model.FirstOrDefault().diemKetThuc)
         </th>
         <th>
-            @Html.Label("Ngày Bắt Đầu")
+            @Html.DisplayNameFor(model => model.FirstOrDefault().thoiGianKhoiHanh)
         </th>
         <th>
-            @Html.Label("Ngày Kết Thúc")
+            @Html.DisplayNameFor(model => model.FirstOrDefault().thoiGianKetThuc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().moTaHanhTrinh)
         </th>
         <th></th>
     </tr>
@@ -51,9 +53,23 @@
                 @Html.DisplayFor(modelItem => item.thoiGianKetThuc)
             </td>
             <td>
-                @Html.ActionLink("Details", "Details", new { id = item.IDHanhTrinh }) 
+                @Html.DisplayFor(modelItem => item.moTaHanhTrinh)
+            </td>
+            <td>
+                <button class="btn btn-info my-button">
+                    @Html.ActionLink("Chi tiết hành trình", "Details", new { id = item.IDHanhTrinh }, new { @class = "my-class" })
+                </button>
             </td>
         </tr>
     }
 
+
 </table>
+
+<div style="margin-left: 1rem">
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+
+    <div>
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+    </div>
+</div>

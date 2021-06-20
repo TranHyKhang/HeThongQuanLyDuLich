@@ -1,0 +1,101 @@
+﻿@model HeThongQuanLyDuLich.Areas.Client.Models.ProfileModel
+@{
+    ViewBag.Title = "Dat Tour";
+    Layout = "~/Areas/Client/Views/Shared/_TheSecondLayout.cshtml";
+}
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="~/Areas/Client/Assets/css/ProfileStyle.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="bodySection" style="background-color: white; padding: 3rem 0">
+        <div class="container mt-3">
+            <div class="row">
+                @using (Html.BeginForm("PostThayDoiHinhAnh", "Profile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                        <div class="col col-12 col-md-6 col-lg-4 s_gutters">
+                            <div class="wrapLeftComponent">
+                                @{
+                                    if (Model.TaiKhoan.avatar != null)
+                                    {
+                                        <label style="cursor: pointer" for="uploadPhoto">
+                                            <img src="/DoSomeThing/RetrieveUserImage/@Model.TaiKhoan.IDTaiKhoan"
+                                                 style="object-fit: cover; width: 80%; height: auto; border-radius: 1000px; cursor: pointer" id="avatarImg" />
+                                        </label>
+                                    }
+                                    else
+                                    {
+
+                                        <label style="cursor: pointer" for="uploadPhoto">
+                                            <img src="~/Areas/Client/Assets/img/defaultAvatar.jpg"
+                                                 style="object-fit: cover; width: 80%; height: auto; border-radius: 1000px; cursor: pointer" id="avatarImg" />
+                                        </label>
+                                    }
+                                }
+
+                                <input type="file" style="opacity: 0" name="uploadPhoto" id="uploadPhoto" onchange="changeImgFunction()" />
+                                <button type="submit" id="btnChangeImg" style="opacity: 0">changeImage</button>
+                            </div>
+                        </div>
+                    }   
+                    @using (Html.BeginForm("PostThayDoiThongTin", "Profile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <div class="col col-12 col-md-6 col-lg-8 s_gutters">
+                            <h3 style="font-weight: 700">Thông tin cá nhân</h3>
+                            <hr />
+                            @Html.ValidationMessageFor(model => model.KhachHang.hoTenKhachHang, "", new { @class = "text-danger notification" })
+                            <div class="wrapContentItem">
+                                @Html.Label("Họ tên: ", new { @class = "labelInfo" })
+                                @Html.TextBoxFor(model => model.KhachHang.hoTenKhachHang, new { @class = "contentInfo" })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.KhachHang.sdtKhachHang, "", new { @class = "text-danger notification" })
+                            <div class="wrapContentItem">
+                                @Html.Label("Số điện thoại: ", new { @class = "labelInfo" })
+                                @Html.TextBoxFor(model => model.KhachHang.sdtKhachHang, new { @class = "contentInfo" })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.KhachHang.diaChi, "", new { @class = "text-danger notification" })
+                            <div class="wrapContentItem">
+                                @Html.Label("Địa chỉ: ", new { @class = "labelInfo" })
+                                @Html.TextBoxFor(model => model.KhachHang.diaChi, new { @class = "contentInfo" })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.KhachHang.CMND, "", new { @class = "text-danger notification" })
+                            <div class="wrapContentItem">
+                                @Html.Label("CMND: ", new { @class = "labelInfo" })
+                                @Html.TextBoxFor(model => model.KhachHang.CMND, new { @class = "contentInfo" })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.TaiKhoan.email, "", new { @class = "text-danger notification" })
+                            <div class="wrapContentItem">
+                                @Html.Label("Email: ", new { @class = "labelInfo" })
+                                @Html.TextBoxFor(model => model.TaiKhoan.email, new { @class = "contentInfo" })
+                            </div>
+                            <div class="wrapBtnItem">
+                                <button type="submit" class="btnEditProfile" style="margin-right: 1rem; color: white" href="#">Lưu</button>
+                                <a class="btnEditProfile" href="/Client">Huỷ</a>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+        </div>
+
+    </div>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        let a = $('#avatarImg').attr('src');
+        console.log(a)
+
+        let b = document.getElementById('avatarImg')
+        console.log(b.src)
+        
+
+        function changeImgFunction() {
+            console.log("do on change")
+            document.getElementById('btnChangeImg').click();
+        }
+    </script>
+</body>
+</html>
+

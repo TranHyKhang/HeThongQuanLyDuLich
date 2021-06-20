@@ -4,14 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
+namespace HeThongQuanLyDuLich.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: Admin/Home
+        // GET: Home
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("Index", "Home", new { area = "Client" });
         }
     }
 }

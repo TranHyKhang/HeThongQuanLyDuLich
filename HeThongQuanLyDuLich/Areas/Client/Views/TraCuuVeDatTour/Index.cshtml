@@ -1,0 +1,122 @@
+﻿@using PagedList.Mvc;
+@model PagedList.PagedList<HeThongQuanLyDuLich.Models.VeDatTour>
+
+@{
+    ViewBag.Title = "Dat Tour";
+    Layout = "~/Areas/Client/Views/Shared/_TheSecondLayout.cshtml";
+}
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="~/Areas/Client/Assets/css/TraCuuVeDatTourStyle.css" rel="stylesheet" />
+
+
+</head>
+<body>
+    <div class="bodySection" style="background-color: white">
+        <div class="container mt-3">
+            <div class="row">
+                <div class="col col-12 col-md-6 col-lg-12 s_gutters">
+                    <div class="page-title headerComponent">
+                        <h3 class="headerTitle">Lịch sử đặt vé</h3>
+                    </div>
+
+
+                    @foreach (var x in Model)
+                    {
+                        <div style="margin-top: 2rem">
+                            <div  class="itemContainer">
+                                <div class="itemImg">
+                                    <img src="/Client/DoSomeThing/RetrieveImage/@x.Tour.HinhAnhs.FirstOrDefault().IDHinhAnh" alt="Alternate Text" />
+                                </div>
+                                <div class="itemContent">
+                                    <span style="color: black; font-size: 3rem; font-weight: 700">
+                                        @x.Tour.tourName
+                                    </span>
+                                    <div class="wrapItemDetail">
+                                        <span class="itemLabel">Ngày đặt: </span>
+                                        <span class="itemValue">
+                                            @x.ngayDatVe.ToString().Split(' ')[0]
+                                        </span>
+                                    </div>
+                                    <div class="wrapItemDetail">
+                                        <span class="itemLabel">Khách hàng: </span>
+                                        <span class="itemValue">
+                                            @x.KhachHang.hoTenKhachHang
+                                        </span>
+                                    </div>
+                                    <div class="wrapItemDetail">
+                                        <span class="itemLabel">Ngày khởi hành: </span>
+                                        <span class="itemValue">
+                                            @x.Tour.HanhTrinhs.FirstOrDefault().thoiGianKhoiHanh
+                                        </span>
+                                    </div>
+                                    <div class="wrapItemDetail">
+                                        <span class="itemLabel">Hình thức thanh toán: </span>
+                                        <span class="itemValue">
+                                            @x.hinhThucThanhToan
+                                        </span>
+                                    </div>
+                                    <div class="wrapItemDetail" style="display: flex">
+                                        <span class="itemLabel">Trạng thái vé đặt tour: </span>
+                                        @{
+                                            if (x.trangThaiVeDatTour == true)
+                                            {
+                                                <span class="itemValue" style="color: forestgreen">
+                                                    Đã xác nhận
+                                                </span>
+                                            }
+                                            else
+                                            {
+                                                <span class="itemValue" style="color: red">
+                                                    Chưa xác nhận
+                                                </span>
+                                            }
+                                        }
+
+                                        @{
+                                            if (x.trangThaiVeDatTour == true)
+                                            {
+                                                <div class="wrapModalOption" style="position: absolute; right: 0">
+                                                    <a href="/Client/TraCuuVeDatTour/HuyVeDatTour/@x.IDVeDatTour" style="pointer-events: none; background-color: #ff9e9e" class="myBtn">Hủy vé</a>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="wrapModalOption" style="position: absolute; right: 0">
+                                                    <a href="/Client/TraCuuVeDatTour/HuyVeDatTour/@x.IDVeDatTour" class="myBtn">Hủy vé</a>
+                                                </div>
+                                            }
+                                        }
+                                    </div>
+                                    <div class="wrapItemDetail">
+                                       
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <hr />
+
+                    }
+
+                    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+
+                    <div>
+                        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>

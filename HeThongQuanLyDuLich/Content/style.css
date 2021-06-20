@@ -5,6 +5,11 @@
   font-weight: normal;
   font-style: normal;
 }
+
+:root {
+    --blue-navy: #1a3863;
+    --orange: #f26135
+}
 /* =======================================================
 *
 * 	Template Style 
@@ -73,7 +78,12 @@ figure {
 #fh5co-header {
   position: relative;
   margin-bottom: 0;
-  z-index: 9999999;
+  /*z-index: 9999999;*/
+}
+
+.header-custom {
+    background-color: #1a3863;
+    height: 89px !important
 }
 
 .fh5co-cover,
@@ -209,6 +219,7 @@ figure {
   padding-right: 10px;
   margin-bottom: 20px;
   position: relative;
+  height: 369.99px
 }
 .fh5co-listing .fh5co-item-wrap .fh5co-listing-item {
   background: #fff;
@@ -239,6 +250,7 @@ figure {
   -webkit-transition: 0.3s;
   -o-transition: 0.3s;
   transition: 0.3s;
+  object-fit: cover
 }
 .fh5co-listing .fh5co-item-wrap .fh5co-listing-item .fh5co-listing-copy {
   position: absolute;
@@ -566,7 +578,8 @@ figure {
 #fh5co-primary-menu .fh5co-sub-menu:after {
   position: absolute;
   top: -8px;
-  left: 21px;
+  /*left: 21px;*/
+  right: 31px;
   width: 0;
   height: 0;
   border-right: 8px solid transparent;
@@ -709,11 +722,11 @@ figure {
 }
 
 #footer {
-  float: left;
-  width: 100%;
-  clear: both;
-  background: #000;
-  padding: 60px 0 40px;
+    float: left;
+    width: 100%;
+    clear: both;
+    background: #000;
+    padding: 60px 0 40px;
 }
 #footer p {
   color: rgba(255, 255, 255, 0.7);
@@ -855,7 +868,7 @@ figure {
   display: -moz-inline-stack;
   display: inline-block;
   zoom: 1;
-  *display: inline;
+  /*display: inline;*/
   width: 30px;
   height: 2px;
   color: #fff;

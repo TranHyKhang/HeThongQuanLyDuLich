@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using HeThongQuanLyDuLich.Areas.Client.Code;
+
+<!DOCTYPE html>
 <html>
 <head>
 
@@ -26,6 +28,8 @@
     <link rel="stylesheet" href="~/Content/style.css">
     <link rel="stylesheet" href="~/Content/Site.css">
 
+    <link href="~/Areas/Client/Assets/css/HomeStyle.css" rel="stylesheet" />
+
 
     <!-- Modernizr JS -->
     <script src="~/Scripts/modernizr-2.6.2.min.js"></script>
@@ -41,25 +45,39 @@
                     <div class="container">
                         <div class="nav-header">
                             <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
-                            <h1 id="fh5co-logo"><a href="index.html">VIETNAM</a></h1>
+                            <h1 id="fh5co-logo"><a href="/Client">TRAVEL</a></h1>
                             <!-- START #fh5co-menu-wrap -->
                             <nav id="fh5co-menu-wrap" role="navigation">
                                 <ul class="sf-menu" id="fh5co-primary-menu">
                                     <li class="active">
-                                        <a href="#">Trang Chủ</a>
+                                        <a href="/Client">Trang Chủ</a>
                                     </li>
                                     <li>
-                                        <a href="#">Tour</a>
+                                        <a href="/Client/Home/DanhSachTour">Du Lịch</a>
                                     </li>
                                     <li>
-                                        <a href="#">Đánh Giá</a>
+                                        <a href="#">Giới thiệu</a>
                                     </li>
                                     <li>
-                                        <a href="#" class="fh5co-sub-ddown sf-with-ul">Đăng Nhập</a>
-                                        <ul class="fh5co-sub-menu " style="display:none;">
-                                            <li><a href="#" target="_blank">Thông tin cá nhân</a></li>
-                                            <li><a href="#" target="_blank">Đăng Xuất</a></li>
-                                        </ul>
+                                        @{
+                                            var a = HttpContext.Current.Session["LoginSession"] as UserSession;
+                                            if (a != null)
+                                            {
+                                                <a href="#" class="fh5co-sub-ddown sf-with-ul">@a.UserName</a>
+                                                <ul class="fh5co-sub-menu " style="display:none;">
+                                                    <li><a href="/Client/Profile">Thông tin cá nhân</a></li>
+                                                    <li><a href="/Client/TraCuuVeDatTour">Lịch sử đặt vé</a></li>
+                                                    <li><a href="/Client/Feedback/Feedback">Nhận xét chuyến đi</a></li>
+                                                    <li><a href="/Client/Login/SignOut">Đăng Xuất</a></li>
+                                                </ul>
+                                            }
+                                            else
+                                            {
+                                                <a href="/Client/Login" class="fh5co-sub-ddown">Đăng nhập</a>
+
+                                            }
+                                        }
+
                                     </li>
 
                                 </ul>
@@ -86,9 +104,9 @@
                                 </p>
                                 <p>
                                     Công Ty TNHH 3ThànhViên <br>
-                                    Email :<a href="#">DulichViet@gmail.com</a>.<br />
+                                    Email :<a href="#">TravelVN2021@gmail.com</a><br />
                                     Địa chỉ: 155 Sư Vạn Hạnh, phường 13, quận 10, TPHCM.<br />
-                                    Đường dây nóng : 0389443948
+                                    Đường dây nóng : 0933308***
                                 </p>
                             </div>
                         </div>
@@ -99,7 +117,7 @@
 
     </div>
 
-    
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

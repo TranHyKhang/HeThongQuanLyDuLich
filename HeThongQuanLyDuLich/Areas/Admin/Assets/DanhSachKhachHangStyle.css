@@ -1,0 +1,19 @@
+﻿body {
+}
+
+.wrapContent {
+    display: flex;
+    flex-direction: row
+}
+
+.itemLabel {
+    font-weight: 500;
+    flex: 1.5;
+    font-size: 2rem
+}
+
+.itemContent {
+    font-weight: 700;
+    flex: 8.5;
+    font-size: 2rem
+}

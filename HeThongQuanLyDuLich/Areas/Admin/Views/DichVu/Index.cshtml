@@ -5,11 +5,11 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Danh sách dịch vụ</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<button class="btn btn-danger my-button">
+    @Html.ActionLink("Create New", "Create", null, new { @class = "my-class" })
+</button>
 <table class="table">
     <tr>
         <th>
@@ -30,9 +30,9 @@
             @Html.DisplayFor(modelItem => item.giaDichVu)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IDDichVu }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IDDichVu }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IDDichVu })
+            <button class="btn btn-info my-button">
+                @Html.ActionLink("Chi tiết", "Details", new { id = item.IDDichVu }, new { @class = "my-class" })
+            </button>
         </td>
     </tr>
 }

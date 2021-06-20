@@ -1,0 +1,156 @@
+﻿
+
+.page-title {
+    margin: 2rem 0
+}
+
+.title {
+    font-weight: 700;
+    font-size: 3rem
+}
+
+.paragraph-normal {
+    font-size: 2rem
+}
+
+.paragraph-bold {
+    font-weight: 700 !important;
+    font-size: 2rem
+}
+
+
+/*
+    listTour
+*/
+
+.listTourContainer {
+}
+
+.listTourTitle {
+}
+
+.listTourOptionBar {
+    background-color: #eee;
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem;
+    border: 1px solid #bbb;
+}
+
+form {
+    margin: 0
+}
+
+
+
+.listTourContent {
+    margin-top: 2rem
+}
+
+.custom-col-md-3 {
+}
+
+.tourItemContainer {
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    height: 350px
+}
+
+.imageTourItem {
+    width: 100%;
+    height: 200px
+}
+
+.wrapTourItemTitle {
+    background-color: #eee;
+    padding: 0.5rem;
+}
+
+.tourTitle {
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+.wrapTourItemContent {
+    background-color: white
+}
+
+.wrapDetailTourItem {
+    margin-left: 0.5rem;
+    box-sizing: border-box
+}
+
+
+.tourItemPrice {
+    margin-right: 1rem;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--orange);
+    float: right;
+}
+
+
+/*overlay image*/
+
+.imgTour {
+    position: relative
+}
+
+    .imgTour:hover .overlayImg {
+        opacity: 1
+    }
+
+    .imgTour:hover .fromWhere {
+        height: 0;
+        padding: 0 1rem;
+    }
+
+        .imgTour:hover .fromWhere span {
+            opacity: 0
+        }
+
+
+
+.overlayImg {
+    position: absolute;
+    background-color: rgba(0,0,0,0.5);
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+    opacity: 0;
+    transition: opacity 0.2s linear
+}
+
+.moTaTour {
+    color: white;
+    font-size: 2rem;
+}
+
+.fromWhere {
+    position: absolute;
+    bottom: 0;
+    padding: 1rem;
+    background-color: rgba(0,0,0,0.7);
+    border-top-right-radius: 10px;
+    transition: height 0.1s linear, padding 0.1s linear
+}
+
+/*.testAnimateClass {
+    animation-name: item-loading;
+    animation-duration: 1s;
+    z-index: 1000
+}*/
+
+@keyframes item-loading {
+    0% {
+        transform: scale(0);
+        opacity: 0
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1
+    }
+}

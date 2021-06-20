@@ -13,6 +13,7 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
     public class KhuyenMaiController : Controller
     {
         private HeThongQuanLyDuLichEntities db = new HeThongQuanLyDuLichEntities();
+        Random rnd = new Random();
 
         // GET: Admin/KhuyenMai
         [Authorize]
@@ -49,8 +50,11 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IDKhuyenMai,tenKhuyenMai,dieuKienKhuyenMai,thoiGian,giaTriKhuyenMai")] KhuyenMai khuyenMai)
+        public ActionResult Create([Bind(Include = "tenKhuyenMai,dieuKienKhuyenMai,thoiGian,giaTriKhuyenMai")] KhuyenMai khuyenMai)
         {
+
+            khuyenMai.IDKhuyenMai = RandomKhuyenMaiID();
+
             if (ModelState.IsValid)
             {
                 db.KhuyenMais.Add(khuyenMai);
@@ -118,6 +122,19 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
             db.KhuyenMais.Remove(khuyenMai);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public int RandomKhuyenMaiID()
+        {
+            int num = rnd.Next(1, 10000);
+            foreach (var x in db.KhuyenMais)
+            {
+                if (x.IDKhuyenMai == num)
+                {
+                    RandomKhuyenMaiID();
+                }
+            }
+            return num;
         }
 
         protected override void Dispose(bool disposing)

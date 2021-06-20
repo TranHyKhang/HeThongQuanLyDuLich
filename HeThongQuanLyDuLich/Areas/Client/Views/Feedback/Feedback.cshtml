@@ -1,0 +1,58 @@
+﻿@model HeThongQuanLyDuLich.Areas.Client.Models.ViewFeedbackModel
+@{
+    ViewBag.Title = "Feedback";
+    Layout = "~/Areas/Client/Views/Shared/_TheSecondLayout.cshtml";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style>
+        input, select, textarea {
+            max-width: 100% !important
+        }
+
+        .dropdownList {
+
+        }
+        .textArea {
+            width: 100%
+        }
+        .form-group {
+            padding: 2rem 0
+        }
+    </style>
+</head>
+<body>
+    <div class="bodySection" style="background-color: white; padding: 3rem 0">
+        <div class="container">
+            <div class="row">
+                <h3 style="margin-left: 1rem">Nhận xét của bạn về chuyến đi</h3>
+                @using (Html.BeginForm("PostFeedback", "Feedback", FormMethod.Post))
+                {
+                    @Html.ValidationMessage("LoiFeedback", new { @class="text-danger"})
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.IDTour, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => model.IDTour, new SelectList(Model.DanhSachTour, "IDTour", "tourName"), htmlAttributes: new { @class = "form-control dropdownList" })
+                            @Html.ValidationMessageFor(model => model.IDTour, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label("Nội dung", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(model => model.NoiDungFeedback, new { @rows = "10", @class="textArea"})
+                            @Html.ValidationMessageFor(model => model.NoiDungFeedback, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    
+                    <div >
+                        <input type="submit" class="btn btn-primary" name="name" value="Gửi" style="float: right; margin-right: 1.5rem; margin-top: 2rem" />
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</body>
+</html>

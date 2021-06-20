@@ -1,97 +1,92 @@
-﻿@model IEnumerable<HeThongQuanLyDuLich.Models.Tour>
+﻿@using PagedList.Mvc;
+@model PagedList.PagedList<HeThongQuanLyDuLich.Models.Tour>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Tour</h2>
+<h2>Danh sách tour</h2>
 
 <button class="btn btn-danger my-button">
-    @Html.ActionLink("Create New", "Create", null, new { @class = "my-class" })
+    @Html.ActionLink("Thêm mới", "Create", null, new { @class = "my-class" })
 </button>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.tourName)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().tourName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.tourDescription)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().tourDescription)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.soLuongKhachToiDa)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().soLuongKhachToiDa)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.soLuongKhachHienTai)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().soLuongKhachHienTai)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.tinhTrangTour)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().tinhTrangTour)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.gia)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().gia)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.HanhTrinh.tenHanhTrinh)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().KhachSan.tenKhachSan)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.KhachSan.tenKhachSan)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().KhuyenMai.tenKhuyenMai)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.KhuyenMai.tenKhuyenMai)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LoaiTour.loaiTour1)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DichVu.tenDichVu)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().LoaiTour.loaiTour1)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.tourName)
-        </td>
-        <td>
-            @{ 
-                string a = item.tourDescription.Substring(0, 30) + "...";
-            }
-            @Html.DisplayFor(modelItem => a)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.soLuongKhachToiDa)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.soLuongKhachHienTai)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tinhTrangTour)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.gia)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HanhTrinh.tenHanhTrinh)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.KhachSan.tenKhachSan)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.KhuyenMai.tenKhuyenMai)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LoaiTour.loaiTour1)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DichVu.tenDichVu)
-        </td>
-        <td>
-            <button class="btn btn-success my-button">
-                @Html.ActionLink("Details", "Details", new { id = item.IDTour }, new { @class="my-class"})
-            </button>
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.tourName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tourDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.soLuongKhachToiDa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.soLuongKhachHienTai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tinhTrangTour)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.gia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KhachSan.tenKhachSan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KhuyenMai.tenKhuyenMai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LoaiTour.loaiTour1)
+            </td>
+            <td>
+                <button class="btn btn-info my-button">
+                    @Html.ActionLink("Chi tiết tour", "Details", new { id = item.IDTour }, new { @class = "my-class" })
+                </button>
+            </td>
+        </tr>
+    }
 
 </table>
+
+<div style="margin-left: 1rem">
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+
+    <div>
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+    </div>
+</div>

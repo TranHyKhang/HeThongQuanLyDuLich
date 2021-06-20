@@ -5,10 +5,9 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Chi tiết khách sạn</h2>
 
 <div>
-    <h4>KhachSan</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -37,7 +36,13 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IDKhachSan }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<button class="btn btn-warning my-button">
+    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.IDKhachSan }, new { @class = "my-class" })
+</button>
+<button class="btn btn-danger my-button">
+    @Html.ActionLink("Xóa", "Delete", new { id = Model.IDKhachSan }, new { @class = "my-class" })
+</button>
+<span>
+    |
+    @Html.ActionLink("Quay về", "Index")
+</span>

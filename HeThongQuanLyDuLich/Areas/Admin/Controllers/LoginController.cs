@@ -29,7 +29,7 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
             {
                 //SessionHelper.SetSession(new UserSession() { UserName = model.UserName });
                 
-                FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
+                FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe );
                 return RedirectToAction("Index", "Tour");
             }
             else

@@ -49,3 +49,26 @@ p {
     padding: 0;
     margin: 0
 }
+
+.totalMoney {
+    color: #f26135;
+    display: inline
+}
+
+.button-custom {
+    font-weight: 700;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    border: none;
+    transition: background-color linear 0.15s, color linear 0.15s
+}
+
+.button-custom:hover{
+    background-color: #f26135 !important; 
+    color: white
+}
+
+
+.validateString {
+    font-weight: 700
+}

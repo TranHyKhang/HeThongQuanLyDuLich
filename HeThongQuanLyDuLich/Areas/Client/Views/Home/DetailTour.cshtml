@@ -1,0 +1,231 @@
+﻿@model HeThongQuanLyDuLich.Areas.Client.Models.ViewDetailModel
+@{
+    ViewBag.Title = "DetailTour";
+    Layout = "~/Areas/Client/Views/Shared/_TheSecondLayout.cshtml";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="~/Areas/Client/Assets/css/DetailTourStyle.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+   
+</head>
+<body>
+    <div class="bodySection" style="background-color: white">
+        <div class="container mt-3">
+            <div class="row">
+                <div class="col col-12 col-md-12 col-lg-12 s_gutters">
+                    <div class="page-title headerComponent">
+                        <h3>@Model.Tour.tourName</h3>
+                    </div>
+                    <div class="wrap_img">
+                        @{
+                            for (int i = 1; i < 4; i++)
+                            {
+                                <div class="col_img col_img_@i">
+                                    <img src="/DoSomeThing/RetrieveImage/@Model.Tour.HinhAnhs.ToArray()[i - 1].IDHinhAnh"
+                                         type="button"
+                                         data-toggle="modal"
+                                         data-target="#exampleModal">
+                                </div>
+                            }
+                        }
+                        <div class="col_img col_img_4 show_modalImg">
+                            <img src="/DoSomeThing/RetrieveImage/@Model.Tour.HinhAnhs.ToArray()[3].IDHinhAnh" alt="/files/files/Blogs/tu%20cau%206.jpg">
+                            <div class="see_modalImg" type="button" data-toggle="modal" data-target="#exampleModal">
+                                <span style="font-family: initial">Xem toàn bộ ảnh</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div id="myCarousel" class="carousel slide myCarousel" data-ride="carousel">
+                                        <div class="carousel-inner">
+                                            <div class="item active ">
+                                                <img class="carousel_img" src="/DoSomeThing/RetrieveImage/@Model.Tour.HinhAnhs.ToArray()[0].IDHinhAnh" alt="/files/images/VinpearlCondotelBeachfrontNhaTrang/grand-2-bedroom-3.jpg">
+                                            </div>
+                                            @{
+                                                for (int i = 1; i < Model.Tour.HinhAnhs.ToArray().Length; i++)
+                                                {
+                                                    <div class="item ">
+                                                        <img class="carousel_img" src="/DoSomeThing/RetrieveImage/@Model.Tour.HinhAnhs.ToArray()[i].IDHinhAnh" alt="/files/images/VinpearlCondotelBeachfrontNhaTrang/grand-2-bedroom-3.jpg">
+                                                    </div>
+                                                }
+                                            }
+                                        </div>
+                                        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                                            <span class="glyphicon glyphicon-chevron-left"></span>
+                                            <span class="sr-only">Previous</span>
+                                        </a>
+                                        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                                            <span class="glyphicon glyphicon-chevron-right"></span>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col col-12 col-md-6 col-lg-8 s_gutters">
+                    <div>
+                        <div class="headerComponent">
+                            <h3>Giới thiệu</h3>
+                        </div>
+                        <div class="wrapContentComponent">
+                            <span style="font-size: 2rem; font-weight: 700">@Model.Tour.tourName </span>
+                            <p style="display: inline">- @Model.Tour.tourDescription</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="headerComponent">
+                            <h3>Dịch vụ</h3>
+                        </div>
+                        <div class="wrapContentComponent">
+                            @foreach (var x in Model.Tour.DichVus)
+                            {
+                                <div class="dichVuContent">
+                                    <i class="glyphicon glyphicon-ok" style="color: green"></i>
+                                    <p style="margin-left: 1rem !important">@x.tenDichVu</p>
+                                </div>
+                            }
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="headerComponent">
+                            <h3>Khách sạn</h3>
+                        </div>
+                        <div class="wrapContentComponent">
+                            <div class="dichVuContent">
+                                <i class="glyphicon glyphicon-star" style="color: #eda200"></i>
+                                <p style="margin-left: 1rem !important">@Model.Tour.KhachSan.tenKhachSan</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 2rem">
+                        <div class="headerComponent">
+                            <h3>Hành trình</h3>
+                        </div>
+                        <div class="wrapContentComponent">
+                            @for (int i = 0; i < Model.Tour.HanhTrinhs.ToArray().Length; i++)
+                            {
+                                <div class="hanhTrinhContent">
+                                    <div class="wrap-title-seeMore">
+                                        <span class="hanhTrinhTitle">@Model.Tour.HanhTrinhs.ToArray()[i].diemKhoiHanh - @Model.Tour.HanhTrinhs.ToArray()[i].diemKetThuc</span>
+                                        <span class="seeMoreDetail" id="seeMoreDetail" onclick="myFunc(@i)">Xem thêm</span>
+                                    </div>
+                                    <ul class="listDetailHanhTrinh" id="@i">
+                                        @for (int j = 0; j < Model.ChiTietHanhTrinh.ToArray()[i].ToArray().Length; j++)
+                                        {
+                                            <li>
+                                                @Model.ChiTietHanhTrinh.ToArray()[i].ToArray()[j]
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                            }
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 2rem">
+                        <div class="headerComponent">
+                            <h3>Bình luận</h3>
+                        </div>
+                        <div class="wrapContentComponent">
+                            @{ 
+                                foreach(var x in Model.listFeedback)
+                                {
+                                    <div class="wrapFeedbackComponent">
+                                        <img src="/DoSomeThing/RetrieveUserImage/@x.VeDatTour.KhachHang.IDTaiKhoan" style="width: 50px; height: 50px; border-radius: 1000px" alt="Alternate Text" />
+                                        <div class="wrapFeedbackContent">
+                                            <span>@x.VeDatTour.KhachHang.hoTenKhachHang</span>
+                                            <span>@x.noiDung</span>
+                                        </div>
+                                        <div style="align-items: center">
+                                            <span>@x.ngayFeedback</span>
+
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-12 col-md-6 col-lg-4 s_gutters " >
+                    <div class="wrap_datTourComponent" id="wrapToScroll">
+                        <div class="wrapDatTourContent">
+                            <div class="lineInfo">
+                                <h3 style="color: var(--blue-navy); font-weight: 700">@Model.Tour.tourName</h3>
+                            </div>
+                            <div class="lineInfo">
+                                <span style="font-weight: 700; margin-right: 1rem">Thời gian</span>
+                                @{
+                                    int ngay = Model.Tour.HanhTrinhs.Count();
+                                    int dem = Model.Tour.HanhTrinhs.Count() - 1;
+                                }
+                                <span>@ngay Ngày @dem Đêm</span>
+                            </div>
+                            <div class="lineInfo">
+                                <span style="font-weight: 700; margin-right: 1rem">Khởi hành</span>
+
+                                <span>@Model.Tour.HanhTrinhs.ToArray()[0].thoiGianKhoiHanh</span>
+                            </div>
+                            <div class="lineInfo">
+                                <span style="font-weight: 700; margin-right: 1rem">Vận chuyển</span>
+
+                                <span>Máy bay, xe du lịch</span>
+                            </div>
+                            <div class="lineInfo" style="border:none">
+                                <span style="font-weight: 700; margin-right: 1rem">Xuất phát</span>
+
+                                <span>TP Hồ Chí Minh</span>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="haha">
+                            <div class="priceContainer">
+                                @{
+                                    int tienDichVu = 0;
+                                    foreach (var item in Model.Tour.DichVus)
+                                    {
+                                        tienDichVu += int.Parse(item.giaDichVu.ToString());
+                                    }
+                                    var tongTien = Model.Tour.gia + tienDichVu + Model.Tour.KhachSan.giaKhachSan - Model.Tour.KhuyenMai.giaTriKhuyenMai;
+                                }
+                                <span class="titlePrice">Giá chỉ từ</span>
+                                <span class="price">@tongTien VND</span>
+                            </div>
+                            <a class="btnDatTour" href="/Client/DatTour/SoLuongVeDatTour/@Model.Tour.IDTour">Đặt tour</a>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Areas/Client/Assets/js/main.js"></script>
+</body>
+</html>
