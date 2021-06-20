@@ -27,7 +27,7 @@
                     @foreach (var x in Model)
                     {
                         <div style="margin-top: 2rem">
-                            <a href="#" class="itemContainer" data-toggle="modal" data-target="#exampleModal">
+                            <div  class="itemContainer">
                                 <div class="itemImg">
                                     <img src="/Client/DoSomeThing/RetrieveImage/@x.Tour.HinhAnhs.FirstOrDefault().IDHinhAnh" alt="Alternate Text" />
                                 </div>
@@ -59,7 +59,7 @@
                                             @x.hinhThucThanhToan
                                         </span>
                                     </div>
-                                    <div class="wrapItemDetail">
+                                    <div class="wrapItemDetail" style="display: flex">
                                         <span class="itemLabel">Trạng thái vé đặt tour: </span>
                                         @{
                                             if (x.trangThaiVeDatTour == true)
@@ -75,85 +75,34 @@
                                                 </span>
                                             }
                                         }
-                                    </div>
 
-                                </div>
-                            </a>
-
-                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="wrapModalBodyHeader">
-                                                <span class="modalBodyHeader">Chi tiết vé đặt tour</span>
-                                            </div>
-                                            <div class="wrapModalBody">
-                                                <div class="modalBodyImg">
-                                                    <img src="/Client/DoSomeThing/RetrieveImage/@x.Tour.HinhAnhs.FirstOrDefault().IDHinhAnh" alt="Alternate Text" />
+                                        @{
+                                            if (x.trangThaiVeDatTour == true)
+                                            {
+                                                <div class="wrapModalOption" style="position: absolute; right: 0">
+                                                    <a href="/Client/TraCuuVeDatTour/HuyVeDatTour/@x.IDVeDatTour" style="pointer-events: none; background-color: #ff9e9e" class="myBtn">Hủy vé</a>
                                                 </div>
-                                                <div class="modalBodyContent">
-                                                    <span style="color: black; font-size: 3rem; font-weight: 700">
-                                                        @x.Tour.tourName
-                                                    </span>
-                                                    <div class="wrapItemDetail">
-                                                        <span class="itemLabel">Ngày đặt: </span>
-                                                        <span class="itemValue">
-                                                            @x.ngayDatVe.ToString().Split(' ')[0]
-                                                        </span>
-                                                    </div>
-                                                    <div class="wrapItemDetail">
-                                                        <span class="itemLabel">Khách hàng: </span>
-                                                        <span class="itemValue">
-                                                            @x.KhachHang.hoTenKhachHang
-                                                        </span>
-                                                    </div>
-                                                    <div class="wrapItemDetail">
-                                                        <span class="itemLabel">Ngày khởi hành: </span>
-                                                        <span class="itemValue">
-                                                            @x.Tour.HanhTrinhs.FirstOrDefault().thoiGianKhoiHanh
-                                                        </span>
-                                                    </div>
-                                                    <div class="wrapItemDetail">
-                                                        <span class="itemLabel">Hình thức thanh toán: </span>
-                                                        <span class="itemValue">
-                                                            @x.hinhThucThanhToan
-                                                        </span>
-                                                    </div>
-                                                    <div class="wrapItemDetail">
-                                                        <span class="itemLabel">Trạng thái vé đặt tour: </span>
-                                                        @{
-                                                            if (x.trangThaiVeDatTour == true)
-                                                            {
-                                                                <span class="itemValue" style="color: forestgreen">
-                                                                    Đã xác nhận
-                                                                </span>
-                                                            }
-                                                            else
-                                                            {
-                                                                <span class="itemValue" style="color: red">
-                                                                    Chưa xác nhận
-                                                                </span>
-                                                            }
-                                                        }
-                                                    </div>
-                                                </div>
-
-                                                <div class="wrapModalOption">
+                                            }
+                                            else
+                                            {
+                                                <div class="wrapModalOption" style="position: absolute; right: 0">
                                                     <a href="/Client/TraCuuVeDatTour/HuyVeDatTour/@x.IDVeDatTour" class="myBtn">Hủy vé</a>
                                                 </div>
-                                            </div>
-                                        </div>
+                                            }
+                                        }
                                     </div>
+                                    <div class="wrapItemDetail">
+                                       
+                                    </div>
+
                                 </div>
                             </div>
+
 
                         </div>
                         <hr />
 
-                                                            }
+                    }
 
                     Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
 

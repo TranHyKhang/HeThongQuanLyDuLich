@@ -152,7 +152,6 @@
     <Compile Include="Areas\Admin\Controllers\DichVuController.cs" />
     <Compile Include="Areas\Admin\Controllers\HanhTrinhController.cs" />
     <Compile Include="Areas\Admin\Controllers\HinhAnhController.cs" />
-    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\KhachSanController.cs" />
     <Compile Include="Areas\Admin\Controllers\KhuyenMaiController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoaiHinhAnhController.cs" />
@@ -168,6 +167,7 @@
     <Compile Include="Areas\Client\Code\Extensions.cs" />
     <Compile Include="Areas\Client\Controllers\DatTourController.cs" />
     <Compile Include="Areas\Client\Controllers\DoSomeThingController.cs" />
+    <Compile Include="Areas\Client\Controllers\FeedbackController.cs" />
     <Compile Include="Areas\Client\Controllers\ProfileController.cs" />
     <Compile Include="Areas\Client\Controllers\TraCuuVeDatTourController.cs" />
     <Compile Include="Areas\Client\Models\ProfileModel.cs" />
@@ -180,7 +180,9 @@
     <Compile Include="Areas\Client\Models\LoginModel.cs" />
     <Compile Include="Areas\Client\Models\ViewDanhSachTourModel.cs" />
     <Compile Include="Areas\Client\Models\ViewDetailModel.cs" />
+    <Compile Include="Areas\Client\Models\ViewFeedbackModel.cs" />
     <Compile Include="Areas\Client\Models\ViewHomeModel.cs" />
+    <Compile Include="Areas\Client\Models\ViewThayDoiMatKhauModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -977,7 +979,6 @@
     <Content Include="Assets\AdminPage\bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Assets\AdminPage\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Areas\Admin\Views\web.config" />
-    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Login\Index.cshtml" />
     <Content Include="Areas\Client\Views\web.config" />
     <Content Include="Areas\Admin\Views\LoaiTaiKhoan\Create.cshtml" />
@@ -1065,6 +1066,8 @@
     <Content Include="Areas\Admin\Views\Profile\ThayDoiThongTin.cshtml" />
     <Content Include="Areas\Admin\Views\Profile\Success.cshtml" />
     <Content Include="Areas\Admin\Views\Tour\DanhSachKhachHang.cshtml" />
+    <Content Include="Areas\Client\Views\Profile\ThayDoiMatKhau.cshtml" />
+    <Content Include="Areas\Client\Views\Feedback\Feedback.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\hoverIntent.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />

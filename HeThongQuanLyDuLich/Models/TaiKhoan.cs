@@ -21,14 +21,14 @@ namespace HeThongQuanLyDuLich.Models
             this.KhachHangs = new HashSet<KhachHang>();
             this.NhanViens = new HashSet<NhanVien>();
         }
-        
+
         public int IDTaiKhoan { get; set; }
         [Required(ErrorMessage = "Email không được bỏ trống!!!")]
         public string email { get; set; }
         public string matKhau { get; set; }
         public Nullable<int> IDLoaiTaiKhoan { get; set; }
         public byte[] avatar { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KhachHang> KhachHangs { get; set; }
         public virtual LoaiTaiKhoan LoaiTaiKhoan { get; set; }

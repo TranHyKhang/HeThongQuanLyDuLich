@@ -24,7 +24,7 @@ namespace HeThongQuanLyDuLich.Models
         public int IDLoaiTour { get; set; }
         [Display(Name = "Loại tour")]
         public string loaiTour1 { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tour> Tours { get; set; }
     }

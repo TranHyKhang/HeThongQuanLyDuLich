@@ -23,7 +23,7 @@ namespace HeThongQuanLyDuLich.Models
             this.DichVus = new HashSet<DichVu>();
             this.HanhTrinhs = new HashSet<HanhTrinh>();
         }
-    
+
         public int IDTour { get; set; }
         [Display(Name = "Tour")]
         public string tourName { get; set; }

@@ -36,7 +36,7 @@ namespace HeThongQuanLyDuLich.Models
         [Display(Name = "CMND")]
         public string CMND { get; set; }
         public Nullable<int> IDTaiKhoan { get; set; }
-    
+
         public virtual TaiKhoan TaiKhoan { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VeDatTour> VeDatTours { get; set; }

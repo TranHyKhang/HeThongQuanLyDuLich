@@ -20,7 +20,7 @@ namespace HeThongQuanLyDuLich.Models
         {
             this.Tours = new HashSet<Tour>();
         }
-    
+
         public int IDHanhTrinh { get; set; }
         [Display(Name = "Hành trình")]
         public string tenHanhTrinh { get; set; }

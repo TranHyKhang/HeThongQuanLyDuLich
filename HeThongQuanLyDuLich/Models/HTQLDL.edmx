@@ -27,6 +27,7 @@
           <Property Name="IDFeedback" Type="int" Nullable="false" />
           <Property Name="noiDung" Type="ntext" />
           <Property Name="IDVeDatTour" Type="int" />
+          <Property Name="ngayFeedback" Type="datetime" />
         </EntityType>
         <EntityType Name="HanhTrinh">
           <Key>
@@ -469,6 +470,7 @@
           <Property Name="noiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IDVeDatTour" Type="Int32" />
           <NavigationProperty Name="VeDatTour" Relationship="Self.FK_Feedback_VeDatTour" FromRole="Feedback" ToRole="VeDatTour" />
+          <Property Name="ngayFeedback" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="HanhTrinh">
           <Key>
@@ -867,6 +869,7 @@
           <EntitySetMapping Name="Feedbacks">
             <EntityTypeMapping TypeName="HeThongQuanLyDuLichModel.Feedback">
               <MappingFragment StoreEntitySet="Feedback">
+                <ScalarProperty Name="ngayFeedback" ColumnName="ngayFeedback" />
                 <ScalarProperty Name="IDFeedback" ColumnName="IDFeedback" />
                 <ScalarProperty Name="noiDung" ColumnName="noiDung" />
                 <ScalarProperty Name="IDVeDatTour" ColumnName="IDVeDatTour" />

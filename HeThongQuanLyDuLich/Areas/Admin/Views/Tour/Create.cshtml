@@ -27,7 +27,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Tour.tourDescription, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Tour.tourDescription, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextAreaFor(model => model.Tour.tourDescription, new { @class = "form-control textAreaStyle", @rows="8" })
                 @Html.ValidationMessageFor(model => model.Tour.tourDescription, "", new { @class = "text-danger" })
             </div>
         </div>

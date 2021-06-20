@@ -148,10 +148,11 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            VeDatTour veDatTour = db.VeDatTours.Find(id);
+            VeDatTour veDatTour = db.VeDatTours.Include(s => s.Feedbacks).FirstOrDefault(s => s.IDVeDatTour == id);
             Tour tour = db.Tours.Where(s => s.IDTour == veDatTour.IDTour).FirstOrDefault();
             tour.soLuongKhachHienTai = tour.soLuongKhachHienTai - 1;
             db.Entry(tour).State = System.Data.Entity.EntityState.Modified;
+           
             db.VeDatTours.Remove(veDatTour);
             db.SaveChanges();
             return RedirectToAction("Index");

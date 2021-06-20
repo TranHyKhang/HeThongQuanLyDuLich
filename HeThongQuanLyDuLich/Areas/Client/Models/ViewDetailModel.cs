@@ -10,5 +10,7 @@ namespace HeThongQuanLyDuLich.Areas.Client.Models
     {
         public Tour Tour { get; set; }
         public List<List<string>> ChiTietHanhTrinh { get; set; }
+
+        public List<Feedback> listFeedback { get; set; }
     }
 }

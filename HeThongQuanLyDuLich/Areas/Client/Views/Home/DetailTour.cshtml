@@ -141,6 +141,30 @@
                             }
                         </div>
                     </div>
+
+                    <div style="margin-bottom: 2rem">
+                        <div class="headerComponent">
+                            <h3>Bình luận</h3>
+                        </div>
+                        <div class="wrapContentComponent">
+                            @{ 
+                                foreach(var x in Model.listFeedback)
+                                {
+                                    <div class="wrapFeedbackComponent">
+                                        <img src="/DoSomeThing/RetrieveUserImage/@x.VeDatTour.KhachHang.IDTaiKhoan" style="width: 50px; height: 50px; border-radius: 1000px" alt="Alternate Text" />
+                                        <div class="wrapFeedbackContent">
+                                            <span>@x.VeDatTour.KhachHang.hoTenKhachHang</span>
+                                            <span>@x.noiDung</span>
+                                        </div>
+                                        <div style="align-items: center">
+                                            <span>@x.ngayFeedback</span>
+
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
                 </div>
                 <div class="col col-12 col-md-6 col-lg-4 s_gutters " >
                     <div class="wrap_datTourComponent" id="wrapToScroll">

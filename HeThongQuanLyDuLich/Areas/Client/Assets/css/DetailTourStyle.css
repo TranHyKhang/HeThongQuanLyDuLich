@@ -247,4 +247,16 @@ p {
         background-color:  var(--blue-navy)
     }
 
+/*Feedback*/
+.wrapFeedbackComponent {
+    display: flex;
+    align-items: center;
+    padding: 1rem 0
+}
 
+.wrapFeedbackContent {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding-left: 1rem
+}

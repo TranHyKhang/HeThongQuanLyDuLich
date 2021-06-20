@@ -162,7 +162,7 @@ namespace HeThongQuanLyDuLich.Areas.Client.Controllers
 
             //Tinh tong tien
             int tongTienDichVu = 0;
-            foreach(var x in db.DichVus)
+            foreach(var x in tour.DichVus)
             {
                 tongTienDichVu += (int)x.giaDichVu;
             }

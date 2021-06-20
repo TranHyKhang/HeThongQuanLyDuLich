@@ -20,6 +20,7 @@ namespace HeThongQuanLyDuLich.Models
         {
             this.Feedbacks = new HashSet<Feedback>();
         }
+
         [Display(Name = "ID Vé đặt tour")]
         public int IDVeDatTour { get; set; }
         [Display(Name = "Hình thức thanh toán")]

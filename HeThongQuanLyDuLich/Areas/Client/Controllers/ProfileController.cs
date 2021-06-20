@@ -151,6 +151,48 @@ namespace HeThongQuanLyDuLich.Areas.Client.Controllers
             return View("ThayDoiThongTin", model);
         }
 
+        public ActionResult ThayDoiMatKhau()
+        {
+            UserSession user = SessionHelper.GetSession();
+            TaiKhoan tk = null;
+            foreach (var x in db.TaiKhoans)
+            {
+                if (x.email == user.UserName)
+                {
+                    tk = x;
+                }
+            }
+            ViewThayDoiMatKhauModel model = new ViewThayDoiMatKhauModel();
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult PostThayDoiMatKhau(ViewThayDoiMatKhauModel model)
+        {
+            UserSession user = SessionHelper.GetSession();
+            TaiKhoan tk = null;
+            foreach (var x in db.TaiKhoans)
+            {
+                if (x.email == user.UserName)
+                {
+                    tk = x;
+                }
+            }
+
+            if (model.MatKhauCu == tk.matKhau && model.MatKhauMoi == model.XacNhanMatKhauMoi)
+            {
+                tk.matKhau = model.MatKhauMoi;
+                db.Entry(tk).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index", "Login");
+            } else
+            {
+                ModelState.AddModelError("ResetPasswordError", "Lỗi thay đổi mật khẩu");
+            }
+
+            return View("ThayDoiMatKhau",model);
+        }
+
         public ActionResult Success()
         {
             return View();

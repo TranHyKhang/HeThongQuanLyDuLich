@@ -27,7 +27,6 @@ a {
     align-items: center;
     transition: background-color 0.2s linear;
     color: black;
-    cursor: pointer;
     text-decoration: none
 }
 .itemContainer:active {
@@ -39,9 +38,6 @@ a {
     color: black !important
 }
 
-.itemContainer:hover {
-    background-color: #eee
-}
 
 .itemImg {
 }

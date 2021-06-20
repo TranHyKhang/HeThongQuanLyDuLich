@@ -50,12 +50,24 @@ namespace HeThongQuanLyDuLich.Areas.Client.Controllers
         public ActionResult DetailTour(int id)
         {
             var tour = db.Tours.Where(s => s.IDTour == id).FirstOrDefault();
-            
+
+            List<Feedback> listFeedback = new List<Feedback>();
+            foreach(var x in tour.VeDatTours)
+            {
+                foreach(var a in db.Feedbacks)
+                {
+                    if(a.IDVeDatTour == x.IDVeDatTour)
+                    {
+                        listFeedback.Add(a);
+                    }
+                }
+            }
 
             ViewDetailModel detailModel = new ViewDetailModel()
             {
                 Tour = tour,
-                ChiTietHanhTrinh = new List<List<string>>()
+                ChiTietHanhTrinh = new List<List<string>>(),
+                listFeedback = listFeedback
             };
 
             foreach (var hanhTrinh in tour.HanhTrinhs)
