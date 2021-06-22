@@ -259,11 +259,12 @@ $.AdminLTE.pushMenu = function (toggleBtn) {
  * @Usage: $.AdminLTE.tree('.sidebar')
  */
 $.AdminLTE.tree = function (menu) {
+    console.log(menu)
   $("li a", $(menu)).click(function (e) {
     //Get the clicked link and the next element
     var $this = $(this);
-    var checkElement = $this.next();
-
+      var checkElement = $this.next();
+      console.log(checkElement)
     //Check if the next element is a menu and is visible
     if ((checkElement.is('.treeview-menu')) && (checkElement.is(':visible'))) {
       //Close the menu
@@ -475,3 +476,5 @@ $.AdminLTE.boxWidget = {
     });
   };
 }(jQuery));
+
+

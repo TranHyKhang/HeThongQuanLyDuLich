@@ -62,8 +62,17 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
 
         // GET: Admin/HanhTrinh/Create
         [Authorize]
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
+            string tourName = db.Tours.Find(id).tourName.ToString();
+            HanhTrinh model = new HanhTrinh()
+            {
+                tenHanhTrinh = tourName
+            };
+            if(id != null)
+            {
+                return View(model);
+            }
             return View();
         }
 
@@ -79,6 +88,13 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 db.HanhTrinhs.Add(hanhTrinh);
+                foreach(var x in  db.Tours)
+                {
+                    if(x.tourName == hanhTrinh.tenHanhTrinh)
+                    {
+                        x.HanhTrinhs.Add(hanhTrinh);
+                    }
+                }
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

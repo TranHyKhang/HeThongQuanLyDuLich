@@ -34,7 +34,7 @@ namespace HeThongQuanLyDuLich.Areas.Client.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Tên đăng nhập hoặc mật khẩu không đúng");
+                    ModelState.AddModelError("DangNhapKhongHopLe", "Tên đăng nhập hoặc mật khẩu không đúng");
                 }
             }
             return View(model);

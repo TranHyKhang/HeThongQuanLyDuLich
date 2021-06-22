@@ -10,7 +10,6 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Models
     {
 
         public int IDTaiKhoan { get; set; }
-        [Required(ErrorMessage = "Vui lòng nhập email !!!")]
         public string UserName { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập mật khẩu !!!")]
         public string Password { get; set; }

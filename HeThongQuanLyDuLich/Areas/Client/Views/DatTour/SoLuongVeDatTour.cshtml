@@ -83,6 +83,11 @@
                                     </td>
                                 </tr>
                                 <tr>
+                                    <td colspan="2">
+                                        @Html.ValidationMessage("SoLuongKhachKhongHopLe", new { @class = "text-danger validateString" })
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td>@Html.TextBoxFor(model => model.Tour.IDTour, new { @class = "hidden" })</td>
                                 </tr>
                                 <tr>

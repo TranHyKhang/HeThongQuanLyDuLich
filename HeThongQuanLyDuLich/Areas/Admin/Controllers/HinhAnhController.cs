@@ -68,7 +68,7 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "imageUrl,IDTour,IDLoaiHinhAnh")] HinhAnh hinhAnh)
         {
             hinhAnh.IDHinhAnh = RandomHinhAnhID();
@@ -77,7 +77,7 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
             int i = service.UploadImageInDatabase(file, hinhAnh);
             if (i == 1)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", "Tour", new { id = hinhAnh.IDTour});
             }
 
             ViewBag.IDTour = new SelectList(db.Tours, "IDTour", "tourName", hinhAnh.IDTour);

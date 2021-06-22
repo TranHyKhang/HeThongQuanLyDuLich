@@ -9,6 +9,14 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="~/Areas/Admin/styles/LoginStyle.css">
+    <style>
+        .haha ul {
+            list-style-type: none !important;
+            padding: 0;
+            text-align: center;
+            font-weight: 700
+        }
+    </style>
 </head>
 <body class="img js-fullheight" style="background-image: url(../../../../Content/image/bg.jpg);">
     <section class="ftco-section">
@@ -25,7 +33,7 @@
                         @using (Html.BeginForm())
                         {
                             @Html.AntiForgeryToken()
-                            @Html.ValidationSummary(true, null, new { @class="alert alert-danger"})
+                            @Html.ValidationSummary(true, null, new { @class="alert alert-danger haha"})
                             <div class="form-group">
                                 @Html.TextBoxFor(model => model.UserName, new { @class= "form-control", @placeholder = "Username", @autofocus="autofocus"  })
                             </div>

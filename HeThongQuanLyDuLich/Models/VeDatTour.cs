@@ -31,7 +31,7 @@ namespace HeThongQuanLyDuLich.Models
         public Nullable<int> IDTour { get; set; }
         [Display(Name = "ID Khách hàng")]
         public Nullable<int> IDKhachHang { get; set; }
-        [Display(Name = "D người đặt  vé")]
+        [Display(Name = "ID người đặt  vé")]
         public Nullable<int> soLuongVeDatTour { get; set; }
         [Display(Name = "Ngày đặt vé")]
         public Nullable<System.DateTime> ngayDatVe { get; set; }

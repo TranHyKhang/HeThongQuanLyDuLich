@@ -5,95 +5,151 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Chi tiết tour</h2>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style>
+        .haha {
+            opacity: 0;
+            position: absolute
+        }
+    </style>
+</head>
+<body>
+    <h2>Chi tiết tour</h2>
 
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.tourName)
-        </dt>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.tourName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.tourName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.tourName)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.tourDescription)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.tourDescription)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.tourDescription)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.tourDescription)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.soLuongKhachToiDa)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.soLuongKhachToiDa)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.soLuongKhachToiDa)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.soLuongKhachToiDa)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.soLuongKhachHienTai)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.soLuongKhachHienTai)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.soLuongKhachHienTai)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.soLuongKhachHienTai)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.tinhTrangTour)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.tinhTrangTour)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.tinhTrangTour)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.tinhTrangTour)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.gia)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.gia)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.gia)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.gia)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.KhachSan.tenKhachSan)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.KhachSan.tenKhachSan)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.KhachSan.tenKhachSan)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.KhachSan.tenKhachSan)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.KhuyenMai.tenKhuyenMai)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.KhuyenMai.tenKhuyenMai)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.KhuyenMai.tenKhuyenMai)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.KhuyenMai.tenKhuyenMai)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LoaiTour.loaiTour1)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.LoaiTour.loaiTour1)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.LoaiTour.loaiTour1)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.LoaiTour.loaiTour1)
+            </dd>
 
-    </dl>
-</div>
-<button class="btn btn-success my-button">
-    @Html.ActionLink("Danh sách khách hàng", "DanhSachKhachHang", new { id = Model.IDTour }, new { @class = "my-class" })
-</button>
-<button class="btn btn-warning my-button">
-    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.IDTour }, new { @class = "my-class" })
-</button>
-<button class="btn btn-danger my-button">
-    @Html.ActionLink("Xóa", "Delete", new { id = Model.IDTour }, new { @class = "my-class" })
-</button>
-<span>
-    |
-    @Html.ActionLink("Quay về", "Index")
-</span>
+        </dl>
+    </div>
+
+    <div style="padding: 3rem 4rem">
+        <h3>Hình ảnh tour du lịch</h3>
+        @{
+            foreach (var x in Model.HinhAnhs)
+            {
+                <div style="display: inline-block; width: 300px; height: 200px">
+                    <img src="/HinhAnh/RetrieveImage/@x.IDHinhAnh" width="100%" height="100%" style="padding: 1rem" />
+
+                </div>
+            }
+            <div style="width: 300px; height: 200px; display: inline-block; text-align: center">
+                <label style="cursor: pointer" for="uploadPhoto">
+                    <img src="~/Content/image/plus-2-math (1).png" width="100px" height="100px" />
+                </label>
+            </div>
+        }
+        @using (Html.BeginForm("Create", "HinhAnh", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.TextBoxFor(model => Model.IDTour, new { @class = "haha" })
+            @Html.TextBoxFor(model => Model.IDLoaiTour, new { @class = "haha" })
+            <input type="file" style="opacity: 0" name="ImageData" id="uploadPhoto" onchange="changeImgFunction()" />
+            <button type="submit" id="btnChangeImg" style="opacity: 0">changeImage</button>
+        }
+
+    </div>
+    <button class="btn btn-success my-button">
+        @Html.ActionLink("Danh sách khách hàng", "DanhSachKhachHang", new { id = Model.IDTour }, new { @class = "my-class" })
+    </button>
+    <button class="btn btn-success my-button">
+        @Html.ActionLink("Thêm hành trình", "Create","HanhTrinh", new { id = Model.IDTour }, new { @class = "my-class" })
+    </button>
+    <button class="btn btn-warning my-button">
+        @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.IDTour }, new { @class = "my-class" })
+    </button>
+    <button class="btn btn-danger my-button">
+        @Html.ActionLink("Xóa", "Delete", new { id = Model.IDTour }, new { @class = "my-class" })
+    </button>
+    <span>
+        |
+        @Html.ActionLink("Quay về", "Index")
+    </span>
+
+    <script>
+        let a = $('#avatarImg').attr('src');
+        console.log(a)
+
+        let b = document.getElementById('avatarImg')
+        console.log(b.src)
+
+
+        function changeImgFunction() {
+            console.log("do on change")
+            document.getElementById('btnChangeImg').click();
+        }
+    </script>
+</body>
+</html>

@@ -127,15 +127,15 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
                 }
             }
 
-            List<HanhTrinh> listHanhTrinh = new List<HanhTrinh>();
+            //List<HanhTrinh> listHanhTrinh = new List<HanhTrinh>();
 
-            foreach (var hanhTrinh in db.HanhTrinhs)
-            {
-                if (hanhTrinh.tenHanhTrinh == tour.tourName)
-                {
-                    tour.HanhTrinhs.Add(hanhTrinh);
-                }
-            }
+            //foreach (var hanhTrinh in db.HanhTrinhs)
+            //{
+            //    if (hanhTrinh.tenHanhTrinh == tour.tourName)
+            //    {
+            //        tour.HanhTrinhs.Add(hanhTrinh);
+            //    }
+            //}
             
 
             if (ModelState.IsValid)
