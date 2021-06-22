@@ -14,7 +14,20 @@
 
     <style>
         .danger-text {
+            font-weight: 700!important
+        }
+        .haha ul {
+            list-style-type: none !important;
+            padding: 0;
+            text-align: center;
             font-weight: 700
+        }
+
+        .haha {
+            font-weight: 700;
+            text-align: center;
+            display: block;
+            margin-bottom: 1rem
         }
     </style>
 </head>
@@ -33,7 +46,7 @@
                         @using (Html.BeginForm())
                         {
                             @Html.AntiForgeryToken()
-                            @Html.ValidationSummary(true, null, new { @class="alert alert-danger"})
+                            @Html.ValidationMessage("DangNhapKhongHopLe", new { @class="text-danger haha"})
                             <div class="form-group">
                                 @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger danger-text" })
                                 @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", @placeholder = "Email", @autofocus = "autofocus" })
@@ -60,7 +73,7 @@
                             </div>
                         }
                         <p class="w-100 text-center">&mdash; Or Sign In With &mdash;</p>
-                        <div class="social d-flex text-center" style="margin-bottom: 4rem">
+                        <div class="social d-flex text-center" style="margin-bottom: 4.5rem">
                             <a href="#" class="px-2 py-2 mr-md-1 rounded"><span class="ion-logo-facebook mr-2"></span> Facebook</a>
                             <a href="#" class="px-2 py-2 ml-md-1 rounded"><span class="ion-logo-twitter mr-2"></span> Twitter</a>
                         </div>

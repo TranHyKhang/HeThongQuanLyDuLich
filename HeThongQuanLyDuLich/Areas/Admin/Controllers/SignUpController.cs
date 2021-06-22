@@ -13,7 +13,7 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
         HeThongQuanLyDuLichEntities database = new HeThongQuanLyDuLichEntities();
         Random rnd = new Random();
         // GET: Admin/SignUp
-        [AllowAnonymous]
+        [Authorize]
         [HttpGet]
         public ActionResult Index()
         {

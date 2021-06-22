@@ -17,6 +17,12 @@
         .danger-text {
             font-weight:700
         }
+        .haha ul {
+            list-style-type: none !important;
+            padding: 0;
+            text-align: center;
+            font-weight: 700
+        }
     </style>
 </head>
 <body class="img js-fullheight" style="background-image: url(../../../../Content/image/bg.jpg);">
@@ -34,7 +40,7 @@
                         @using (Html.BeginForm())
                         {
                             @Html.AntiForgeryToken()
-                            @Html.ValidationSummary(true, null, new { @class = "alert alert-danger" })
+                            @Html.ValidationSummary(true, null, new { @class = "alert alert-danger haha" })
                             <div class="form-group">
                                 @Html.ValidationMessageFor(model => model.UserName, "", new { @class="text-danger danger-text"})
                                 @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", @placeholder = "Email", @autofocus = "autofocus" })

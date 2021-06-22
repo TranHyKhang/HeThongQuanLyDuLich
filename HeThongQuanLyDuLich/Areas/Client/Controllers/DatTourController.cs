@@ -118,14 +118,31 @@ namespace HeThongQuanLyDuLich.Areas.Client.Controllers
                 Tour = tour,
                 SoLuongKhach = 0
             };
-            if (tour.soLuongKhachHienTai + thongTinDatVe.SoLuongKhach <= tour.soLuongKhachToiDa)
+
+            var userName = SessionHelper.GetSession();
+
+            if(userName == null)
             {
-                return RedirectToAction("Index", new { id = thongTinDatVe.Tour.IDTour, soLuongKhach = thongTinDatVe.SoLuongKhach });
+                return RedirectToAction("Index", "Login");
+            }
+
+            if(thongTinDatVe.SoLuongKhach > 0)
+            {
+                if (tour.soLuongKhachHienTai + thongTinDatVe.SoLuongKhach <= tour.soLuongKhachToiDa)
+                {
+                    return RedirectToAction("Index", new { id = thongTinDatVe.Tour.IDTour, soLuongKhach = thongTinDatVe.SoLuongKhach });
+                }
+                else
+                {
+                    ModelState.AddModelError("VuotQuaSoLuongKhach", "Xin lỗi quý khách, hiện tại tour không đủ chỗ cho số lượng vé quý khách yêu cầu!!!");
+                    return View("SoLuongVeDatTour", a);
+                }
             } else
             {
-                ModelState.AddModelError("VuotQuaSoLuongKhach", "Xin lỗi quý khách, hiện tại tour không đủ chỗ cho số lượng vé quý khách yêu cầu!!!");
+                ModelState.AddModelError("SoLuongKhachKhongHopLe", "Thông tin nhập không hợp lệ");
                 return View("SoLuongVeDatTour", a);
             }
+            
         }
 
         [HttpPost]

@@ -24,19 +24,19 @@ namespace HeThongQuanLyDuLich.Areas.Admin.Controllers
         [AllowAnonymous]
         public ActionResult Index(LoginModel model)
         {
-            var result = new AccountModel().Login(model.UserName, model.Password);
-            if(result && ModelState.IsValid)
+            if(model.UserName != null && model.Password != null)
             {
-                //SessionHelper.SetSession(new UserSession() { UserName = model.UserName });
-                
-                FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe );
-                return RedirectToAction("Index", "Tour");
+                var result = new AccountModel().Login(model.UserName, model.Password);
+                if (result && ModelState.IsValid)
+                {
+                    FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
+                    return RedirectToAction("Index", "Tour");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Tên đăng nhập hoặc mật khẩu không đúng");
+                }
             }
-            else
-            {
-                ModelState.AddModelError("", "Tên đăng nhập hoặc mật khẩu không đúng");
-            }
-
             return View(model);
         }
 
